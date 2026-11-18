@@ -32,7 +32,7 @@
         </a>
 
         <nav class="header-nav" aria-label="Primary">
-          <a href="#todays-spotlight" class="nav-link active">Today's Spotlight</a>
+          <a href="#usecase-builder" class="nav-link active">Use-Case Finder</a>
           <a href="#intelligence" class="nav-link">Live Feed</a>
         </nav>
 
@@ -114,9 +114,54 @@
       </div>
     </section>
 
-    <!-- TODAY'S SPOTLIGHT BENTO (PRODUCT HUNT / TLDR STYLE) -->
-    <section class="spotlight-band" id="todays-spotlight" aria-label="Today's Top Spotlights">
-      <div class="spotlight-inner" id="spotlightGrid"></div>
+    <!-- INTERACTIVE USE-CASE FINDER & STACK BUILDER -->
+    <section class="utility-band" id="usecase-builder" aria-label="Interactive Use-Case Finder and Stack Builder">
+      <div class="utility-inner">
+        <div class="utility-panel">
+          <div class="utility-head">
+            <div>
+              <h2>What do you want to build or replace?</h2>
+              <p>Pick a goal to filter matching open-source tools and jump straight to setup.</p>
+            </div>
+            <button type="button" class="btn-link-reset hidden" id="resetGoalBtn">Reset Goal</button>
+          </div>
+          <div class="goal-grid" id="goalGrid">
+            <button type="button" class="goal-btn" data-goal="local-ai">
+              <span class="goal-title">Run Local AI Agents</span>
+              <span class="goal-sub">Gateways, harnesses &amp; coding CLIs</span>
+            </button>
+            <button type="button" class="goal-btn" data-goal="replace-paid">
+              <span class="goal-title">Replace Paid SaaS &amp; Docker</span>
+              <span class="goal-sub">Self-hosted workflows, PSD &amp; containers</span>
+            </button>
+            <button type="button" class="goal-btn" data-goal="zero-install">
+              <span class="goal-title">Zero-Install &amp; Offline Apps</span>
+              <span class="goal-sub">Single-file WebGPU, chat &amp; offline tools</span>
+            </button>
+            <button type="button" class="goal-btn" data-goal="media-hardware">
+              <span class="goal-title">Video, Graphics &amp; Hardware</span>
+              <span class="goal-sub">Clippers, frame-gen, fonts &amp; battery tray</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="utility-panel stack-builder-panel">
+          <div class="utility-head">
+            <div>
+              <h2>Stack Script Builder (<span id="stackBuilderCount">0</span>)</h2>
+              <p>Save tools below to bundle their install commands into one runnable PowerShell script.</p>
+            </div>
+            <div class="stack-builder-actions">
+              <button type="button" class="copy-mini-btn" id="copyStackScriptBtn">Copy .ps1</button>
+              <button type="button" class="btn-primary btn-sm" id="downloadStackScriptBtn">Download .ps1</button>
+            </div>
+          </div>
+          <div class="stack-chips-wrap" id="stackChipsWrap">
+            <span class="stack-empty-hint">Click "Save" on any repository below to add it to your install script.</span>
+          </div>
+          <pre class="stack-preview-code" id="stackScriptPreview"><code># Save repositories to generate a combined Windows PowerShell setup script</code></pre>
+        </div>
+      </div>
     </section>
 
     <!-- FILTER & TOPIC TOOLBAR -->
