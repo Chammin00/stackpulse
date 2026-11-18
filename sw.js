@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fresh-new-tech-v1';
+const CACHE_NAME = 'fresh-new-tech-v2';
 const APP_SHELL = [
   './',
   './index.html',
@@ -26,20 +26,16 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== location.origin) return;
 
-  if (url.pathname.endsWith('reports.json')) {
-    event.respondWith(
-      fetch(event.request)
-        .then((res) => {
+  // Network-first so published updates appear immediately, with offline cache fallback
+  event.respondWith(
+    fetch(event.request)
+      .then((res) => {
+        if (res.ok) {
           const clone = res.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-          return res;
-        })
-        .catch(() => caches.match(event.request))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+        }
+        return res;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
