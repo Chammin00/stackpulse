@@ -15,35 +15,66 @@ const WINDOW_CONFIG = {
   '1m': { label: '1 Month', days: 30 },
 };
 
+const STORAGE_KEYS = {
+  upvotes: 'fnt_upvotes_v1',
+  saved: 'fnt_saved_v1',
+  reviewed: 'fnt_reviewed_v1',
+};
+
+function loadSet(key) {
+  try {
+    return new Set(JSON.parse(localStorage.getItem(key) || '[]'));
+  } catch {
+    return new Set();
+  }
+}
+
+function saveSet(key, set) {
+  try {
+    localStorage.setItem(key, JSON.stringify([...set]));
+  } catch {
+    // Ignore storage quota errors
+  }
+}
+
 const state = {
   data: null,
   window: 'today',
   category: 'all',
-  compat: 'all',
+  topic: 'all',
   language: 'all',
   sort: 'stars',
   view: 'list',
   search: '',
   selectedId: null,
+  upvotes: loadSet(STORAGE_KEYS.upvotes),
+  saved: loadSet(STORAGE_KEYS.saved),
+  reviewed: loadSet(STORAGE_KEYS.reviewed),
 };
 
 const el = {
   headerStatusText: document.getElementById('headerStatusText'),
   globalSearch: document.getElementById('globalSearch'),
   clearSearchBtn: document.getElementById('clearSearchBtn'),
+  spotlightGrid: document.getElementById('spotlightGrid'),
   inspectorBody: document.getElementById('inspectorBody'),
   windowTitle: document.getElementById('windowTitle'),
   windowMeta: document.getElementById('windowMeta'),
   kpiProjects: document.getElementById('kpiProjects'),
   kpiStars: document.getElementById('kpiStars'),
   kpiReady: document.getElementById('kpiReady'),
-  kpiCoverage: document.getElementById('kpiCoverage'),
+  kpiSaved: document.getElementById('kpiSaved'),
+  kpiReviewed: document.getElementById('kpiReviewed'),
   languageBar: document.getElementById('languageBar'),
   langSelect: document.getElementById('langSelect'),
-  compatSelect: document.getElementById('compatSelect'),
+  topicSelect: document.getElementById('topicSelect'),
   sortSelect: document.getElementById('sortSelect'),
   repoGrid: document.getElementById('repoGrid'),
-  baselineRatioPill: document.getElementById('baselineRatioPill'),
+  digestBtn: document.getElementById('digestBtn'),
+  digestModal: document.getElementById('digestModal'),
+  closeDigestBtn: document.getElementById('closeDigestBtn'),
+  digestModalBody: document.getElementById('digestModalBody'),
+  digestSubtitle: document.getElementById('digestSubtitle'),
   exportBriefBtn: document.getElementById('exportBriefBtn'),
   toast: document.getElementById('toast'),
 };
@@ -79,6 +110,55 @@ function normalizeLang(lang) {
   if (lang.includes('/')) return lang.split('/')[0].trim();
   if (lang.includes('(')) return lang.split('(')[0].trim();
   return lang.trim();
+}
+
+function classifyTopic(repo) {
+  const text = `${repo.id} ${repo.summary}`.toLowerCase();
+  if (text.includes('agent') || text.includes('llm') || text.includes('deepseek') || text.includes('ai ') || text.includes('inference')) {
+    return 'AI & Agents';
+  }
+  if (text.includes('video') || text.includes('photo') || text.includes('render') || text.includes('webgpu') || text.includes('font') || text.includes('typeface')) {
+    return 'Graphics & Media';
+  }
+  if (text.includes('offline') || text.includes('self-hosted') || text.includes('local') || text.includes('gateway')) {
+    return 'Local-First';
+  }
+  if (text.includes('battery') || text.includes('docker') || text.includes('converter') || text.includes('windows')) {
+    return 'System Utilities';
+  }
+  return 'Dev Tools';
+}
+
+function getPrimaryCommand(repo) {
+  const raw = repo.apply?.commands?.[0]?.code || '';
+  if (!raw) return '';
+  const lines = raw
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith('Set-Location'));
+  return lines[0] || raw.split(/\r?\n/)[0].trim();
+}
+
+function getAvatarUrl(owner) {
+  return `https://github.com/${encodeURIComponent(owner)}.png?size=80`;
+}
+
+function buildSparklineSvg(repo, strokeColor) {
+  const seed = Math.max(1, repo.stars % 100);
+  const pts = [
+    20 - (seed % 5),
+    18 - ((seed * 3) % 7),
+    15 - ((seed * 2) % 6),
+    11 - (seed % 5),
+    7 - (repo.category === 'rising' ? 3 : 1),
+    3,
+  ];
+  const coords = pts.map((y, idx) => `${idx * 16},${Math.max(2, Math.min(22, y))}`).join(' ');
+  return `
+    <svg class="sparkline-svg" viewBox="0 0 84 24" fill="none" aria-hidden="true">
+      <polyline points="${coords}" stroke="${strokeColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  `;
 }
 
 function subtractDays(isoDate, daysMinusOne) {
@@ -123,6 +203,7 @@ function getWindowData(windowKey) {
       if (!existing) {
         byRepo.set(item.id, {
           ...item,
+          topic: classifyTopic(item),
           seenDates: [report.date],
         });
       } else {
@@ -143,13 +224,18 @@ function getFilteredRepos(windowRepos) {
   const q = state.search.trim().toLowerCase();
 
   const filtered = windowRepos.filter((repo) => {
-    if (state.category !== 'all' && repo.category !== state.category) return false;
-    if (state.compat !== 'all' && repo.compatibility.status !== state.compat) return false;
+    if (state.category === 'saved') {
+      if (!state.saved.has(repo.id)) return false;
+    } else if (state.category !== 'all' && repo.category !== state.category) {
+      return false;
+    }
+
+    if (state.topic !== 'all' && repo.topic !== state.topic) return false;
     if (state.language !== 'all' && normalizeLang(repo.language) !== state.language) return false;
 
     if (q) {
       const cmdText = repo.apply.commands.map((c) => c.code).join(' ');
-      const haystack = `${repo.id} ${repo.language} ${repo.summary} ${cmdText} ${repo.license}`.toLowerCase();
+      const haystack = `${repo.id} ${repo.language} ${repo.topic} ${repo.summary} ${cmdText} ${repo.license}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     return true;
@@ -157,13 +243,14 @@ function getFilteredRepos(windowRepos) {
 
   filtered.sort((a, b) => {
     switch (state.sort) {
+      case 'upvotes': {
+        const diff = (state.upvotes.has(b.id) ? 1 : 0) - (state.upvotes.has(a.id) ? 1 : 0);
+        return diff !== 0 ? diff : b.stars - a.stars;
+      }
       case 'pushed':
         return (b.pushed || '').localeCompare(a.pushed || '');
       case 'created':
         return (b.created || '').localeCompare(a.created || '');
-      case 'rank':
-        if (a.category !== b.category) return a.category === 'popular' ? -1 : 1;
-        return a.rank - b.rank;
       case 'ready': {
         const order = { ready: 0, prebuilt: 1, 'extra-tool': 2 };
         const diff = order[a.compatibility.status] - order[b.compatibility.status];
@@ -178,55 +265,132 @@ function getFilteredRepos(windowRepos) {
   return filtered;
 }
 
-function renderCounts() {
+function renderSpotlight(windowRepos) {
+  const topPopular = windowRepos.find((r) => r.category === 'popular') || windowRepos[0];
+  const topRising = windowRepos.find((r) => r.category === 'rising') || windowRepos[1];
+  const picks = [
+    topPopular ? { repo: topPopular, kind: 'popular', label: 'TOP BREAKOUT PICK' } : null,
+    topRising ? { repo: topRising, kind: 'rising', label: 'FASTEST RISING LAUNCH' } : null,
+  ].filter(Boolean);
+
+  if (picks.length === 0) {
+    el.spotlightGrid.innerHTML = '';
+    return;
+  }
+
+  el.spotlightGrid.innerHTML = picks
+    .map(({ repo, kind, label }) => {
+      const cmd = getPrimaryCommand(repo);
+      const stroke = kind === 'popular' ? '#0f4c81' : '#b48648';
+      return `
+        <article class="spotlight-card spotlight-${kind}" data-spotlight-id="${escapeHtml(repo.id)}">
+          <div class="spotlight-top">
+            <span class="spotlight-eyebrow">${label}</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span class="topic-tag">${escapeHtml(repo.topic)}</span>
+              ${buildSparklineSvg(repo, stroke)}
+            </div>
+          </div>
+          <div class="spotlight-repo-row">
+            <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" loading="lazy" />
+            <div>
+              <h2 class="spotlight-title">${escapeHtml(repo.id)}</h2>
+              <div class="spotlight-stats">${formatNumber(repo.stars)} stars · ${escapeHtml(repo.language)} · ${escapeHtml(repo.license)}</div>
+            </div>
+          </div>
+          <p class="spotlight-summary">${escapeHtml(repo.summary)}</p>
+          ${
+            cmd
+              ? `<div class="row-cmd-inline">
+                  <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
+                  <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+                </div>`
+              : ''
+          }
+        </article>
+      `;
+    })
+    .join('');
+
+  el.spotlightGrid.querySelectorAll('.spotlight-card').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('[data-copy]');
+      if (copyBtn) {
+        e.stopPropagation();
+        copyText(copyBtn.dataset.copy);
+        return;
+      }
+      selectRepo(card.dataset.spotlightId);
+      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+}
+
+function selectRepo(id) {
+  state.selectedId = id;
+  if (id && !state.reviewed.has(id)) {
+    state.reviewed.add(id);
+    saveSet(STORAGE_KEYS.reviewed, state.reviewed);
+  }
+  render();
+}
+
+function renderCounts(windowRepos) {
   for (const key of Object.keys(WINDOW_CONFIG)) {
     const { repos } = getWindowData(key);
     const badge = document.getElementById(`badge-${key}`);
     if (badge) badge.textContent = String(repos.length);
   }
 
-  const { repos } = getWindowData(state.window);
-  document.getElementById('cat-all').textContent = String(repos.length);
+  document.getElementById('cat-all').textContent = String(windowRepos.length);
   document.getElementById('cat-popular').textContent = String(
-    repos.filter((r) => r.category === 'popular').length
+    windowRepos.filter((r) => r.category === 'popular').length
   );
   document.getElementById('cat-rising').textContent = String(
-    repos.filter((r) => r.category === 'rising').length
+    windowRepos.filter((r) => r.category === 'rising').length
+  );
+  document.getElementById('cat-saved').textContent = String(
+    windowRepos.filter((r) => state.saved.has(r.id)).length
   );
 }
 
-function renderBaselineSummary() {
-  const baseline = state.data?.baseline || [];
-  const installedCount = baseline.filter((t) => t.installed).length;
-  el.baselineRatioPill.textContent = `${installedCount} / ${baseline.length} tools verified`;
-}
-
-function renderLanguageControls(windowRepos) {
-  const counts = new Map();
+function renderFilters(windowRepos) {
+  const langCounts = new Map();
+  const topicCounts = new Map();
   for (const r of windowRepos) {
     const lang = normalizeLang(r.language);
-    counts.set(lang, (counts.get(lang) || 0) + 1);
+    langCounts.set(lang, (langCounts.get(lang) || 0) + 1);
+    topicCounts.set(r.topic, (topicCounts.get(r.topic) || 0) + 1);
   }
 
-  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const sortedLangs = [...langCounts.entries()].sort((a, b) => b[1] - a[1]);
   const total = windowRepos.length || 1;
 
-  el.languageBar.innerHTML = sorted
+  el.languageBar.innerHTML = sortedLangs
     .map(([lang, count]) => {
       const pct = ((count / total) * 100).toFixed(2);
       return `<div class="lang-segment" style="width:${pct}%;background:${getLangColor(lang)}" title="${escapeHtml(lang)}: ${count}"></div>`;
     })
     .join('');
 
-  const currentLang = state.language;
   el.langSelect.innerHTML = [
     `<option value="all">All Languages (${windowRepos.length})</option>`,
-    ...sorted.map(
+    ...sortedLangs.map(
       ([lang, count]) =>
         `<option value="${escapeHtml(lang)}">${escapeHtml(lang)} (${count})</option>`
     ),
   ].join('');
-  el.langSelect.value = sorted.some(([l]) => l === currentLang) ? currentLang : 'all';
+  el.langSelect.value = sortedLangs.some(([l]) => l === state.language) ? state.language : 'all';
+
+  const sortedTopics = [...topicCounts.entries()].sort((a, b) => b[1] - a[1]);
+  el.topicSelect.innerHTML = [
+    `<option value="all">All Topics (${windowRepos.length})</option>`,
+    ...sortedTopics.map(
+      ([topic, count]) =>
+        `<option value="${escapeHtml(topic)}">${escapeHtml(topic)} (${count})</option>`
+    ),
+  ].join('');
+  el.topicSelect.value = sortedTopics.some(([t]) => t === state.topic) ? state.topic : 'all';
 }
 
 function renderLedger(filteredRepos) {
@@ -242,39 +406,56 @@ function renderLedger(filteredRepos) {
   el.repoGrid.innerHTML = filteredRepos
     .map((repo) => {
       const isSelected = repo.id === state.selectedId;
+      const isUpvoted = state.upvotes.has(repo.id);
+      const isSaved = state.saved.has(repo.id);
       const langColor = getLangColor(repo.language);
       const catClass = repo.category === 'popular' ? 'pill-popular' : 'pill-rising';
       const catLabel = repo.category === 'popular' ? 'Popular' : 'Rising';
-      const compatClass = `compat-${repo.compatibility.status}`;
+      const cmd = getPrimaryCommand(repo);
 
       return `
         <article class="ledger-row ${isSelected ? 'selected' : ''}" data-id="${escapeHtml(repo.id)}">
           <div class="row-header">
             <div class="row-title-wrap">
               <span class="row-rank">#${repo.rank}</span>
+              <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" loading="lazy" />
               <span class="row-repo-name">${escapeHtml(repo.id)}</span>
             </div>
             <div class="row-badges">
+              <span class="topic-tag">${escapeHtml(repo.topic)}</span>
               <span class="pill ${catClass}">${catLabel}</span>
-              <span class="pill ${compatClass}">${escapeHtml(repo.compatibility.statusLabel)}</span>
             </div>
           </div>
 
           <p class="row-summary">${escapeHtml(repo.summary)}</p>
 
-          <div class="row-meta">
-            <span class="meta-item">
-              <span class="lang-dot" style="background:${langColor}"></span>
-              ${escapeHtml(repo.language)}
-            </span>
-            <span class="meta-item">${formatNumber(repo.stars)} stars</span>
-            <span class="meta-item">${formatNumber(repo.forks)} forks</span>
-            <span class="meta-item">License: ${escapeHtml(repo.license)}</span>
-            ${
-              repo.seenDates.length > 1
-                ? `<span class="meta-item">Seen ${repo.seenDates.length}d</span>`
-                : ''
-            }
+          ${
+            cmd
+              ? `<div class="row-cmd-inline">
+                  <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
+                  <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+                </div>`
+              : ''
+          }
+
+          <div class="row-meta" style="justify-content:space-between;">
+            <div style="display:flex;align-items:center;flex-wrap:wrap;gap:14px;">
+              <span class="meta-item">
+                <span class="lang-dot" style="background:${langColor}"></span>
+                ${escapeHtml(repo.language)}
+              </span>
+              <span class="meta-item">${formatNumber(repo.stars)} stars</span>
+              <span class="meta-item">${formatNumber(repo.forks)} forks</span>
+              <span class="meta-item">${escapeHtml(repo.license)}</span>
+            </div>
+            <div class="row-actions-group">
+              <button type="button" class="action-chip-btn ${isUpvoted ? 'active' : ''}" data-upvote="${escapeHtml(repo.id)}">
+                ${isUpvoted ? 'Upvoted' : 'Upvote'}
+              </button>
+              <button type="button" class="action-chip-btn saved ${isSaved ? 'active' : ''}" data-save="${escapeHtml(repo.id)}">
+                ${isSaved ? 'Saved' : 'Save'}
+              </button>
+            </div>
           </div>
         </article>
       `;
@@ -282,9 +463,42 @@ function renderLedger(filteredRepos) {
     .join('');
 
   el.repoGrid.querySelectorAll('.ledger-row').forEach((row) => {
-    row.addEventListener('click', () => {
-      state.selectedId = row.dataset.id;
-      render();
+    row.addEventListener('click', (e) => {
+      const copyBtn = e.target.closest('[data-copy]');
+      if (copyBtn) {
+        e.stopPropagation();
+        copyText(copyBtn.dataset.copy);
+        return;
+      }
+
+      const upvoteBtn = e.target.closest('[data-upvote]');
+      if (upvoteBtn) {
+        e.stopPropagation();
+        const id = upvoteBtn.dataset.upvote;
+        if (state.upvotes.has(id)) state.upvotes.delete(id);
+        else state.upvotes.add(id);
+        saveSet(STORAGE_KEYS.upvotes, state.upvotes);
+        render();
+        return;
+      }
+
+      const saveBtn = e.target.closest('[data-save]');
+      if (saveBtn) {
+        e.stopPropagation();
+        const id = saveBtn.dataset.save;
+        if (state.saved.has(id)) {
+          state.saved.delete(id);
+          showToast('Removed from Saved Stack');
+        } else {
+          state.saved.add(id);
+          showToast('Saved to your Stack');
+        }
+        saveSet(STORAGE_KEYS.saved, state.saved);
+        render();
+        return;
+      }
+
+      selectRepo(row.dataset.id);
     });
   });
 }
@@ -294,7 +508,7 @@ function renderBrief(allWindowRepos) {
   if (!repo) {
     el.inspectorBody.innerHTML = `
       <div class="brief-empty">
-        <p>Select any repository from the intelligence ledger to review its license, activity metrics, and verified deployment instructions.</p>
+        <p>Select any repository to inspect its traction, license, and one-click setup commands.</p>
       </div>
     `;
     return;
@@ -331,10 +545,15 @@ function renderBrief(allWindowRepos) {
 
   el.inspectorBody.innerHTML = `
     <div class="brief-head">
-      <h2>${escapeHtml(repo.id)}</h2>
-      <a class="brief-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noopener noreferrer">
-        <span>${escapeHtml(repo.url)}</span>
-      </a>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" />
+        <div>
+          <h2 style="margin:0;">${escapeHtml(repo.id)}</h2>
+          <a class="brief-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noopener noreferrer">
+            <span>Open on GitHub</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="brief-spec-grid">
@@ -365,26 +584,19 @@ function renderBrief(allWindowRepos) {
     </div>
 
     <div class="brief-section">
-      <h3>Executive Summary</h3>
+      <h3>What It Does</h3>
       <p class="brief-summary-text">${escapeHtml(repo.summary)}</p>
     </div>
 
     <div class="brief-section">
-      <h3>Toolchain Audit</h3>
+      <h3>Environment Fit</h3>
       <div class="toolchain-list">${toolsHtml}</div>
     </div>
 
     <div class="brief-section">
-      <h3>Verified Deployment Instructions</h3>
+      <h3>Quick-Start Commands</h3>
       ${notesHtml}
       ${commandsHtml}
-    </div>
-
-    <div class="brief-section">
-      <h3>Report Appearances (${repo.seenDates.length})</h3>
-      <div class="toolchain-list">
-        ${repo.seenDates.map((d) => `<span class="tool-chip installed">${escapeHtml(d)}</span>`).join('')}
-      </div>
     </div>
   `;
 
@@ -397,6 +609,46 @@ function renderBrief(allWindowRepos) {
   });
 }
 
+function openDigestModal() {
+  if (!state.data) return;
+  const cfg = WINDOW_CONFIG[state.window];
+  const { repos } = getWindowData(state.window);
+  const topFive = [...repos].sort((a, b) => b.stars - a.stars).slice(0, 5);
+
+  el.digestSubtitle.textContent = `${cfg.label} · Top 5 high-signal repositories you can test in minutes.`;
+  el.digestModalBody.innerHTML = `
+    <div class="digest-list">
+      ${topFive
+        .map((r, i) => {
+          const cmd = getPrimaryCommand(r);
+          return `
+            <div class="digest-item">
+              <div class="digest-item-head">
+                <strong>${i + 1}. ${escapeHtml(r.id)}</strong>
+                <span class="topic-tag">${formatNumber(r.stars)} stars · ${escapeHtml(r.language)}</span>
+              </div>
+              <p>${escapeHtml(r.summary)}</p>
+              ${
+                cmd
+                  ? `<div class="row-cmd-inline">
+                      <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
+                      <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+                    </div>`
+                  : ''
+              }
+            </div>
+          `;
+        })
+        .join('')}
+    </div>
+  `;
+
+  el.digestModalBody.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', () => copyText(btn.dataset.copy));
+  });
+  el.digestModal.classList.remove('hidden');
+}
+
 function exportExecutiveBrief() {
   if (!state.data) return;
   const cfg = WINDOW_CONFIG[state.window];
@@ -404,7 +656,7 @@ function exportExecutiveBrief() {
   const filtered = getFilteredRepos(repos);
 
   const lines = [
-    `# Fresh New TeCH — Executive Open-Source Brief (${cfg.label})`,
+    `# Fresh New TeCH — Daily Open-Source Brief (${cfg.label})`,
     `Generated: ${new Date().toISOString()}`,
     `Tracked Repositories: ${filtered.length}`,
     '',
@@ -421,7 +673,7 @@ function exportExecutiveBrief() {
   a.download = `fresh-new-tech-brief-${state.window}.md`;
   a.click();
   URL.revokeObjectURL(url);
-  showToast('Exported Executive Brief (.md)');
+  showToast('Exported Brief (.md)');
 }
 
 function render() {
@@ -437,8 +689,8 @@ function render() {
 
   el.windowTitle.textContent = cfg.label;
   const rangeText = startDate === endDate ? endDate : `${startDate} to ${endDate}`;
-  el.windowMeta.textContent = `Anchor: ${rangeText || '—'} · ${reportsInWindow.length} report(s)`;
-  el.headerStatusText.textContent = `Live Intelligence · Latest ${state.data.latestDate || '—'} · ${state.data.reportCount} Daily Briefings`;
+  el.windowMeta.textContent = `${rangeText || '—'} · ${reportsInWindow.length} report(s)`;
+  el.headerStatusText.textContent = `Fresh Edition · ${state.data.latestDate || '—'} · ${state.data.reportCount} Daily Briefings`;
 
   const totalStars = filtered.reduce((acc, r) => acc + r.stars, 0);
   const readyCount = filtered.filter((r) => r.compatibility.status === 'ready').length;
@@ -446,11 +698,12 @@ function render() {
   el.kpiProjects.textContent = String(filtered.length);
   el.kpiStars.textContent = formatCompact(totalStars);
   el.kpiReady.textContent = String(readyCount);
-  el.kpiCoverage.textContent = `${reportsInWindow.length} / ${cfg.days}d`;
+  el.kpiSaved.textContent = String(state.saved.size);
+  el.kpiReviewed.textContent = `${state.reviewed.size} reviewed`;
 
-  renderCounts();
-  renderBaselineSummary();
-  renderLanguageControls(repos);
+  renderSpotlight(repos);
+  renderCounts(repos);
+  renderFilters(repos);
   renderLedger(filtered);
   renderBrief(repos);
 }
@@ -518,6 +771,7 @@ function bindEvents() {
       btn.setAttribute('aria-selected', 'true');
       state.window = btn.dataset.window;
       state.language = 'all';
+      state.topic = 'all';
       render();
     });
   });
@@ -540,8 +794,8 @@ function bindEvents() {
     });
   });
 
-  el.compatSelect.addEventListener('change', () => {
-    state.compat = el.compatSelect.value;
+  el.topicSelect.addEventListener('change', () => {
+    state.topic = el.topicSelect.value;
     render();
   });
 
@@ -572,7 +826,15 @@ function bindEvents() {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       el.globalSearch.focus();
+    } else if (e.key === 'Escape') {
+      el.digestModal.classList.add('hidden');
     }
+  });
+
+  el.digestBtn.addEventListener('click', openDigestModal);
+  el.closeDigestBtn.addEventListener('click', () => el.digestModal.classList.add('hidden'));
+  el.digestModal.addEventListener('click', (e) => {
+    if (e.target === el.digestModal) el.digestModal.classList.add('hidden');
   });
 
   el.exportBriefBtn.addEventListener('click', exportExecutiveBrief);

@@ -13,7 +13,7 @@
 </head>
 <body>
   <div class="page-shell">
-    <!-- EXECUTIVE TOP BAR -->
+    <!-- TOP BAR -->
     <header class="site-header">
       <div class="header-inner">
         <a href="#top" class="brand-lockup">
@@ -22,23 +22,24 @@
           </div>
           <div class="brand-text">
             <span class="brand-name">Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span></span>
-            <span class="brand-sub">Daily Open-Source Intelligence</span>
+            <span class="brand-sub">Daily Open-Source Discovery</span>
           </div>
         </a>
 
         <nav class="header-nav" aria-label="Primary">
-          <a href="#intelligence" class="nav-link active">Trending Feed</a>
-          <a href="#why-fresh" class="nav-link">Why Fresh New TeCH</a>
+          <a href="#todays-spotlight" class="nav-link active">Today's Spotlight</a>
+          <a href="#intelligence" class="nav-link">Live Feed</a>
         </nav>
 
         <div class="header-actions">
+          <button type="button" class="btn-secondary" id="digestBtn">3-Min Digest</button>
           <button type="button" class="btn-secondary" id="exportBriefBtn">Export Brief</button>
           <a href="#intelligence" class="btn-primary">Explore Today's Picks</a>
         </div>
       </div>
     </header>
 
-    <!-- HERO & VALUE PROPOSITION -->
+    <!-- HERO & HABIT BAR -->
     <section class="hero-band" id="top">
       <div class="hero-inner">
         <div class="hero-copy">
@@ -46,9 +47,9 @@
             <span class="live-dot" aria-hidden="true"></span>
             <span id="headerStatusText">Loading daily briefings...</span>
           </div>
-          <h1>Discover tomorrow's breakout open-source software before everyone else.</h1>
+          <h1>Tomorrow's breakout GitHub tools, ready to run today.</h1>
           <p class="hero-lead">
-            Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> curates the fastest-rising GitHub tools, AI agents, and developer utilities every morning—complete with license clarity, traction metrics, and one-click setup commands.
+            Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> distills the highest-momentum open-source launches every morning—with real star traction, topic tags, and copy-paste terminal commands.
           </p>
 
           <!-- TIME HORIZON TABS -->
@@ -72,7 +73,7 @@
           </div>
         </div>
 
-        <!-- EXECUTIVE SNAPSHOT CARD -->
+        <!-- LIVE SNAPSHOT + HABIT TRACKER -->
         <aside class="snapshot-card" aria-label="Current Briefing Summary">
           <div class="snapshot-head">
             <span class="snapshot-title" id="windowTitle">Today's News</span>
@@ -81,7 +82,7 @@
           <div class="snapshot-metrics">
             <div class="metric-cell">
               <span class="metric-value" id="kpiProjects">0</span>
-              <span class="metric-label">Tracked Repositories</span>
+              <span class="metric-label">Featured Tools</span>
             </div>
             <div class="metric-cell">
               <span class="metric-value" id="kpiStars">0</span>
@@ -89,17 +90,17 @@
             </div>
             <div class="metric-cell">
               <span class="metric-value metric-emerald" id="kpiReady">0</span>
-              <span class="metric-label">Ready to Run</span>
+              <span class="metric-label">Instant Run</span>
             </div>
             <div class="metric-cell">
-              <span class="metric-value" id="kpiCoverage">0 / 1d</span>
-              <span class="metric-label">Report Coverage</span>
+              <span class="metric-value metric-tan" id="kpiSaved">0</span>
+              <span class="metric-label">Saved to Stack</span>
             </div>
           </div>
           <div class="snapshot-lang-section">
             <div class="snapshot-lang-head">
-              <span>Ecosystem Distribution</span>
-              <span id="baselineRatioPill">Verified Stack</span>
+              <span>Ecosystem Breakdown</span>
+              <span id="kpiReviewed">0 reviewed today</span>
             </div>
             <div class="language-bar" id="languageBar"></div>
           </div>
@@ -107,25 +108,12 @@
       </div>
     </section>
 
-    <!-- VALUE HIGHLIGHTS (ENTICE SECTION) -->
-    <section class="value-band" id="why-fresh">
-      <div class="value-inner">
-        <div class="value-card">
-          <h3>Daily Signal, Zero Noise</h3>
-          <p>Cut through thousands of repositories. We surface the top Popular &amp; New Rising projects across 1-day, 3-day, 1-week, and 1-month windows.</p>
-        </div>
-        <div class="value-card">
-          <h3>One-Click Setup Playbooks</h3>
-          <p>Skip the README guesswork. Every featured project includes verified installation commands you can copy straight into your terminal.</p>
-        </div>
-        <div class="value-card">
-          <h3>Built for Fast Decisions</h3>
-          <p>Compare star velocity, forks, open-source licenses, and ecosystem fit side by side—then export an executive brief in one click.</p>
-        </div>
-      </div>
+    <!-- TODAY'S SPOTLIGHT BENTO (PRODUCT HUNT / TLDR STYLE) -->
+    <section class="spotlight-band" id="todays-spotlight" aria-label="Today's Top Spotlights">
+      <div class="spotlight-inner" id="spotlightGrid"></div>
     </section>
 
-    <!-- FILTER & SEARCH TOOLBAR -->
+    <!-- FILTER & TOPIC TOOLBAR -->
     <section class="filter-bar" id="intelligence">
       <div class="filter-inner">
         <div class="search-field">
@@ -136,7 +124,7 @@
           <input
             type="text"
             id="globalSearch"
-            placeholder="Search repositories, capabilities, licenses, or commands (Ctrl+K)..."
+            placeholder="Search tools, AI agents, languages, or commands (Ctrl+K)..."
             autocomplete="off"
             spellcheck="false"
           />
@@ -148,13 +136,11 @@
             <button type="button" class="seg-btn active" data-category="all">All (<span id="cat-all">0</span>)</button>
             <button type="button" class="seg-btn" data-category="popular">Popular (<span id="cat-popular">0</span>)</button>
             <button type="button" class="seg-btn" data-category="rising">New Rising (<span id="cat-rising">0</span>)</button>
+            <button type="button" class="seg-btn" data-category="saved">Saved (<span id="cat-saved">0</span>)</button>
           </div>
 
-          <select id="compatSelect" class="filter-select" aria-label="Compatibility filter">
-            <option value="all">All Readiness States</option>
-            <option value="ready">Ready on Baseline</option>
-            <option value="prebuilt">Prebuilt / Installer</option>
-            <option value="extra-tool">Needs Extra Tool</option>
+          <select id="topicSelect" class="filter-select" aria-label="Topic filter">
+            <option value="all">All Topics</option>
           </select>
 
           <select id="langSelect" class="filter-select" aria-label="Language filter">
@@ -163,10 +149,10 @@
 
           <select id="sortSelect" class="filter-select" aria-label="Sort repositories">
             <option value="stars">Sort: Stars (High to Low)</option>
+            <option value="upvotes">Sort: Most Upvoted</option>
             <option value="pushed">Sort: Most Recent Push</option>
             <option value="created">Sort: Newest Created</option>
-            <option value="rank">Sort: Report Rank</option>
-            <option value="ready">Sort: Baseline Ready First</option>
+            <option value="ready">Sort: Instant Run First</option>
           </select>
 
           <div class="segmented-group" role="group" aria-label="Display layout">
@@ -177,30 +163,44 @@
       </div>
     </section>
 
-    <!-- MAIN SPLIT WORKSPACE: INTELLIGENCE LEDGER + PROCUREMENT BRIEF -->
+    <!-- MAIN SPLIT WORKSPACE -->
     <main class="workspace-main">
       <div class="workspace-inner">
-        <section class="ledger-column" aria-label="Repository Intelligence Ledger">
+        <section class="ledger-column" aria-label="Repository Intelligence Feed">
           <div class="ledger-list" id="repoGrid" aria-live="polite"></div>
         </section>
 
-        <aside class="brief-column" id="rightInspector" aria-label="Procurement and Deployment Brief">
+        <aside class="brief-column" id="rightInspector" aria-label="Tool Playbook and Details">
           <div class="brief-card" id="inspectorBody">
             <div class="brief-empty">
-              <p>Select any repository from the intelligence ledger to review its license, activity metrics, and verified deployment instructions.</p>
+              <p>Select any repository to inspect its traction, license, and one-click setup commands.</p>
             </div>
           </div>
         </aside>
       </div>
     </main>
 
-    <!-- ENTERPRISE FOOTER -->
+    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> — Daily GitHub intelligence &amp; ready-to-run developer playbooks.</span>
-        <span>Updated daily · Built for teams, founders, and engineers.</span>
+        <span>Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> — Daily GitHub discovery &amp; ready-to-run developer playbooks.</span>
+        <span>Updated daily · Curated for builders, teams, and decision-makers.</span>
       </div>
     </footer>
+  </div>
+
+  <!-- 3-MIN DIGEST MODAL -->
+  <div class="modal-backdrop hidden" id="digestModal" role="dialog" aria-modal="true" aria-labelledby="digestModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2 id="digestModalTitle">3-Minute Daily Digest</h2>
+          <p class="modal-subtitle" id="digestSubtitle">Top takeaways and instant commands from the active window.</p>
+        </div>
+        <button type="button" class="btn-close" id="closeDigestBtn" aria-label="Close digest">Close</button>
+      </div>
+      <div class="modal-body" id="digestModalBody"></div>
+    </div>
   </div>
 
   <div class="toast hidden" id="toast">Copied to clipboard</div>
