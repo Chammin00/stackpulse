@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f4c81" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>Fresh New TeCH — Daily Open-Source Intelligence</title>
+  <title>Fresh New TeCH — Open-Source Intelligence</title>
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icon.svg" />
@@ -23,11 +23,14 @@
       <div class="header-inner">
         <a href="#top" class="brand-lockup">
           <div class="brand-icon" aria-hidden="true">
-            <span class="monogram-c">C</span><span class="monogram-h">H</span>
+            <svg width="24" height="24" viewBox="0 0 512 512" fill="none">
+              <path d="M224 166 C168 166 128 204 128 256 C128 308 168 346 224 346 L238 346 L238 306 L224 306 C192 306 168 286 168 256 C168 226 192 206 224 206 L238 206 L238 166 Z" fill="#ffffff"/>
+              <path d="M266 166 L266 346 L306 346 L306 274 L348 274 L348 346 L388 346 L388 166 L348 166 L348 236 L306 236 L306 166 Z" fill="#d6b27c"/>
+            </svg>
           </div>
           <div class="brand-text">
             <span class="brand-name">Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span></span>
-            <span class="brand-sub">Daily Open-Source Discovery</span>
+            <span class="brand-sub">Open-Source Intelligence</span>
           </div>
         </a>
 
@@ -45,7 +48,7 @@
       </div>
     </header>
 
-    <!-- HERO & HABIT BAR -->
+    <!-- HERO & ALTERNATIVE FINDER -->
     <section class="hero-band" id="top">
       <div class="hero-inner">
         <div class="hero-copy">
@@ -215,6 +218,7 @@
       <div class="workspace-inner">
         <section class="ledger-column" aria-label="Repository Intelligence Feed">
           <div class="ledger-list" id="repoGrid" aria-live="polite"></div>
+          <nav class="pagination-bar" id="paginationBar" aria-label="Feed Pagination"></nav>
         </section>
 
         <aside class="brief-column" id="rightInspector" aria-label="Tool Playbook and Details">
@@ -231,11 +235,63 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- END OF PAGE ACTION BANNER -->
+    <section class="end-cta-band" aria-label="End of Page Actions">
+      <div class="end-cta-inner">
+        <div>
+          <h2>Want a wider view or ready to save this briefing?</h2>
+          <p>Switch to 1 Week or 1 Month to spot multi-day winners, or jump back to the top.</p>
+        </div>
+        <div class="end-cta-actions">
+          <button type="button" class="btn-secondary" data-footer-window="1w">Browse 1 Week</button>
+          <button type="button" class="btn-secondary" data-footer-window="1m">Browse 1 Month</button>
+          <a href="#top" class="btn-primary">Back to Top</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL ENTERPRISE FOOTER -->
     <footer class="site-footer">
-      <div class="footer-inner">
-        <span>Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> — Daily GitHub discovery &amp; ready-to-run developer playbooks.</span>
-        <span>Updated daily · Curated for builders, teams, and decision-makers.</span>
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand-lockup">
+            <div class="brand-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 512 512" fill="none">
+                <path d="M224 166 C168 166 128 204 128 256 C128 308 168 346 224 346 L238 346 L238 306 L224 306 C192 306 168 286 168 256 C168 226 192 206 224 206 L238 206 L238 166 Z" fill="#ffffff"/>
+                <path d="M266 166 L266 346 L306 346 L306 274 L348 274 L348 346 L388 346 L388 166 L348 166 L348 236 L306 236 L306 166 Z" fill="#d6b27c"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name">Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span></span>
+              <span class="brand-sub">Open-Source Intelligence</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Daily curated GitHub intelligence, open-source alternatives, and ready-to-run setup playbooks.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Time Horizons</h4>
+          <button type="button" class="footer-link-btn" data-footer-window="today">Today (24h)</button>
+          <button type="button" class="footer-link-btn" data-footer-window="3d">Past 3 Days</button>
+          <button type="button" class="footer-link-btn" data-footer-window="1w">1 Week</button>
+          <button type="button" class="footer-link-btn" data-footer-window="1m">1 Month</button>
+        </div>
+
+        <div class="footer-col">
+          <h4>Tools &amp; Export</h4>
+          <a href="#usecase-builder" class="footer-link">Use-Case Finder</a>
+          <a href="#usecase-builder" class="footer-link">Stack Script Builder</a>
+          <button type="button" class="footer-link-btn" id="footerDigestBtn">3-Min Digest</button>
+          <button type="button" class="footer-link-btn" id="footerExportBtn">Export Executive Brief</button>
+          <a href="https://github.com/Chammin00/stackpulse" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub Source</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> · Updated daily via GitHub API</span>
+        <span>Public Web &amp; Installable PWA</span>
       </div>
     </footer>
   </div>
