@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0f294a"/>
+  <rect x="24" y="24" width="464" height="464" rx="92" fill="none" stroke="#d6b27c" stroke-width="12" stroke-opacity="0.45"/>
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="ui-monospace, Consolas, monospace" font-size="220" font-weight="700" letter-spacing="-10">
+    <tspan fill="#ffffff">C</tspan><tspan fill="#d6b27c">H</tspan>
+  </text>
+</svg>

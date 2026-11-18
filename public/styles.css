@@ -39,6 +39,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   font-family: var(--font-sans);
   font-size: 15px;
@@ -1231,6 +1232,10 @@ select:focus-visible {
   z-index: 300;
 }
 
+.brief-drawer-bar {
+  display: none;
+}
+
 @media (max-width: 1080px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -1242,18 +1247,89 @@ select:focus-visible {
     grid-template-columns: 1fr;
   }
   .brief-column {
-    position: static;
+    display: none;
   }
-  .brief-card {
+  .brief-column.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    z-index: 220;
+    background: var(--surface);
+    overflow-y: auto;
+  }
+  .brief-column.mobile-open .brief-drawer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 15px;
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 5;
+  }
+  .brief-column.mobile-open .brief-card {
     max-height: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
 @media (max-width: 720px) {
+  .header-inner {
+    padding: 10px 16px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
   .header-nav {
     display: none;
   }
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .hero-inner,
+  .spotlight-inner,
+  .filter-inner,
+  .workspace-inner,
+  .footer-inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .hero-copy h1 {
     font-size: 26px;
+  }
+  .filter-bar {
+    position: static;
+  }
+  .search-field {
+    min-width: 100%;
+  }
+  .filter-controls {
+    width: 100%;
+  }
+  .segmented-group {
+    flex-wrap: wrap;
+  }
+  .ledger-list.cards-mode {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .snapshot-metrics,
+  .brief-spec-grid {
+    grid-template-columns: 1fr;
+  }
+  .btn-primary,
+  .btn-secondary,
+  .action-chip-btn {
+    min-height: 40px;
   }
 }

@@ -57,6 +57,8 @@ const el = {
   globalSearch: document.getElementById('globalSearch'),
   clearSearchBtn: document.getElementById('clearSearchBtn'),
   spotlightGrid: document.getElementById('spotlightGrid'),
+  rightInspector: document.getElementById('rightInspector'),
+  closeMobileBriefBtn: document.getElementById('closeMobileBriefBtn'),
   inspectorBody: document.getElementById('inspectorBody'),
   windowTitle: document.getElementById('windowTitle'),
   windowMeta: document.getElementById('windowMeta'),
@@ -75,6 +77,7 @@ const el = {
   closeDigestBtn: document.getElementById('closeDigestBtn'),
   digestModalBody: document.getElementById('digestModalBody'),
   digestSubtitle: document.getElementById('digestSubtitle'),
+  installAppBtn: document.getElementById('installAppBtn'),
   exportBriefBtn: document.getElementById('exportBriefBtn'),
   toast: document.getElementById('toast'),
 };
@@ -326,11 +329,14 @@ function renderSpotlight(windowRepos) {
   });
 }
 
-function selectRepo(id) {
+function selectRepo(id, openDrawer = true) {
   state.selectedId = id;
   if (id && !state.reviewed.has(id)) {
     state.reviewed.add(id);
     saveSet(STORAGE_KEYS.reviewed, state.reviewed);
+  }
+  if (openDrawer && window.innerWidth <= 1080) {
+    el.rightInspector.classList.add('mobile-open');
   }
   render();
 }
@@ -449,6 +455,9 @@ function renderLedger(filteredRepos) {
               <span class="meta-item">${escapeHtml(repo.license)}</span>
             </div>
             <div class="row-actions-group">
+              <button type="button" class="action-chip-btn ${isSelected ? 'active' : ''}" data-open-playbook="${escapeHtml(repo.id)}">
+                ${isSelected ? 'Viewing' : 'View Playbook'}
+              </button>
               <button type="button" class="action-chip-btn ${isUpvoted ? 'active' : ''}" data-upvote="${escapeHtml(repo.id)}">
                 ${isUpvoted ? 'Upvoted' : 'Upvote'}
               </button>
@@ -837,7 +846,35 @@ function bindEvents() {
     if (e.target === el.digestModal) el.digestModal.classList.add('hidden');
   });
 
+  el.closeMobileBriefBtn?.addEventListener('click', () => {
+    el.rightInspector.classList.remove('mobile-open');
+  });
+
+  let deferredInstallPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    el.installAppBtn?.classList.remove('hidden');
+  });
+
+  el.installAppBtn?.addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    const { outcome } = await deferredInstallPrompt.userChoice;
+    if (outcome === 'accepted') {
+      el.installAppBtn.classList.add('hidden');
+      showToast('Fresh New TeCH installed');
+    }
+    deferredInstallPrompt = null;
+  });
+
   el.exportBriefBtn.addEventListener('click', exportExecutiveBrief);
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
 }
 
 bindEvents();

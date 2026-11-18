@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f4c81" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Fresh New TeCH — Daily Open-Source Intelligence</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,6 +37,7 @@
         </nav>
 
         <div class="header-actions">
+          <button type="button" class="btn-secondary hidden" id="installAppBtn">Install App</button>
           <button type="button" class="btn-secondary" id="digestBtn">3-Min Digest</button>
           <button type="button" class="btn-secondary" id="exportBriefBtn">Export Brief</button>
           <a href="#intelligence" class="btn-primary">Explore Today's Picks</a>
@@ -171,6 +177,10 @@
         </section>
 
         <aside class="brief-column" id="rightInspector" aria-label="Tool Playbook and Details">
+          <div class="brief-drawer-bar">
+            <span>Tool Playbook</span>
+            <button type="button" class="btn-close" id="closeMobileBriefBtn">Close</button>
+          </div>
           <div class="brief-card" id="inspectorBody">
             <div class="brief-empty">
               <p>Select any repository to inspect its traction, license, and one-click setup commands.</p>

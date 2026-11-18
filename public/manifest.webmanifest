@@ -1,0 +1,18 @@
+{
+  "name": "Fresh New TeCH",
+  "short_name": "FreshTeCH",
+  "description": "Daily open-source GitHub intelligence, spotlights, and ready-to-run developer playbooks.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f4c81",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
