@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fresh-new-tech-v6';
+const CACHE_NAME = 'fresh-new-tech-v7';
 const APP_SHELL = [
   './',
   './index.html',
