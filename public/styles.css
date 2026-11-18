@@ -391,6 +391,53 @@ select:focus-visible {
   color: #b48648;
 }
 
+.alt-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alt-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-body);
+  white-space: nowrap;
+}
+
+.alt-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.alt-result-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alt-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.alt-result-head strong {
+  font-size: 15px;
+  color: var(--brand);
+}
+
+.alt-result-desc {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-body);
+}
+
 .metric-label {
   font-size: 12px;
   color: var(--ink-muted);
