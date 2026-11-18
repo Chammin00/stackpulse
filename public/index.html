@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StackPulse — Enterprise Open-Source Intelligence</title>
+  <title>Fresh New TeCH — Daily Open-Source Intelligence</title>
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,44 +16,39 @@
     <!-- EXECUTIVE TOP BAR -->
     <header class="site-header">
       <div class="header-inner">
-        <div class="brand-lockup">
+        <a href="#top" class="brand-lockup">
           <div class="brand-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg>
+            <span class="monogram-c">C</span><span class="monogram-h">H</span>
           </div>
           <div class="brand-text">
-            <span class="brand-name">StackPulse</span>
-            <span class="brand-sub">Enterprise Open-Source Intelligence</span>
+            <span class="brand-name">Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span></span>
+            <span class="brand-sub">Daily Open-Source Intelligence</span>
           </div>
-        </div>
+        </a>
 
         <nav class="header-nav" aria-label="Primary">
-          <a href="#intelligence" class="nav-link active">Intelligence Feed</a>
-          <button type="button" class="nav-link" id="openBaselineBtn">Environment Audit</button>
-          <button type="button" class="nav-link" id="refreshBtn">Sync Reports</button>
+          <a href="#intelligence" class="nav-link active">Trending Feed</a>
+          <a href="#why-fresh" class="nav-link">Why Fresh New TeCH</a>
         </nav>
 
         <div class="header-actions">
           <button type="button" class="btn-secondary" id="exportBriefBtn">Export Brief</button>
-          <button type="button" class="btn-primary" id="openDeployBtn">Deployment Specs</button>
+          <a href="#intelligence" class="btn-primary">Explore Today's Picks</a>
         </div>
       </div>
     </header>
 
-    <!-- HERO & LIVE VALUE PROPOSITION -->
-    <section class="hero-band">
+    <!-- HERO & VALUE PROPOSITION -->
+    <section class="hero-band" id="top">
       <div class="hero-inner">
         <div class="hero-copy">
           <div class="live-status-row">
             <span class="live-dot" aria-hidden="true"></span>
             <span id="headerStatusText">Loading daily briefings...</span>
           </div>
-          <h1>Open-source intelligence, pre-verified for your enterprise environment.</h1>
+          <h1>Discover tomorrow's breakout open-source software before everyone else.</h1>
           <p class="hero-lead">
-            Track high-velocity repositories and emerging tools every day—automatically audited for licensing, release availability, and exact deployment commands tailored to your verified Windows toolchain.
+            Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> curates the fastest-rising GitHub tools, AI agents, and developer utilities every morning—complete with license clarity, traction metrics, and one-click setup commands.
           </p>
 
           <!-- TIME HORIZON TABS -->
@@ -94,7 +89,7 @@
             </div>
             <div class="metric-cell">
               <span class="metric-value metric-emerald" id="kpiReady">0</span>
-              <span class="metric-label">Baseline Ready</span>
+              <span class="metric-label">Ready to Run</span>
             </div>
             <div class="metric-cell">
               <span class="metric-value" id="kpiCoverage">0 / 1d</span>
@@ -104,11 +99,29 @@
           <div class="snapshot-lang-section">
             <div class="snapshot-lang-head">
               <span>Ecosystem Distribution</span>
-              <span id="baselineRatioPill">6 / 11 tools active</span>
+              <span id="baselineRatioPill">Verified Stack</span>
             </div>
             <div class="language-bar" id="languageBar"></div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- VALUE HIGHLIGHTS (ENTICE SECTION) -->
+    <section class="value-band" id="why-fresh">
+      <div class="value-inner">
+        <div class="value-card">
+          <h3>Daily Signal, Zero Noise</h3>
+          <p>Cut through thousands of repositories. We surface the top Popular &amp; New Rising projects across 1-day, 3-day, 1-week, and 1-month windows.</p>
+        </div>
+        <div class="value-card">
+          <h3>One-Click Setup Playbooks</h3>
+          <p>Skip the README guesswork. Every featured project includes verified installation commands you can copy straight into your terminal.</p>
+        </div>
+        <div class="value-card">
+          <h3>Built for Fast Decisions</h3>
+          <p>Compare star velocity, forks, open-source licenses, and ecosystem fit side by side—then export an executive brief in one click.</p>
+        </div>
       </div>
     </section>
 
@@ -167,12 +180,10 @@
     <!-- MAIN SPLIT WORKSPACE: INTELLIGENCE LEDGER + PROCUREMENT BRIEF -->
     <main class="workspace-main">
       <div class="workspace-inner">
-        <!-- LEFT: INTELLIGENCE LEDGER -->
         <section class="ledger-column" aria-label="Repository Intelligence Ledger">
           <div class="ledger-list" id="repoGrid" aria-live="polite"></div>
         </section>
 
-        <!-- RIGHT: STICKY PROCUREMENT & DEPLOYMENT BRIEF -->
         <aside class="brief-column" id="rightInspector" aria-label="Procurement and Deployment Brief">
           <div class="brief-card" id="inspectorBody">
             <div class="brief-empty">
@@ -186,56 +197,10 @@
     <!-- ENTERPRISE FOOTER -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>StackPulse — Automated daily GitHub intelligence &amp; Windows environment verification.</span>
-        <span>Zero-dependency static &amp; Node.js v24 architecture · Auto-syncs with daily scheduled reports.</span>
+        <span>Fresh New Te<span class="brand-ch-c">C</span><span class="brand-ch-h">H</span> — Daily GitHub intelligence &amp; ready-to-run developer playbooks.</span>
+        <span>Updated daily · Built for teams, founders, and engineers.</span>
       </div>
     </footer>
-  </div>
-
-  <!-- ENVIRONMENT AUDIT MODAL -->
-  <div class="modal-backdrop hidden" id="baselineModal" role="dialog" aria-modal="true" aria-labelledby="baselineModalTitle">
-    <div class="modal-panel">
-      <div class="modal-header">
-        <div>
-          <h2 id="baselineModalTitle">Verified Windows Environment Baseline</h2>
-          <p class="modal-subtitle">Every repository deployment instruction is checked against this toolchain.</p>
-        </div>
-        <button type="button" class="btn-close" id="closeBaselineBtn" aria-label="Close modal">Close</button>
-      </div>
-      <div class="modal-body" id="baselineModalBody"></div>
-    </div>
-  </div>
-
-  <!-- DEPLOYMENT SPECS MODAL -->
-  <div class="modal-backdrop hidden" id="deployModal" role="dialog" aria-modal="true" aria-labelledby="deployModalTitle">
-    <div class="modal-panel">
-      <div class="modal-header">
-        <div>
-          <h2 id="deployModalTitle">Enterprise Deployment &amp; Automation</h2>
-          <p class="modal-subtitle">Ready for Vercel, Netlify, GitHub Pages, or on-premise Windows Server.</p>
-        </div>
-        <button type="button" class="btn-close" id="closeDeployBtn" aria-label="Close modal">Close</button>
-      </div>
-      <div class="modal-body">
-        <div class="deploy-spec-list">
-          <div class="deploy-spec-item">
-            <h3>1. Daily Automated GitHub Sync</h3>
-            <p>Pulls live trending &amp; rising repositories via <code>gh search repos</code> and writes structured daily Markdown reports into <code>reports/YYYY-MM-DD.md</code>.</p>
-            <pre class="brief-code"><code>npm run sync</code></pre>
-          </div>
-          <div class="deploy-spec-item">
-            <h3>2. Static Production Build</h3>
-            <p>Compiles all daily reports into <code>public/data/reports.json</code> and packages a zero-dependency static bundle in <code>./dist</code> (configured with <code>vercel.json</code>).</p>
-            <pre class="brief-code"><code>npm run build</code></pre>
-          </div>
-          <div class="deploy-spec-item">
-            <h3>3. Windows Scheduled Task</h3>
-            <p>Registers a daily background sync so your executive portal updates automatically every morning.</p>
-            <pre class="brief-code"><code>.\scripts\Register-TrendingSchedule.ps1</code></pre>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="toast hidden" id="toast">Copied to clipboard</div>

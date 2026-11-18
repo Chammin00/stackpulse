@@ -44,15 +44,7 @@ const el = {
   sortSelect: document.getElementById('sortSelect'),
   repoGrid: document.getElementById('repoGrid'),
   baselineRatioPill: document.getElementById('baselineRatioPill'),
-  openBaselineBtn: document.getElementById('openBaselineBtn'),
-  closeBaselineBtn: document.getElementById('closeBaselineBtn'),
-  baselineModal: document.getElementById('baselineModal'),
-  baselineModalBody: document.getElementById('baselineModalBody'),
-  openDeployBtn: document.getElementById('openDeployBtn'),
-  closeDeployBtn: document.getElementById('closeDeployBtn'),
-  deployModal: document.getElementById('deployModal'),
   exportBriefBtn: document.getElementById('exportBriefBtn'),
-  refreshBtn: document.getElementById('refreshBtn'),
   toast: document.getElementById('toast'),
 };
 
@@ -203,35 +195,10 @@ function renderCounts() {
   );
 }
 
-function renderBaselineModal() {
+function renderBaselineSummary() {
   const baseline = state.data?.baseline || [];
   const installedCount = baseline.filter((t) => t.installed).length;
-  el.baselineRatioPill.textContent = `${installedCount} / ${baseline.length} tools active`;
-
-  el.baselineModalBody.innerHTML = `
-    <table class="baseline-table">
-      <thead>
-        <tr>
-          <th>Tool</th>
-          <th>Status</th>
-          <th>Observed Version / Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${baseline
-          .map(
-            (t) => `
-          <tr>
-            <td><strong>${escapeHtml(t.tool)}</strong></td>
-            <td><span class="${t.installed ? 'status-ok' : 'status-missing'}">${escapeHtml(t.status)}</span></td>
-            <td>${escapeHtml(t.notes)}</td>
-          </tr>
-        `
-          )
-          .join('')}
-      </tbody>
-    </table>
-  `;
+  el.baselineRatioPill.textContent = `${installedCount} / ${baseline.length} tools verified`;
 }
 
 function renderLanguageControls(windowRepos) {
@@ -437,7 +404,7 @@ function exportExecutiveBrief() {
   const filtered = getFilteredRepos(repos);
 
   const lines = [
-    `# StackPulse — Executive Open-Source Brief (${cfg.label})`,
+    `# Fresh New TeCH — Executive Open-Source Brief (${cfg.label})`,
     `Generated: ${new Date().toISOString()}`,
     `Tracked Repositories: ${filtered.length}`,
     '',
@@ -451,7 +418,7 @@ function exportExecutiveBrief() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `stackpulse-brief-${state.window}.md`;
+  a.download = `fresh-new-tech-brief-${state.window}.md`;
   a.click();
   URL.revokeObjectURL(url);
   showToast('Exported Executive Brief (.md)');
@@ -482,7 +449,7 @@ function render() {
   el.kpiCoverage.textContent = `${reportsInWindow.length} / ${cfg.days}d`;
 
   renderCounts();
-  renderBaselineModal();
+  renderBaselineSummary();
   renderLanguageControls(repos);
   renderLedger(filtered);
   renderBrief(repos);
@@ -605,26 +572,10 @@ function bindEvents() {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
       el.globalSearch.focus();
-    } else if (e.key === 'Escape') {
-      el.baselineModal.classList.add('hidden');
-      el.deployModal.classList.add('hidden');
     }
   });
 
-  el.openBaselineBtn.addEventListener('click', () => el.baselineModal.classList.remove('hidden'));
-  el.closeBaselineBtn.addEventListener('click', () => el.baselineModal.classList.add('hidden'));
-  el.baselineModal.addEventListener('click', (e) => {
-    if (e.target === el.baselineModal) el.baselineModal.classList.add('hidden');
-  });
-
-  el.openDeployBtn.addEventListener('click', () => el.deployModal.classList.remove('hidden'));
-  el.closeDeployBtn.addEventListener('click', () => el.deployModal.classList.add('hidden'));
-  el.deployModal.addEventListener('click', (e) => {
-    if (e.target === el.deployModal) el.deployModal.classList.add('hidden');
-  });
-
   el.exportBriefBtn.addEventListener('click', exportExecutiveBrief);
-  el.refreshBtn.addEventListener('click', () => fetchReports(true));
 }
 
 bindEvents();
