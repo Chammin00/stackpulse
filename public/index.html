@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StackPulse — Enterprise Open-Source Intelligence</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <!-- EXECUTIVE TOP BAR -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand-lockup">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+              <path d="M2 17l10 5 10-5"></path>
+              <path d="M2 12l10 5 10-5"></path>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">StackPulse</span>
+            <span class="brand-sub">Enterprise Open-Source Intelligence</span>
+          </div>
+        </div>
+
+        <nav class="header-nav" aria-label="Primary">
+          <a href="#intelligence" class="nav-link active">Intelligence Feed</a>
+          <button type="button" class="nav-link" id="openBaselineBtn">Environment Audit</button>
+          <button type="button" class="nav-link" id="refreshBtn">Sync Reports</button>
+        </nav>
+
+        <div class="header-actions">
+          <button type="button" class="btn-secondary" id="exportBriefBtn">Export Brief</button>
+          <button type="button" class="btn-primary" id="openDeployBtn">Deployment Specs</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO & LIVE VALUE PROPOSITION -->
+    <section class="hero-band">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="live-status-row">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span id="headerStatusText">Loading daily briefings...</span>
+          </div>
+          <h1>Open-source intelligence, pre-verified for your enterprise environment.</h1>
+          <p class="hero-lead">
+            Track high-velocity repositories and emerging tools every day—automatically audited for licensing, release availability, and exact deployment commands tailored to your verified Windows toolchain.
+          </p>
+
+          <!-- TIME HORIZON TABS -->
+          <div class="horizon-tabs" role="tablist" aria-label="Report Time Horizon">
+            <button type="button" class="horizon-tab active" data-window="today" role="tab" aria-selected="true">
+              <span>Today's News</span>
+              <span class="tab-count" id="badge-today">0</span>
+            </button>
+            <button type="button" class="horizon-tab" data-window="3d" role="tab" aria-selected="false">
+              <span>Past 3 Days</span>
+              <span class="tab-count" id="badge-3d">0</span>
+            </button>
+            <button type="button" class="horizon-tab" data-window="1w" role="tab" aria-selected="false">
+              <span>1 Week</span>
+              <span class="tab-count" id="badge-1w">0</span>
+            </button>
+            <button type="button" class="horizon-tab" data-window="1m" role="tab" aria-selected="false">
+              <span>1 Month</span>
+              <span class="tab-count" id="badge-1m">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- EXECUTIVE SNAPSHOT CARD -->
+        <aside class="snapshot-card" aria-label="Current Briefing Summary">
+          <div class="snapshot-head">
+            <span class="snapshot-title" id="windowTitle">Today's News</span>
+            <span class="snapshot-range" id="windowMeta">Anchor: —</span>
+          </div>
+          <div class="snapshot-metrics">
+            <div class="metric-cell">
+              <span class="metric-value" id="kpiProjects">0</span>
+              <span class="metric-label">Tracked Repositories</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-value" id="kpiStars">0</span>
+              <span class="metric-label">Combined Stars</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-value metric-emerald" id="kpiReady">0</span>
+              <span class="metric-label">Baseline Ready</span>
+            </div>
+            <div class="metric-cell">
+              <span class="metric-value" id="kpiCoverage">0 / 1d</span>
+              <span class="metric-label">Report Coverage</span>
+            </div>
+          </div>
+          <div class="snapshot-lang-section">
+            <div class="snapshot-lang-head">
+              <span>Ecosystem Distribution</span>
+              <span id="baselineRatioPill">6 / 11 tools active</span>
+            </div>
+            <div class="language-bar" id="languageBar"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FILTER & SEARCH TOOLBAR -->
+    <section class="filter-bar" id="intelligence">
+      <div class="filter-inner">
+        <div class="search-field">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+          <input
+            type="text"
+            id="globalSearch"
+            placeholder="Search repositories, capabilities, licenses, or commands (Ctrl+K)..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="button" class="search-clear hidden" id="clearSearchBtn" aria-label="Clear search">Clear</button>
+        </div>
+
+        <div class="filter-controls">
+          <div class="segmented-group" role="group" aria-label="Category filter">
+            <button type="button" class="seg-btn active" data-category="all">All (<span id="cat-all">0</span>)</button>
+            <button type="button" class="seg-btn" data-category="popular">Popular (<span id="cat-popular">0</span>)</button>
+            <button type="button" class="seg-btn" data-category="rising">New Rising (<span id="cat-rising">0</span>)</button>
+          </div>
+
+          <select id="compatSelect" class="filter-select" aria-label="Compatibility filter">
+            <option value="all">All Readiness States</option>
+            <option value="ready">Ready on Baseline</option>
+            <option value="prebuilt">Prebuilt / Installer</option>
+            <option value="extra-tool">Needs Extra Tool</option>
+          </select>
+
+          <select id="langSelect" class="filter-select" aria-label="Language filter">
+            <option value="all">All Languages</option>
+          </select>
+
+          <select id="sortSelect" class="filter-select" aria-label="Sort repositories">
+            <option value="stars">Sort: Stars (High to Low)</option>
+            <option value="pushed">Sort: Most Recent Push</option>
+            <option value="created">Sort: Newest Created</option>
+            <option value="rank">Sort: Report Rank</option>
+            <option value="ready">Sort: Baseline Ready First</option>
+          </select>
+
+          <div class="segmented-group" role="group" aria-label="Display layout">
+            <button type="button" class="seg-btn active" data-view="list">List</button>
+            <button type="button" class="seg-btn" data-view="cards">Cards</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN SPLIT WORKSPACE: INTELLIGENCE LEDGER + PROCUREMENT BRIEF -->
+    <main class="workspace-main">
+      <div class="workspace-inner">
+        <!-- LEFT: INTELLIGENCE LEDGER -->
+        <section class="ledger-column" aria-label="Repository Intelligence Ledger">
+          <div class="ledger-list" id="repoGrid" aria-live="polite"></div>
+        </section>
+
+        <!-- RIGHT: STICKY PROCUREMENT & DEPLOYMENT BRIEF -->
+        <aside class="brief-column" id="rightInspector" aria-label="Procurement and Deployment Brief">
+          <div class="brief-card" id="inspectorBody">
+            <div class="brief-empty">
+              <p>Select any repository from the intelligence ledger to review its license, activity metrics, and verified deployment instructions.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- ENTERPRISE FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>StackPulse — Automated daily GitHub intelligence &amp; Windows environment verification.</span>
+        <span>Zero-dependency static &amp; Node.js v24 architecture · Auto-syncs with daily scheduled reports.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ENVIRONMENT AUDIT MODAL -->
+  <div class="modal-backdrop hidden" id="baselineModal" role="dialog" aria-modal="true" aria-labelledby="baselineModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2 id="baselineModalTitle">Verified Windows Environment Baseline</h2>
+          <p class="modal-subtitle">Every repository deployment instruction is checked against this toolchain.</p>
+        </div>
+        <button type="button" class="btn-close" id="closeBaselineBtn" aria-label="Close modal">Close</button>
+      </div>
+      <div class="modal-body" id="baselineModalBody"></div>
+    </div>
+  </div>
+
+  <!-- DEPLOYMENT SPECS MODAL -->
+  <div class="modal-backdrop hidden" id="deployModal" role="dialog" aria-modal="true" aria-labelledby="deployModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <h2 id="deployModalTitle">Enterprise Deployment &amp; Automation</h2>
+          <p class="modal-subtitle">Ready for Vercel, Netlify, GitHub Pages, or on-premise Windows Server.</p>
+        </div>
+        <button type="button" class="btn-close" id="closeDeployBtn" aria-label="Close modal">Close</button>
+      </div>
+      <div class="modal-body">
+        <div class="deploy-spec-list">
+          <div class="deploy-spec-item">
+            <h3>1. Daily Automated GitHub Sync</h3>
+            <p>Pulls live trending &amp; rising repositories via <code>gh search repos</code> and writes structured daily Markdown reports into <code>reports/YYYY-MM-DD.md</code>.</p>
+            <pre class="brief-code"><code>npm run sync</code></pre>
+          </div>
+          <div class="deploy-spec-item">
+            <h3>2. Static Production Build</h3>
+            <p>Compiles all daily reports into <code>public/data/reports.json</code> and packages a zero-dependency static bundle in <code>./dist</code> (configured with <code>vercel.json</code>).</p>
+            <pre class="brief-code"><code>npm run build</code></pre>
+          </div>
+          <div class="deploy-spec-item">
+            <h3>3. Windows Scheduled Task</h3>
+            <p>Registers a daily background sync so your executive portal updates automatically every morning.</p>
+            <pre class="brief-code"><code>.\scripts\Register-TrendingSchedule.ps1</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast">Copied to clipboard</div>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

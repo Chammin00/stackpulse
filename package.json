@@ -1,0 +1,16 @@
+{
+  "name": "github-trending-radar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "GitHub Daily Trending & Rising Projects Console tailored to the verified Windows Environment Baseline.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node build.mjs",
+    "sync": "node scripts/sync-trending.mjs && node build.mjs",
+    "sync:backfill": "node scripts/sync-trending.mjs --backfill 8 && node build.mjs"
+  }
+}
