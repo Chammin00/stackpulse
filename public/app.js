@@ -450,7 +450,8 @@ function renderPagination(totalItems, totalPages, startIdx, endIdx) {
       if (nextPage < 1 || nextPage > totalPages || nextPage === state.page) return;
       state.page = nextPage;
       render();
-      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+      const feedTop = (document.querySelector('.workspace-main')?.offsetTop || 0) - 136;
+      window.scrollTo({ top: Math.max(0, feedTop), behavior: 'smooth' });
     });
   });
 }
