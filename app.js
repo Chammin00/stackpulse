@@ -9,7 +9,7 @@ const LANG_COLORS = {
 };
 
 const WINDOW_CONFIG = {
-  today: { label: "Today's News", days: 1 },
+  today: { label: 'Today (24h)', days: 1 },
   '3d': { label: 'Past 3 Days', days: 3 },
   '1w': { label: '1 Week', days: 7 },
   '1m': { label: '1 Month', days: 30 },
@@ -66,12 +66,10 @@ const el = {
   rightInspector: document.getElementById('rightInspector'),
   closeMobileBriefBtn: document.getElementById('closeMobileBriefBtn'),
   inspectorBody: document.getElementById('inspectorBody'),
-  windowTitle: document.getElementById('windowTitle'),
   windowMeta: document.getElementById('windowMeta'),
-  kpiProjects: document.getElementById('kpiProjects'),
-  kpiStars: document.getElementById('kpiStars'),
-  kpiReady: document.getElementById('kpiReady'),
-  kpiSaved: document.getElementById('kpiSaved'),
+  altSelect: document.getElementById('altSelect'),
+  altResultBox: document.getElementById('altResultBox'),
+  altEcosystemMeta: document.getElementById('altEcosystemMeta'),
   kpiReviewed: document.getElementById('kpiReviewed'),
   languageBar: document.getElementById('languageBar'),
   langSelect: document.getElementById('langSelect'),
@@ -699,6 +697,43 @@ function exportExecutiveBrief() {
   showToast('Exported Brief (.md)');
 }
 
+function renderAltFinder() {
+  if (!state.data?.reports?.length) return;
+  const allKnown = [];
+  for (const rep of state.data.reports) {
+    allKnown.push(...rep.popular, ...rep.rising);
+  }
+  const targetId = el.altSelect.value;
+  const match = allKnown.find((r) => r.id.toLowerCase() === targetId.toLowerCase()) || allKnown[0];
+  if (!match) return;
+
+  const cmd = getPrimaryCommand(match) || `gh repo clone ${match.id}`;
+  el.altResultBox.innerHTML = `
+    <div class="alt-result-head">
+      <strong>${escapeHtml(match.id)}</strong>
+      <span class="topic-tag">${formatNumber(match.stars)} stars · ${escapeHtml(match.language)}</span>
+    </div>
+    <p class="alt-result-desc">${escapeHtml(match.summary)}</p>
+    <div class="row-cmd-inline">
+      <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
+      <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+    </div>
+    <div style="display:flex;justify-content:flex-end;">
+      <button type="button" class="action-chip-btn" data-open-alt="${escapeHtml(match.id)}">View Playbook</button>
+    </div>
+  `;
+
+  el.altResultBox.querySelector('[data-copy]')?.addEventListener('click', (e) => {
+    copyText(e.currentTarget.dataset.copy);
+  });
+  el.altResultBox.querySelector('[data-open-alt]')?.addEventListener('click', (e) => {
+    selectRepo(e.currentTarget.dataset.openAlt);
+    if (window.innerWidth > 1080) {
+      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+}
+
 function render() {
   if (!state.data) return;
 
@@ -710,20 +745,15 @@ function render() {
     state.selectedId = filtered.length > 0 ? filtered[0].id : null;
   }
 
-  el.windowTitle.textContent = cfg.label;
   const rangeText = startDate === endDate ? endDate : `${startDate} to ${endDate}`;
-  el.windowMeta.textContent = `${rangeText || '—'} · ${reportsInWindow.length} report(s)`;
+  el.windowMeta.textContent = `${cfg.label} · ${rangeText || '—'}`;
   el.headerStatusText.textContent = `Fresh Edition · ${state.data.latestDate || '—'} · ${state.data.reportCount} Daily Briefings`;
 
   const totalStars = filtered.reduce((acc, r) => acc + r.stars, 0);
-  const readyCount = filtered.filter((r) => r.compatibility.status === 'ready').length;
-
-  el.kpiProjects.textContent = String(filtered.length);
-  el.kpiStars.textContent = formatCompact(totalStars);
-  el.kpiReady.textContent = String(readyCount);
-  el.kpiSaved.textContent = String(state.saved.size);
+  el.altEcosystemMeta.textContent = `${filtered.length} tools · ${formatCompact(totalStars)} stars`;
   el.kpiReviewed.textContent = `${state.reviewed.size} reviewed`;
 
+  renderAltFinder();
   renderStackBuilder(repos);
   renderCounts(repos);
   renderFilters(repos);
@@ -854,6 +884,8 @@ function bindEvents() {
       el.repoGrid.classList.toggle('cards-mode', state.view === 'cards');
     });
   });
+
+  el.altSelect?.addEventListener('change', renderAltFinder);
 
   el.topicSelect.addEventListener('change', () => {
     state.topic = el.topicSelect.value;

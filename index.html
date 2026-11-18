@@ -61,7 +61,7 @@
           <!-- TIME HORIZON TABS -->
           <div class="horizon-tabs" role="tablist" aria-label="Report Time Horizon">
             <button type="button" class="horizon-tab active" data-window="today" role="tab" aria-selected="true">
-              <span>Today's News</span>
+              <span>Today (24h)</span>
               <span class="tab-count" id="badge-today">0</span>
             </button>
             <button type="button" class="horizon-tab" data-window="3d" role="tab" aria-selected="false">
@@ -79,34 +79,30 @@
           </div>
         </div>
 
-        <!-- LIVE SNAPSHOT + HABIT TRACKER -->
-        <aside class="snapshot-card" aria-label="Current Briefing Summary">
+        <!-- INTERACTIVE OPEN-SOURCE ALTERNATIVE FINDER -->
+        <aside class="snapshot-card alt-finder-card" aria-label="Open-Source Alternative Finder">
           <div class="snapshot-head">
-            <span class="snapshot-title" id="windowTitle">Today's News</span>
+            <span class="snapshot-title">Open-Source Alternative Finder</span>
             <span class="snapshot-range" id="windowMeta">Anchor: —</span>
           </div>
-          <div class="snapshot-metrics">
-            <div class="metric-cell">
-              <span class="metric-value" id="kpiProjects">0</span>
-              <span class="metric-label">Featured Tools</span>
-            </div>
-            <div class="metric-cell">
-              <span class="metric-value" id="kpiStars">0</span>
-              <span class="metric-label">Combined Stars</span>
-            </div>
-            <div class="metric-cell">
-              <span class="metric-value metric-emerald" id="kpiReady">0</span>
-              <span class="metric-label">Instant Run</span>
-            </div>
-            <div class="metric-cell">
-              <span class="metric-value metric-tan" id="kpiSaved">0</span>
-              <span class="metric-label">Saved to Stack</span>
-            </div>
+          <div class="alt-picker-row">
+            <label for="altSelect" class="alt-label">Replace:</label>
+            <select id="altSelect" class="filter-select alt-select">
+              <option value="libracoder/kiri">Docker Desktop (Heavy VM)</option>
+              <option value="storytold/photocraft">Adobe Photoshop (Raster / PSD)</option>
+              <option value="n8n-io/n8n">Zapier / Make (Automation)</option>
+              <option value="anomalyco/opencode">Cursor / Claude Code (AI Coding)</option>
+              <option value="yetone/magpie">Paid LLM API Routers</option>
+              <option value="KnifeLemon/Filee">CloudConvert (File Converter)</option>
+              <option value="haziqahmedqasmi/PeakCut">OpusClip (AI Video Clipper)</option>
+              <option value="krisgfx9/Wireless-Device-Battery-Monitor">Razer / Logitech Bloatware</option>
+            </select>
           </div>
+          <div class="alt-result-box" id="altResultBox"></div>
           <div class="snapshot-lang-section">
             <div class="snapshot-lang-head">
-              <span>Ecosystem Breakdown</span>
-              <span id="kpiReviewed">0 reviewed today</span>
+              <span id="altEcosystemMeta">Ecosystem Breakdown</span>
+              <span id="kpiReviewed">0 reviewed</span>
             </div>
             <div class="language-bar" id="languageBar"></div>
           </div>
