@@ -37,6 +37,8 @@ function saveSet(key, set) {
   }
 }
 
+const PAGE_SIZE = 10;
+
 const state = {
   data: null,
   window: 'today',
@@ -47,6 +49,7 @@ const state = {
   sort: 'stars',
   view: 'list',
   search: '',
+  page: 1,
   selectedId: null,
   upvotes: loadSet(STORAGE_KEYS.upvotes),
   saved: loadSet(STORAGE_KEYS.saved),
@@ -76,6 +79,7 @@ const el = {
   topicSelect: document.getElementById('topicSelect'),
   sortSelect: document.getElementById('sortSelect'),
   repoGrid: document.getElementById('repoGrid'),
+  paginationBar: document.getElementById('paginationBar'),
   digestBtn: document.getElementById('digestBtn'),
   digestModal: document.getElementById('digestModal'),
   closeDigestBtn: document.getElementById('closeDigestBtn'),
@@ -411,6 +415,40 @@ function renderFilters(windowRepos) {
   el.topicSelect.value = sortedTopics.some(([t]) => t === state.topic) ? state.topic : 'all';
 }
 
+function renderPagination(totalItems, totalPages, startIdx, endIdx) {
+  if (!el.paginationBar) return;
+  if (totalItems === 0) {
+    el.paginationBar.innerHTML = '';
+    return;
+  }
+
+  const pageButtons = [];
+  for (let p = 1; p <= totalPages; p++) {
+    pageButtons.push(
+      `<button type="button" class="page-btn ${p === state.page ? 'active' : ''}" data-page="${p}">${p}</button>`
+    );
+  }
+
+  el.paginationBar.innerHTML = `
+    <span class="pagination-info">Showing ${startIdx + 1}–${endIdx} of ${totalItems} tools</span>
+    <div class="pagination-controls">
+      <button type="button" class="page-btn" data-page="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>Previous</button>
+      ${pageButtons.join('')}
+      <button type="button" class="page-btn" data-page="${state.page + 1}" ${state.page >= totalPages ? 'disabled' : ''}>Next</button>
+    </div>
+  `;
+
+  el.paginationBar.querySelectorAll('[data-page]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const nextPage = Number(btn.dataset.page);
+      if (nextPage < 1 || nextPage > totalPages || nextPage === state.page) return;
+      state.page = nextPage;
+      render();
+      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+}
+
 function renderLedger(filteredRepos) {
   if (filteredRepos.length === 0) {
     el.repoGrid.innerHTML = `
@@ -418,10 +456,17 @@ function renderLedger(filteredRepos) {
         <p>No repositories match your current filters in this time horizon.</p>
       </div>
     `;
+    renderPagination(0, 1, 0, 0);
     return;
   }
 
-  el.repoGrid.innerHTML = filteredRepos
+  const totalPages = Math.max(1, Math.ceil(filteredRepos.length / PAGE_SIZE));
+  if (state.page > totalPages) state.page = totalPages;
+  const startIdx = (state.page - 1) * PAGE_SIZE;
+  const endIdx = Math.min(startIdx + PAGE_SIZE, filteredRepos.length);
+  const pageRepos = filteredRepos.slice(startIdx, endIdx);
+
+  el.repoGrid.innerHTML = pageRepos
     .map((repo) => {
       const isSelected = repo.id === state.selectedId;
       const isUpvoted = state.upvotes.has(repo.id);
@@ -758,6 +803,10 @@ function render() {
   renderCounts(repos);
   renderFilters(repos);
   renderLedger(filtered);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const startIdx = (state.page - 1) * PAGE_SIZE;
+  const endIdx = Math.min(startIdx + PAGE_SIZE, filtered.length);
+  renderPagination(filtered.length, totalPages, startIdx, endIdx);
   renderBrief(repos);
 }
 
@@ -818,6 +867,7 @@ function bindEvents() {
     btn.addEventListener('click', () => {
       const targetGoal = btn.dataset.goal;
       state.goal = state.goal === targetGoal ? 'all' : targetGoal;
+      state.page = 1;
       document.querySelectorAll('[data-goal]').forEach((b) =>
         b.classList.toggle('active', b.dataset.goal === state.goal)
       );
@@ -861,6 +911,7 @@ function bindEvents() {
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       state.window = btn.dataset.window;
+      state.page = 1;
       state.language = 'all';
       state.topic = 'all';
       render();
@@ -872,6 +923,7 @@ function bindEvents() {
       document.querySelectorAll('[data-category]').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
       state.category = btn.dataset.category;
+      state.page = 1;
       render();
     });
   });
@@ -953,6 +1005,25 @@ function bindEvents() {
   });
 
   el.exportBriefBtn.addEventListener('click', exportExecutiveBrief);
+  document.getElementById('footerExportBtn')?.addEventListener('click', exportExecutiveBrief);
+  document.getElementById('footerDigestBtn')?.addEventListener('click', openDigestModal);
+
+  document.querySelectorAll('[data-footer-window]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetWin = btn.dataset.footerWindow;
+      state.window = targetWin;
+      state.page = 1;
+      state.language = 'all';
+      state.topic = 'all';
+      document.querySelectorAll('[data-window]').forEach((b) => {
+        const active = b.dataset.window === targetWin;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      render();
+      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 }
 
 if ('serviceWorker' in navigator) {
