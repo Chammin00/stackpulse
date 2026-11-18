@@ -46,7 +46,7 @@ const state = {
   goal: 'all',
   topic: 'all',
   language: 'all',
-  sort: 'stars',
+  sort: 'stars-desc',
   view: 'list',
   search: '',
   page: 1,
@@ -272,20 +272,26 @@ function getFilteredRepos(windowRepos) {
 
   filtered.sort((a, b) => {
     switch (state.sort) {
+      case 'stars-asc':
+        return a.stars - b.stars;
+      case 'date-desc': {
+        const d = (b.reportDate || '').localeCompare(a.reportDate || '');
+        return d !== 0 ? d : b.stars - a.stars;
+      }
+      case 'date-asc': {
+        const d = (a.reportDate || '').localeCompare(b.reportDate || '');
+        return d !== 0 ? d : b.stars - a.stars;
+      }
       case 'upvotes': {
         const diff = (state.upvotes.has(b.id) ? 1 : 0) - (state.upvotes.has(a.id) ? 1 : 0);
         return diff !== 0 ? diff : b.stars - a.stars;
       }
-      case 'pushed':
-        return (b.pushed || '').localeCompare(a.pushed || '');
-      case 'created':
-        return (b.created || '').localeCompare(a.created || '');
       case 'ready': {
         const order = { ready: 0, prebuilt: 1, 'extra-tool': 2 };
         const diff = order[a.compatibility.status] - order[b.compatibility.status];
         return diff !== 0 ? diff : b.stars - a.stars;
       }
-      case 'stars':
+      case 'stars-desc':
       default:
         return b.stars - a.stars;
     }
@@ -467,7 +473,8 @@ function renderLedger(filteredRepos) {
   const pageRepos = filteredRepos.slice(startIdx, endIdx);
 
   el.repoGrid.innerHTML = pageRepos
-    .map((repo) => {
+    .map((repo, idx) => {
+      const displayRank = startIdx + idx + 1;
       const isSelected = repo.id === state.selectedId;
       const isUpvoted = state.upvotes.has(repo.id);
       const isSaved = state.saved.has(repo.id);
@@ -480,7 +487,7 @@ function renderLedger(filteredRepos) {
         <article class="ledger-row ${isSelected ? 'selected' : ''}" data-id="${escapeHtml(repo.id)}">
           <div class="row-header">
             <div class="row-title-wrap">
-              <span class="row-rank">#${repo.rank}</span>
+              <span class="row-rank">#${displayRank}</span>
               <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" loading="lazy" />
               <span class="row-repo-name">${escapeHtml(repo.id)}</span>
             </div>
@@ -510,6 +517,7 @@ function renderLedger(filteredRepos) {
               <span class="meta-item">${formatNumber(repo.stars)} stars</span>
               <span class="meta-item">${formatNumber(repo.forks)} forks</span>
               <span class="meta-item">${escapeHtml(repo.license)}</span>
+              <span class="meta-item">${escapeHtml(repo.reportDate || '')}</span>
             </div>
             <div class="row-actions-group">
               <button type="button" class="action-chip-btn ${isSelected ? 'active' : ''}" data-open-playbook="${escapeHtml(repo.id)}">
