@@ -41,6 +41,7 @@ const state = {
   data: null,
   window: 'today',
   category: 'all',
+  goal: 'all',
   topic: 'all',
   language: 'all',
   sort: 'stars',
@@ -56,7 +57,12 @@ const el = {
   headerStatusText: document.getElementById('headerStatusText'),
   globalSearch: document.getElementById('globalSearch'),
   clearSearchBtn: document.getElementById('clearSearchBtn'),
-  spotlightGrid: document.getElementById('spotlightGrid'),
+  resetGoalBtn: document.getElementById('resetGoalBtn'),
+  stackBuilderCount: document.getElementById('stackBuilderCount'),
+  stackChipsWrap: document.getElementById('stackChipsWrap'),
+  stackScriptPreview: document.getElementById('stackScriptPreview'),
+  copyStackScriptBtn: document.getElementById('copyStackScriptBtn'),
+  downloadStackScriptBtn: document.getElementById('downloadStackScriptBtn'),
   rightInspector: document.getElementById('rightInspector'),
   closeMobileBriefBtn: document.getElementById('closeMobileBriefBtn'),
   inspectorBody: document.getElementById('inspectorBody'),
@@ -223,10 +229,28 @@ function getWindowData(windowKey) {
   };
 }
 
+function matchesGoal(repo, goal) {
+  if (goal === 'all') return true;
+  const text = `${repo.id} ${repo.summary} ${repo.topic}`.toLowerCase();
+  switch (goal) {
+    case 'local-ai':
+      return text.includes('agent') || text.includes('gateway') || text.includes('harness') || text.includes('llm') || text.includes('opencode');
+    case 'replace-paid':
+      return text.includes('self-hosted') || text.includes('docker') || text.includes('photoshop') || text.includes('converter') || text.includes('workflow');
+    case 'zero-install':
+      return text.includes('offline') || text.includes('static') || text.includes('single') || text.includes('webgpu') || text.includes('chat-demo');
+    case 'media-hardware':
+      return text.includes('video') || text.includes('battery') || text.includes('frame') || text.includes('typeface') || text.includes('clipper') || text.includes('raster');
+    default:
+      return true;
+  }
+}
+
 function getFilteredRepos(windowRepos) {
   const q = state.search.trim().toLowerCase();
 
   const filtered = windowRepos.filter((repo) => {
+    if (!matchesGoal(repo, state.goal)) return false;
     if (state.category === 'saved') {
       if (!state.saved.has(repo.id)) return false;
     } else if (state.category !== 'all' && repo.category !== state.category) {
@@ -268,63 +292,53 @@ function getFilteredRepos(windowRepos) {
   return filtered;
 }
 
-function renderSpotlight(windowRepos) {
-  const topPopular = windowRepos.find((r) => r.category === 'popular') || windowRepos[0];
-  const topRising = windowRepos.find((r) => r.category === 'rising') || windowRepos[1];
-  const picks = [
-    topPopular ? { repo: topPopular, kind: 'popular', label: 'TOP BREAKOUT PICK' } : null,
-    topRising ? { repo: topRising, kind: 'rising', label: 'FASTEST RISING LAUNCH' } : null,
-  ].filter(Boolean);
+function buildStackScript(allRepos) {
+  const savedRepos = [...state.saved]
+    .map((id) => allRepos.find((r) => r.id === id))
+    .filter(Boolean);
 
-  if (picks.length === 0) {
-    el.spotlightGrid.innerHTML = '';
+  if (savedRepos.length === 0) {
+    return '# Save repositories below to generate a combined Windows PowerShell setup script';
+  }
+
+  const lines = [
+    '# Fresh New TeCH — Custom Stack Installer',
+    '$ErrorActionPreference = "Stop"',
+    '',
+  ];
+  for (const r of savedRepos) {
+    const cmd = getPrimaryCommand(r) || `gh repo clone ${r.id}`;
+    lines.push(`# ${r.id} (${r.language})`, cmd, '');
+  }
+  return lines.join('\n').trim();
+}
+
+function renderStackBuilder(allRepos) {
+  const savedRepos = [...state.saved]
+    .map((id) => allRepos.find((r) => r.id === id))
+    .filter(Boolean);
+
+  el.stackBuilderCount.textContent = String(savedRepos.length);
+  el.stackScriptPreview.querySelector('code').textContent = buildStackScript(allRepos);
+
+  if (savedRepos.length === 0) {
+    el.stackChipsWrap.innerHTML =
+      '<span class="stack-empty-hint">Click "Save" on any repository below to add it to your install script.</span>';
     return;
   }
 
-  el.spotlightGrid.innerHTML = picks
-    .map(({ repo, kind, label }) => {
-      const cmd = getPrimaryCommand(repo);
-      const stroke = kind === 'popular' ? '#0f4c81' : '#b48648';
-      return `
-        <article class="spotlight-card spotlight-${kind}" data-spotlight-id="${escapeHtml(repo.id)}">
-          <div class="spotlight-top">
-            <span class="spotlight-eyebrow">${label}</span>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span class="topic-tag">${escapeHtml(repo.topic)}</span>
-              ${buildSparklineSvg(repo, stroke)}
-            </div>
-          </div>
-          <div class="spotlight-repo-row">
-            <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" loading="lazy" />
-            <div>
-              <h2 class="spotlight-title">${escapeHtml(repo.id)}</h2>
-              <div class="spotlight-stats">${formatNumber(repo.stars)} stars · ${escapeHtml(repo.language)} · ${escapeHtml(repo.license)}</div>
-            </div>
-          </div>
-          <p class="spotlight-summary">${escapeHtml(repo.summary)}</p>
-          ${
-            cmd
-              ? `<div class="row-cmd-inline">
-                  <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
-                  <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
-                </div>`
-              : ''
-          }
-        </article>
-      `;
-    })
+  el.stackChipsWrap.innerHTML = savedRepos
+    .map(
+      (r) =>
+        `<button type="button" class="stack-chip-remove" data-remove-stack="${escapeHtml(r.id)}" title="Remove from stack">${escapeHtml(r.name)} ×</button>`
+    )
     .join('');
 
-  el.spotlightGrid.querySelectorAll('.spotlight-card').forEach((card) => {
-    card.addEventListener('click', (e) => {
-      const copyBtn = e.target.closest('[data-copy]');
-      if (copyBtn) {
-        e.stopPropagation();
-        copyText(copyBtn.dataset.copy);
-        return;
-      }
-      selectRepo(card.dataset.spotlightId);
-      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+  el.stackChipsWrap.querySelectorAll('[data-remove-stack]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.saved.delete(btn.dataset.removeStack);
+      saveSet(STORAGE_KEYS.saved, state.saved);
+      render();
     });
   });
 }
@@ -710,7 +724,7 @@ function render() {
   el.kpiSaved.textContent = String(state.saved.size);
   el.kpiReviewed.textContent = `${state.reviewed.size} reviewed`;
 
-  renderSpotlight(repos);
+  renderStackBuilder(repos);
   renderCounts(repos);
   renderFilters(repos);
   renderLedger(filtered);
@@ -770,6 +784,44 @@ function connectLiveUpdates() {
 }
 
 function bindEvents() {
+  document.querySelectorAll('[data-goal]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const targetGoal = btn.dataset.goal;
+      state.goal = state.goal === targetGoal ? 'all' : targetGoal;
+      document.querySelectorAll('[data-goal]').forEach((b) =>
+        b.classList.toggle('active', b.dataset.goal === state.goal)
+      );
+      el.resetGoalBtn.classList.toggle('hidden', state.goal === 'all');
+      render();
+      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  el.resetGoalBtn?.addEventListener('click', () => {
+    state.goal = 'all';
+    document.querySelectorAll('[data-goal]').forEach((b) => b.classList.remove('active'));
+    el.resetGoalBtn.classList.add('hidden');
+    render();
+  });
+
+  el.copyStackScriptBtn?.addEventListener('click', () => {
+    const { repos } = getWindowData(state.window);
+    copyText(buildStackScript(repos));
+  });
+
+  el.downloadStackScriptBtn?.addEventListener('click', () => {
+    const { repos } = getWindowData(state.window);
+    const script = buildStackScript(repos);
+    const blob = new Blob([script], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'install-my-stack.ps1';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Downloaded install-my-stack.ps1');
+  });
+
   document.querySelectorAll('[data-window]').forEach((btn) => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('[data-window]').forEach((b) => {
