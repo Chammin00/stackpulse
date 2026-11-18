@@ -1,32 +1,32 @@
 :root {
-  --paper: #f8fafc;
-  --surface: #ffffff;
-  --surface-subtle: #f1f5f9;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
+  --paper: #0b1120;
+  --surface: #111a2e;
+  --surface-subtle: #18233c;
+  --border: #24324d;
+  --border-strong: #334568;
 
-  --ink: #0f172a;
-  --ink-body: #334155;
-  --ink-muted: #64748b;
+  --ink: #f1f5f9;
+  --ink-body: #cbd5e1;
+  --ink-muted: #94a3b8;
 
-  --brand: #0f4c81;
-  --brand-hover: #0a365c;
-  --brand-soft: #eff6ff;
-  --brand-border: #bfdbfe;
+  --brand: #3b82f6;
+  --brand-hover: #2563eb;
+  --brand-soft: rgba(59, 130, 246, 0.16);
+  --brand-border: rgba(96, 165, 250, 0.36);
 
-  --emerald: #047857;
-  --emerald-soft: #ecfdf5;
-  --emerald-border: #a7f3d0;
+  --emerald: #34d399;
+  --emerald-soft: rgba(16, 185, 129, 0.14);
+  --emerald-border: rgba(52, 211, 153, 0.34);
 
-  --amber: #b45309;
-  --amber-soft: #fffbeb;
-  --amber-border: #fde68a;
+  --amber: #e2b97a;
+  --amber-soft: rgba(214, 178, 124, 0.14);
+  --amber-border: rgba(214, 178, 124, 0.35);
 
   --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
   --spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 6px 20px rgba(15, 23, 42, 0.06);
+  --shadow-sm: 0 2px 6px rgba(2, 6, 23, 0.45);
+  --shadow-md: 0 10px 28px rgba(2, 6, 23, 0.6);
 }
 
 *,
@@ -113,12 +113,12 @@ select:focus-visible {
 }
 
 .brand-ch-c {
-  color: #0f4c81;
+  color: #60a5fa;
   font-weight: 800;
 }
 
 .brand-ch-h {
-  color: #b48648;
+  color: #d6b27c;
   font-weight: 800;
 }
 
@@ -610,7 +610,8 @@ select:focus-visible {
   margin: 0;
   padding: 12px;
   border-radius: 8px;
-  background: #0f172a;
+  background: #060b14;
+  border: 1px solid var(--border-strong);
   color: #f8fafc;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -636,7 +637,8 @@ select:focus-visible {
   gap: 10px;
   padding: 7px 11px;
   border-radius: 7px;
-  background: #0f172a;
+  background: #060b14;
+  border: 1px solid var(--border-strong);
   color: #f8fafc;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -733,8 +735,8 @@ select:focus-visible {
 
 /* FILTER BAR */
 .filter-bar {
-  background: rgba(248, 250, 252, 0.94);
-  backdrop-filter: blur(8px);
+  background: rgba(11, 17, 32, 0.92);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 64px;
@@ -1120,7 +1122,7 @@ select:focus-visible {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 10px;
-  background: #0f172a;
+  background: #060b14;
 }
 
 .code-block-bar {
@@ -1159,7 +1161,7 @@ select:focus-visible {
   font-size: 12.5px;
   line-height: 1.55;
   color: #f8fafc;
-  background: #0f172a;
+  background: #060b14;
   border-radius: 6px;
 }
 
