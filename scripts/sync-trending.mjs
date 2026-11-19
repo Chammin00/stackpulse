@@ -117,6 +117,20 @@ async function ghSearch(queryArgs) {
   return JSON.parse(stdout || '[]');
 }
 
+function getProjectApplicability(repo) {
+  const text = `${repo.fullName} ${repo.description || ''} ${repo.language || ''}`.toLowerCase();
+  if (text.includes('agent') || text.includes('mcp') || text.includes('skill') || text.includes('llm')) {
+    return 'Applies to current agent/MCP/automation workflows (`baselines`, `MCP`, `ollama`) and new AI-assisted apps.';
+  }
+  if (text.includes('video') || text.includes('clip') || text.includes('photo') || text.includes('ui') || text.includes('font')) {
+    return 'Applies to current media/UI projects (`portfolio`, `youtube shorts edit for gaming`, `Popular Github Projects`) and new web/media builds.';
+  }
+  if (text.includes('docker') || text.includes('container') || text.includes('security') || text.includes('reverse')) {
+    return 'Applies to infrastructure/security projects (`deploy`, `MY Security`, `reverse engineer applications`) and new service stacks.';
+  }
+  return 'Applies to general workspace utilities (`Popular Github Projects`, `deal Finder`) and new cross-platform projects.';
+}
+
 function renderRepoBlock(repo, idx) {
   const lang = repo.language || 'Unknown';
   const license = repo.license?.key?.toUpperCase() || repo.license?.name || 'Unspecified';
@@ -130,6 +144,7 @@ function renderRepoBlock(repo, idx) {
     `- **Stats:** \`${formatNum(repo.stargazersCount)}\` stars · \`${formatNum(repo.forksCount)}\` forks · \`${formatNum(repo.openIssuesCount)}\` open issues · Language: \`${lang}\` · License: \`${license}\`  `,
     `- **Activity:** Created \`${created}\` · Pushed \`${pushed}\`  `,
     `- **Summary:** ${summary}`,
+    `- **Project Fit:** ${getProjectApplicability(repo)}`,
     '',
     '#### How to Apply in Your Environment',
     getApplyInstructions(repo),
