@@ -43,11 +43,19 @@ try {
   // Ignore if reports directory is absent at startup
 }
 
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+};
+
 const server = http.createServer(async (req, res) => {
   const urlPath = (req.url || '/').split('?')[0];
 
   if (urlPath === '/api/events') {
     res.writeHead(200, {
+      ...SECURITY_HEADERS,
       'Content-Type': 'text/event-stream; charset=utf-8',
       'Cache-Control': 'no-cache',
       Connection: 'keep-alive',
@@ -62,22 +70,23 @@ const server = http.createServer(async (req, res) => {
     try {
       const payload = await loadAllReports(REPORTS_DIR);
       res.writeHead(200, {
+        ...SECURITY_HEADERS,
         'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'no-store',
       });
       res.end(JSON.stringify(payload));
-    } catch (err) {
-      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
-      res.end(JSON.stringify({ error: err.message }));
+    } catch {
+      res.writeHead(500, { ...SECURITY_HEADERS, 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'Failed to load reports.' }));
     }
     return;
   }
 
   const safePath = urlPath === '/' ? '/index.html' : urlPath;
-  const fullPath = path.normalize(path.join(PUBLIC_DIR, safePath));
+  const fullPath = path.resolve(PUBLIC_DIR, `.${safePath.startsWith('/') ? safePath : '/' + safePath}`);
 
-  if (!fullPath.startsWith(PUBLIC_DIR)) {
-    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+  if (fullPath !== PUBLIC_DIR && !fullPath.startsWith(PUBLIC_DIR + path.sep)) {
+    res.writeHead(403, { ...SECURITY_HEADERS, 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Forbidden');
     return;
   }
@@ -86,12 +95,13 @@ const server = http.createServer(async (req, res) => {
     const data = await fs.readFile(fullPath);
     const ext = path.extname(fullPath).toLowerCase();
     res.writeHead(200, {
+      ...SECURITY_HEADERS,
       'Content-Type': MIME_TYPES[ext] || 'application/octet-stream',
       'Cache-Control': 'no-store',
     });
     res.end(data);
   } catch {
-    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.writeHead(404, { ...SECURITY_HEADERS, 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Not Found');
   }
 });
