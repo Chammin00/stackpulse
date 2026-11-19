@@ -1694,3 +1694,16 @@ select:focus-visible {
   background: linear-gradient(90deg, #0f294a, #b48648);
   border-radius: 2px 2px 0 0;
 }
+
+.goal-btn-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.goal-btn.active .tab-count {
+  background: var(--brand);
+  color: #ffffff;
+}

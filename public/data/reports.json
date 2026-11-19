@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T14:00:57.510Z",
+  "generatedAt": "2026-11-19T17:29:59.338Z",
   "latestDate": "2026-11-19",
   "reportCount": 9,
   "baseline": [
@@ -43,13 +43,13 @@
       "tool": "Docker",
       "status": "Not installed",
       "installed": false,
-      "notes": "Required for container-first workflows unless using a native runtime or Kiri"
+      "notes": "Required for container-first workflows unless using a native runtime (winget install Docker.DockerDesktop)"
     },
     {
       "tool": "pnpm / bun",
       "status": "Not installed",
       "installed": false,
-      "notes": "Can be enabled via corepack enable or npm install -g pnpm"
+      "notes": "pnpm can be enabled via corepack enable; bun via winget install --id Oven-sh.Bun -e"
     },
     {
       "tool": "Rust (cargo/rustc)",
@@ -67,7 +67,7 @@
       "tool": "CMake / C++ build tools",
       "status": "Not installed",
       "installed": false,
-      "notes": "Required only when compiling C++ apps from source"
+      "notes": "Required only when compiling C/C++ apps from source"
     }
   ],
   "reports": [
@@ -116,13 +116,13 @@
           "tool": "Docker",
           "status": "Not installed",
           "installed": false,
-          "notes": "Required for container-first workflows unless using a native runtime or Kiri"
+          "notes": "Required for container-first workflows unless using a native runtime (winget install Docker.DockerDesktop)"
         },
         {
           "tool": "pnpm / bun",
           "status": "Not installed",
           "installed": false,
-          "notes": "Can be enabled via corepack enable or npm install -g pnpm"
+          "notes": "pnpm can be enabled via corepack enable; bun via winget install --id Oven-sh.Bun -e"
         },
         {
           "tool": "Rust (cargo/rustc)",
@@ -140,113 +140,41 @@
           "tool": "CMake / C++ build tools",
           "status": "Not installed",
           "installed": false,
-          "notes": "Required only when compiling C++ apps from source"
+          "notes": "Required only when compiling C/C++ apps from source"
         }
       ],
       "popular": [
         {
-          "id": "codecrafters-io/build-your-own-x",
-          "owner": "codecrafters-io",
-          "name": "build-your-own-x",
-          "rank": 1,
-          "category": "popular",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/codecrafters-io/build-your-own-x",
-          "stars": 563849,
-          "forks": 52743,
-          "openIssues": 633,
-          "language": "Markdown",
-          "license": "Unspecified",
-          "created": "2018-05-09",
-          "pushed": "2026-11-19T05:32:02Z",
-          "release": "",
-          "summary": "Master programming by recreating your favorite technologies from scratch.",
-          "apply": {
-            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone codecrafters-io/build-your-own-x\n  ```",
-            "notes": [
-              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone codecrafters-io/build-your-own-x"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
           "id": "morluto/rea",
           "owner": "morluto",
           "name": "rea",
-          "rank": 2,
+          "rank": 1,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/morluto/rea",
-          "stars": 469341,
-          "forks": 114681,
-          "openIssues": 1340,
+          "stars": 469438,
+          "forks": 114699,
+          "openIssues": 1346,
           "language": "TypeScript",
           "license": "MIT",
           "created": "2026-04-14",
-          "pushed": "2026-11-19T13:56:36Z",
-          "release": "",
-          "summary": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+          "pushed": "2026-11-19T15:02:33Z",
+          "release": "rea-agents: v6.9.0",
+          "summary": "Reverse Engineer Anything (REA) — an MCP server and agent toolkit that inspects native binaries, JavaScript/Electron apps, .NET assemblies, and websites to explain runtime behavior with evidence and help build clean-room equivalents.",
           "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  Set-Location \"rea\"\n  npm install\n  ```",
+            "raw": "- Runs directly with your installed **Node.js `v24.20.0`** and `npm` (registers REA's MCP server and workflow instructions with Claude Code, Codex, Cursor, or Gemini CLI):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx rea-agents setup\n  ```\n- Static JavaScript/Electron analysis requires no native reverse-engineering engine; native binary analysis integrates with an existing Hopper, Ghidra, IDA, or Kuna installation if present. To inspect the source locally:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  ```",
             "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+              "Runs directly with your installed **Node.js `v24.20.0`** and `npm` (registers REA's MCP server and workflow instructions with Claude Code, Codex, Cursor, or Gemini CLI):",
+              "Static JavaScript/Electron analysis requires no native reverse-engineering engine; native binary analysis integrates with an existing Hopper, Ghidra, IDA, or Kuna installation if present. To inspect the source locally:"
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  Set-Location \"rea\"\n  npm install"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Node.js / npm",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "freeCodeCamp/freeCodeCamp",
-          "owner": "freeCodeCamp",
-          "name": "freeCodeCamp",
-          "rank": 3,
-          "category": "popular",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/freeCodeCamp/freeCodeCamp",
-          "stars": 459333,
-          "forks": 47482,
-          "openIssues": 166,
-          "language": "TypeScript",
-          "license": "BSD-3-CLAUSE",
-          "created": "2014-12-24",
-          "pushed": "2026-11-19T08:29:08Z",
-          "release": "",
-          "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
-          "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone freeCodeCamp/freeCodeCamp\n  Set-Location \"freeCodeCamp\"\n  npm install\n  ```",
-            "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
-            ],
-            "commands": [
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx rea-agents setup"
+              },
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone freeCodeCamp/freeCodeCamp\n  Set-Location \"freeCodeCamp\"\n  npm install"
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea"
               }
             ]
           },
@@ -264,103 +192,79 @@
           "id": "openclaw/openclaw",
           "owner": "openclaw",
           "name": "openclaw",
-          "rank": 4,
+          "rank": 2,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/openclaw/openclaw",
-          "stars": 394802,
-          "forks": 82927,
-          "openIssues": 8474,
+          "stars": 394803,
+          "forks": 82930,
+          "openIssues": 8485,
           "language": "TypeScript",
           "license": "MIT",
           "created": "2025-11-24",
-          "pushed": "2026-11-19T13:59:26Z",
-          "release": "",
-          "summary": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
+          "pushed": "2026-11-19T15:01:53Z",
+          "release": "openclaw 2026.11.5",
+          "summary": "Self-hosted open-source AI assistant gateway stewarded by the OpenClaw Foundation. Keeps state, memory, and credentials local while bridging 20+ messaging surfaces (Discord, Slack, Teams, Telegram, WhatsApp, Signal, iMessage) and swappable model/agent plugins.",
           "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone openclaw/openclaw\n  Set-Location \"openclaw\"\n  npm install\n  ```",
+            "raw": "- Your installed **Node.js `v24.20.0`** meets the `24.16.0+` runtime requirement (README recommends `24.22.1+` for security patches, upgradable via `winget upgrade OpenJS.NodeJS.LTS`).\n- Install globally using `npm` (omit `--allow-scripts=openclaw` if your npm is older than `11.16`), then launch onboarding:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g openclaw@latest --allow-scripts=openclaw\n  openclaw onboard --install-daemon\n  ```\n- Alternative official Windows PowerShell installer:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iwr -useb https://openclaw.ai/install.ps1 | iex\n  ```\n- Note: Building the monorepo from source requires `pnpm` (currently **not installed**; run `corepack enable` first), and containerized deployment requires Docker (**not installed**).",
             "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+              "Your installed **Node.js `v24.20.0`** meets the `24.16.0+` runtime requirement (README recommends `24.22.1+` for security patches, upgradable via `winget upgrade OpenJS.NodeJS.LTS`).",
+              "Install globally using `npm` (omit `--allow-scripts=openclaw` if your npm is older than `11.16`), then launch onboarding:",
+              "Alternative official Windows PowerShell installer:",
+              "Note: Building the monorepo from source requires `pnpm` (currently **not installed**; run `corepack enable` first), and containerized deployment requires Docker (**not installed**)."
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone openclaw/openclaw\n  Set-Location \"openclaw\"\n  npm install"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Node.js / npm",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "nilbuild/developer-roadmap",
-          "owner": "nilbuild",
-          "name": "developer-roadmap",
-          "rank": 5,
-          "category": "popular",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/nilbuild/developer-roadmap",
-          "stars": 372353,
-          "forks": 46520,
-          "openIssues": 3,
-          "language": "TypeScript",
-          "license": "OTHER",
-          "created": "2017-03-15",
-          "pushed": "2026-11-19T10:52:06Z",
-          "release": "",
-          "summary": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
-          "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone nilbuild/developer-roadmap\n  Set-Location \"developer-roadmap\"\n  npm install\n  ```",
-            "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
-            ],
-            "commands": [
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g openclaw@latest --allow-scripts=openclaw\n  openclaw onboard --install-daemon"
+              },
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone nilbuild/developer-roadmap\n  Set-Location \"developer-roadmap\"\n  npm install"
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iwr -useb https://openclaw.ai/install.ps1 | iex"
               }
             ]
           },
           "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
             "usesTools": [
               "Node.js / npm",
-              "gh CLI"
+              "winget"
             ],
-            "missingDeps": []
+            "missingDeps": [
+              "Docker (optional/workaround)",
+              "pnpm (corepack)"
+            ]
           }
         },
         {
           "id": "mattpocock/skills",
           "owner": "mattpocock",
           "name": "skills",
-          "rank": 6,
+          "rank": 3,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/mattpocock/skills",
-          "stars": 327886,
-          "forks": 27540,
-          "openIssues": 257,
+          "stars": 327924,
+          "forks": 27543,
+          "openIssues": 258,
           "language": "Shell",
           "license": "MIT",
           "created": "2026-02-03",
           "pushed": "2026-11-19T13:35:13Z",
-          "release": "",
-          "summary": "Skills for Real Engineers. Straight from my .agents directory.",
+          "release": "v1.3.2",
+          "summary": "Small, composable, model-agnostic `SKILL.md` workflows for engineering and productivity across Claude Code, Codex, GitHub Copilot, Gemini CLI, Cursor, Windsurf, and OpenCode.",
           "apply": {
-            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone mattpocock/skills\n  ```",
+            "raw": "- Install directly into any supported coding agent using your installed **Node.js `v24.20.0`** (`npx`):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx skills@latest add mattpocock/skills\n  ```\n- Or clone locally with **`gh 2.97.0`** to customize or copy specific skills into your local agent skills directory:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone mattpocock/skills\n  ```",
             "notes": [
-              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+              "Install directly into any supported coding agent using your installed **Node.js `v24.20.0`** (`npx`):",
+              "Or clone locally with **`gh 2.97.0`** to customize or copy specific skills into your local agent skills directory:"
             ],
             "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx skills@latest add mattpocock/skills"
+              },
               {
                 "lang": "powershell",
                 "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone mattpocock/skills"
@@ -371,6 +275,7 @@
             "status": "ready",
             "statusLabel": "Ready on Baseline",
             "usesTools": [
+              "Node.js / npm",
               "gh CLI"
             ],
             "missingDeps": []
@@ -380,28 +285,33 @@
           "id": "NousResearch/hermes-agent",
           "owner": "NousResearch",
           "name": "hermes-agent",
-          "rank": 7,
+          "rank": 4,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/NousResearch/hermes-agent",
-          "stars": 264659,
-          "forks": 59753,
-          "openIssues": 53897,
+          "stars": 264673,
+          "forks": 59761,
+          "openIssues": 53891,
           "language": "Python",
           "license": "MIT",
           "created": "2025-07-22",
-          "pushed": "2026-11-19T13:55:34Z",
-          "release": "",
-          "summary": "The agent that grows with you",
+          "pushed": "2026-11-19T15:02:30Z",
+          "release": "v0.23.2+canary.20261119T064637Z",
+          "summary": "Nous Research's self-improving AI agent with autonomous skill creation, FTS5 cross-session search, built-in cron scheduling, subagent delegation, and multi-platform gateway support (CLI/TUI, Telegram, Discord, Slack, WhatsApp, Signal).",
           "apply": {
-            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
+            "raw": "- Native Windows PowerShell is supported without WSL (uses the local execution backend since **Docker is not installed**; Docker terminal sandboxing requires Docker Desktop):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iex (irm https://hermes-agent.nousresearch.com/install.ps1)\n  ```\n- Or inspect/run from source using **`gh`**, **`uv 0.12.5`**, and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -e .\n  ```",
             "notes": [
-              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
+              "Native Windows PowerShell is supported without WSL (uses the local execution backend since **Docker is not installed**; Docker terminal sandboxing requires Docker Desktop):",
+              "Or inspect/run from source using **`gh`**, **`uv 0.12.5`**, and **Python `3.12.10`**:"
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e ."
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iex (irm https://hermes-agent.nousresearch.com/install.ps1)"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -e ."
               }
             ]
           },
@@ -413,74 +323,38 @@
               "uv",
               "gh CLI"
             ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "react/react",
-          "owner": "react",
-          "name": "react",
-          "rank": 8,
-          "category": "popular",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/react/react",
-          "stars": 252763,
-          "forks": 52812,
-          "openIssues": 1575,
-          "language": "JavaScript",
-          "license": "MIT",
-          "created": "2013-05-24",
-          "pushed": "2026-11-19T13:07:44Z",
-          "release": "",
-          "summary": "The library for web and native user interfaces.",
-          "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone react/react\n  Set-Location \"react\"\n  npm install\n  ```",
-            "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone react/react\n  Set-Location \"react\"\n  npm install"
-              }
+            "missingDeps": [
+              "Docker (optional/workaround)"
             ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Node.js / npm",
-              "gh CLI"
-            ],
-            "missingDeps": []
           }
         },
         {
           "id": "anomalyco/opencode",
           "owner": "anomalyco",
           "name": "opencode",
-          "rank": 9,
+          "rank": 5,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/anomalyco/opencode",
-          "stars": 227959,
-          "forks": 30935,
-          "openIssues": 3992,
+          "stars": 227974,
+          "forks": 30937,
+          "openIssues": 3991,
           "language": "TypeScript",
           "license": "MIT",
           "created": "2025-04-30",
-          "pushed": "2026-11-19T14:00:47Z",
-          "release": "",
-          "summary": "The open source coding agent.",
+          "pushed": "2026-11-19T14:53:19Z",
+          "release": "v2.3.2",
+          "summary": "Open-source terminal and beta desktop AI coding agent (`@opencode/cli`) featuring switchable `build` (full-access) and `plan` (read-only analysis) modes plus `@general` subagent orchestration.",
           "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone anomalyco/opencode\n  Set-Location \"opencode\"\n  npm install\n  ```",
+            "raw": "- Install the CLI globally using your installed **Node.js `v24.20.0` / `npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g @opencode/cli@latest\n  ```\n- Optional: Download `opencode-desktop-win-x64.exe` from `https://opencode.ai/download`. Note that building from source uses `bun` (`bun.lock`), which is **not installed** (`winget install --id Oven-sh.Bun -e` if contributing).",
             "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+              "Install the CLI globally using your installed **Node.js `v24.20.0` / `npm`**:",
+              "Optional: Download `opencode-desktop-win-x64.exe` from `https://opencode.ai/download`. Note that building from source uses `bun` (`bun.lock`), which is **not installed** (`winget install --id Oven-sh.Bun -e` if contributing)."
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone anomalyco/opencode\n  Set-Location \"opencode\"\n  npm install"
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g @opencode/cli@latest"
               }
             ]
           },
@@ -489,7 +363,7 @@
             "statusLabel": "Ready on Baseline",
             "usesTools": [
               "Node.js / npm",
-              "gh CLI"
+              "winget"
             ],
             "missingDeps": []
           }
@@ -498,28 +372,30 @@
           "id": "n8n-io/n8n",
           "owner": "n8n-io",
           "name": "n8n",
-          "rank": 10,
+          "rank": 6,
           "category": "popular",
           "reportDate": "2026-11-19",
           "url": "https://github.com/n8n-io/n8n",
-          "stars": 211387,
-          "forks": 61588,
-          "openIssues": 1231,
+          "stars": 211396,
+          "forks": 61590,
+          "openIssues": 1221,
           "language": "TypeScript",
-          "license": "OTHER",
+          "license": "Other (Fair-code)",
           "created": "2019-06-22",
-          "pushed": "2026-11-19T13:58:57Z",
-          "release": "",
-          "summary": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+          "pushed": "2026-11-19T15:01:29Z",
+          "release": "n8n@1.123.99",
+          "summary": "Fair-code workflow automation and native AI agent platform combining a visual node canvas with custom JavaScript/Python code nodes and 400+ integrations.",
           "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone n8n-io/n8n\n  Set-Location \"n8n\"\n  npm install\n  ```",
+            "raw": "- **Important Environment Note:** n8n's primary quickstart relies on **Docker**, which is **not installed** on this machine.\n- **Native Windows Option (Recommended without Docker):** Run n8n directly with your installed **Node.js `v24.20.0`** via `npx` or global `npm` install (opens at `http://localhost:5678`):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx n8n\n  # Or install globally:\n  npm install -g n8n\n  n8n start\n  ```\n- **Docker Option (Optional):** Install Docker Desktop first via `winget install Docker.DockerDesktop`.",
             "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+              "**Important Environment Note:** n8n's primary quickstart relies on **Docker**, which is **not installed** on this machine.",
+              "**Native Windows Option (Recommended without Docker):** Run n8n directly with your installed **Node.js `v24.20.0`** via `npx` or global `npm` install (opens at `http://localhost:5678`):",
+              "**Docker Option (Optional):** Install Docker Desktop first via `winget install Docker.DockerDesktop`."
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone n8n-io/n8n\n  Set-Location \"n8n\"\n  npm install"
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx n8n\n  # Or install globally:\n  npm install -g n8n\n  n8n start"
               }
             ]
           },
@@ -528,395 +404,513 @@
             "statusLabel": "Ready on Baseline",
             "usesTools": [
               "Node.js / npm",
-              "gh CLI"
+              "Python 3.12",
+              "winget"
             ],
             "missingDeps": []
+          }
+        },
+        {
+          "id": "firecrawl/firecrawl",
+          "owner": "firecrawl",
+          "name": "firecrawl",
+          "rank": 7,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/firecrawl/firecrawl",
+          "stars": 203734,
+          "forks": 10675,
+          "openIssues": 833,
+          "language": "TypeScript",
+          "license": "AGPL-3.0",
+          "created": "2024-04-15",
+          "pushed": "2026-11-19T14:59:53Z",
+          "release": "",
+          "summary": "Web search, scraping, crawling, document parsing (PDF/DOCX), and interactive page-action infrastructure delivering LLM-ready Markdown and structured JSON for AI agents.",
+          "apply": {
+            "raw": "- **Important Environment Note:** Self-hosting the full Firecrawl stack (`docker-compose.yaml`) requires **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop` if you want local self-hosting).\n- **Direct Local SDK / MCP Usage (Ready Now):** Use your installed **`uv` + Python `3.12.10`** or **Node.js `v24.20.0`** to connect to Firecrawl Cloud or a remote instance:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install firecrawl-py\n  ```\n  Or inspect the codebase and `SELF_HOST.md` locally:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone firecrawl/firecrawl\n  ```",
+            "notes": [
+              "**Important Environment Note:** Self-hosting the full Firecrawl stack (`docker-compose.yaml`) requires **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop` if you want local self-hosting).",
+              "**Direct Local SDK / MCP Usage (Ready Now):** Use your installed **`uv` + Python `3.12.10`** or **Node.js `v24.20.0`** to connect to Firecrawl Cloud or a remote instance:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install firecrawl-py"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone firecrawl/firecrawl"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "farion1231/cc-switch",
+          "owner": "farion1231",
+          "name": "cc-switch",
+          "rank": 8,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/farion1231/cc-switch",
+          "stars": 155762,
+          "forks": 10192,
+          "openIssues": 870,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2025-08-04",
+          "pushed": "2026-11-19T14:43:05Z",
+          "release": "CC Switch v4.0.36",
+          "summary": "Cross-platform Tauri 2 desktop All-in-One manager for Claude Code, Codex, Gemini CLI, OpenCode, OpenClaw, and Hermes Agent—allowing one-click API provider switching and unified management of MCP servers, skills, and prompts.",
+          "apply": {
+            "raw": "- **Fastest Path (Prebuilt Windows MSI / Portable Zip):** Rust (`cargo`) and `pnpm` are **not installed** on this machine, so download the prebuilt Windows installer or portable zip directly from today's `v4.0.36` release using **`gh`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v4.0.36 -R farion1231/cc-switch --pattern \"*Windows*\"\n  ```\n  Run `CC-Switch-v4.0.36-Windows.msi` (or extract `CC-Switch-v4.0.36-Windows-Portable.zip`).\n- **Build from Source (Optional):** Requires Rust (`winget install Rustlang.Rustup`) and `pnpm` (`corepack enable`).",
+            "notes": [
+              "**Fastest Path (Prebuilt Windows MSI / Portable Zip):** Rust (`cargo`) and `pnpm` are **not installed** on this machine, so download the prebuilt Windows installer or portable zip directly from today's `v4.0.36` release using **`gh`**:",
+              "**Build from Source (Optional):** Requires Rust (`winget install Rustlang.Rustup`) and `pnpm` (`corepack enable`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v4.0.36 -R farion1231/cc-switch --pattern \"*Windows*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)",
+              "pnpm (corepack)"
+            ]
+          }
+        },
+        {
+          "id": "garrytan/gstack",
+          "owner": "garrytan",
+          "name": "gstack",
+          "rank": 9,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/garrytan/gstack",
+          "stars": 142079,
+          "forks": 20973,
+          "openIssues": 113,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-03-11",
+          "pushed": "2026-11-19T15:00:00Z",
+          "release": "gstack v1.101.0.0",
+          "summary": "Garry Tan's MIT-licensed virtual engineering team skill suite (23 opinionated slash-command roles covering product framing, architecture, design review, browser QA, OWASP/STRIDE security audits, and release shipping) for Claude Code, Codex, OpenCode, Gemini CLI, Antigravity CLI, OpenClaw, and Hermes.",
+          "apply": {
+            "raw": "- **Extra Tool Needed (`bun`):** `gstack`'s native Windows entrypoint (`setup.ps1`) checks for `git` (installed), `node` (installed), and **`bun`** (**currently not installed**). Install Bun via **`winget`**, clone with **`gh`**, and run `.\\setup.ps1`:\n  ```powershell\n  winget install --id Oven-sh.Bun -e\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone garrytan/gstack\n  Set-Location \"gstack\"\n  .\\setup.ps1\n  ```\n  *(Open a new PowerShell window after installing Bun so `bun` is on `PATH`; pass `--host auto` to register across all detected agents on your machine.)*",
+            "notes": [
+              "**Extra Tool Needed (`bun`):** `gstack`'s native Windows entrypoint (`setup.ps1`) checks for `git` (installed), `node` (installed), and **`bun`** (**currently not installed**). Install Bun via **`winget`**, clone with **`gh`**, and run `.\\setup.ps1`:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install --id Oven-sh.Bun -e\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone garrytan/gstack\n  Set-Location \"gstack\"\n  .\\setup.ps1"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "stablyai/orca",
+          "owner": "stablyai",
+          "name": "orca",
+          "rank": 10,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/stablyai/orca",
+          "stars": 129547,
+          "forks": 8233,
+          "openIssues": 8545,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-03-17",
+          "pushed": "2026-11-19T15:01:49Z",
+          "release": "v1.4.264",
+          "summary": "Desktop, CLI, and mobile orchestrator for running a fleet of coding agents (Claude Code, Codex, and more) in parallel git worktrees with unified Chat/Terminal switching, inline diff review annotations, and SSH/remote servers.",
+          "apply": {
+            "raw": "- **Fastest Path (Prebuilt Windows Installer):** Download `orca-windows-setup.exe` directly from today's `v1.4.264` release via **`gh`** and install:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.4.264 -R stablyai/orca --pattern \"orca-windows-setup.exe\"\n  .\\orca-windows-setup.exe\n  ```\n- **Build from Source (Optional):** Uses `pnpm` (`pnpm-workspace.yaml`), which is **not installed**; run `corepack enable` after cloning if you want to develop locally.",
+            "notes": [
+              "**Fastest Path (Prebuilt Windows Installer):** Download `orca-windows-setup.exe` directly from today's `v1.4.264` release via **`gh`** and install:",
+              "**Build from Source (Optional):** Uses `pnpm` (`pnpm-workspace.yaml`), which is **not installed**; run `corepack enable` after cloning if you want to develop locally."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.4.264 -R stablyai/orca --pattern \"orca-windows-setup.exe\"\n  .\\orca-windows-setup.exe"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI",
+              "git"
+            ],
+            "missingDeps": [
+              "pnpm (corepack)"
+            ]
           }
         }
       ],
       "rising": [
         {
-          "id": "MilliMailmanOverpass/KytyPS5-Enhanced",
-          "owner": "MilliMailmanOverpass",
-          "name": "KytyPS5-Enhanced",
+          "id": "deepseek-ai/chat-demo",
+          "owner": "deepseek-ai",
+          "name": "chat-demo",
           "rank": 1,
           "category": "rising",
           "reportDate": "2026-11-19",
-          "url": "https://github.com/MilliMailmanOverpass/KytyPS5-Enhanced",
-          "stars": 131,
-          "forks": 18,
-          "openIssues": 0,
-          "language": "Unknown",
-          "license": "Unspecified",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T12:29:09Z",
-          "release": "",
-          "summary": "Enhanced KytyPS5 PS5 emulator with launcher, shader cache, frame pacing and per-game profiles. Tuned for Grand Theft Auto VI on Windows. Bring your own legally dumped game.",
-          "apply": {
-            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone MilliMailmanOverpass/KytyPS5-Enhanced\n  ```",
-            "notes": [
-              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone MilliMailmanOverpass/KytyPS5-Enhanced"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "duwqijlk/google-trial-tool",
-          "owner": "duwqijlk",
-          "name": "google-trial-tool",
-          "rank": 2,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/duwqijlk/google-trial-tool",
-          "stars": 110,
-          "forks": 68,
-          "openIssues": 1,
-          "language": "JavaScript",
-          "license": "Unspecified",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T11:54:58Z",
-          "release": "",
-          "summary": "Active open-source repository on GitHub.",
-          "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone duwqijlk/google-trial-tool\n  Set-Location \"google-trial-tool\"\n  npm install\n  ```",
-            "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone duwqijlk/google-trial-tool\n  Set-Location \"google-trial-tool\"\n  npm install"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Node.js / npm",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "PolygonMaintenance/FlstudioAIproducer",
-          "owner": "PolygonMaintenance",
-          "name": "FlstudioAIproducer",
-          "rank": 3,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/PolygonMaintenance/FlstudioAIproducer",
-          "stars": 85,
-          "forks": 0,
-          "openIssues": 0,
-          "language": "Go",
-          "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T12:23:30Z",
-          "release": "",
-          "summary": "How to get Fl studio Producer 2026",
-          "apply": {
-            "raw": "- **Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R PolygonMaintenance/FlstudioAIproducer\n  gh release download -R PolygonMaintenance/FlstudioAIproducer --pattern \"*windows*\"\n  ```\n- To build from source, install Go: `winget install GoLang.Go`.",
-            "notes": [
-              "**Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:",
-              "To build from source, install Go: `winget install GoLang.Go`."
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R PolygonMaintenance/FlstudioAIproducer\n  gh release download -R PolygonMaintenance/FlstudioAIproducer --pattern \"*windows*\""
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "prebuilt",
-            "statusLabel": "Prebuilt / Installer",
-            "usesTools": [
-              "gh CLI",
-              "winget"
-            ],
-            "missingDeps": [
-              "Go (source only)"
-            ]
-          }
-        },
-        {
-          "id": "setyamickala/airdrop-agent",
-          "owner": "setyamickala",
-          "name": "airdrop-agent",
-          "rank": 4,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/setyamickala/airdrop-agent",
-          "stars": 65,
-          "forks": 28,
-          "openIssues": 8,
-          "language": "Python",
-          "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T08:02:36Z",
-          "release": "",
-          "summary": "Autonomous airdrop operator: identities, wallets, socials, testnets, quests, radar — guarded CLI + MCP",
-          "apply": {
-            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone setyamickala/airdrop-agent\n  Set-Location \"airdrop-agent\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
-            "notes": [
-              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone setyamickala/airdrop-agent\n  Set-Location \"airdrop-agent\"\n  uv venv --python 3.12\n  uv pip install -e ."
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Python 3.12",
-              "uv",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "emblembathollow/MsOfficeLatestVersion2026",
-          "owner": "emblembathollow",
-          "name": "MsOfficeLatestVersion2026",
-          "rank": 5,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/emblembathollow/MsOfficeLatestVersion2026",
-          "stars": 64,
-          "forks": 0,
-          "openIssues": 0,
-          "language": "Go",
-          "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T12:23:19Z",
-          "release": "",
-          "summary": "how to get Office 2026",
-          "apply": {
-            "raw": "- **Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R emblembathollow/MsOfficeLatestVersion2026\n  gh release download -R emblembathollow/MsOfficeLatestVersion2026 --pattern \"*windows*\"\n  ```\n- To build from source, install Go: `winget install GoLang.Go`.",
-            "notes": [
-              "**Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:",
-              "To build from source, install Go: `winget install GoLang.Go`."
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R emblembathollow/MsOfficeLatestVersion2026\n  gh release download -R emblembathollow/MsOfficeLatestVersion2026 --pattern \"*windows*\""
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "prebuilt",
-            "statusLabel": "Prebuilt / Installer",
-            "usesTools": [
-              "gh CLI",
-              "winget"
-            ],
-            "missingDeps": [
-              "Go (source only)"
-            ]
-          }
-        },
-        {
-          "id": "KJGX66F/unikraft-xray-node",
-          "owner": "KJGX66F",
-          "name": "unikraft-xray-node",
-          "rank": 6,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/KJGX66F/unikraft-xray-node",
-          "stars": 52,
-          "forks": 113,
-          "openIssues": 0,
-          "language": "Shell",
-          "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T09:17:57Z",
-          "release": "",
-          "summary": "Unikraft Cloud xray VLESS node: WS primary + XHTTP backup, direct + Cloudflare dual links. GitHub Actions builds the image to GHCR; fork and build your own.",
-          "apply": {
-            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone KJGX66F/unikraft-xray-node\n  ```",
-            "notes": [
-              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone KJGX66F/unikraft-xray-node"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Node.js / npm",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "flex36ty/switch2-gamevault",
-          "owner": "flex36ty",
-          "name": "switch2-gamevault",
-          "rank": 7,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/flex36ty/switch2-gamevault",
-          "stars": 46,
-          "forks": 0,
-          "openIssues": 1,
-          "language": "C++",
-          "license": "Unspecified",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T03:17:59Z",
-          "release": "",
-          "summary": "Game Vault for Switch 2 — game and save backup/restore, decrypted backups, USB MTP, FTP and SMB storage.",
-          "apply": {
-            "raw": "- **Prebuilt Windows Release:** C/C++ compilers are **not installed** on this machine; inspect and download releases via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R flex36ty/switch2-gamevault\n  gh release download -R flex36ty/switch2-gamevault\n  ```",
-            "notes": [
-              "**Prebuilt Windows Release:** C/C++ compilers are **not installed** on this machine; inspect and download releases via `gh`:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R flex36ty/switch2-gamevault\n  gh release download -R flex36ty/switch2-gamevault"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "prebuilt",
-            "statusLabel": "Prebuilt / Installer",
-            "usesTools": [
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "iamajmeena/neonclipping",
-          "owner": "iamajmeena",
-          "name": "neonclipping",
-          "rank": 8,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/iamajmeena/neonclipping",
-          "stars": 45,
-          "forks": 0,
-          "openIssues": 0,
-          "language": "Python",
-          "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T12:28:02Z",
-          "release": "",
-          "summary": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
-          "apply": {
-            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
-            "notes": [
-              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  uv venv --python 3.12\n  uv pip install -e ."
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "Python 3.12",
-              "uv",
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "rehfgclelkkt/ROB-RUN-Cheats",
-          "owner": "rehfgclelkkt",
-          "name": "ROB-RUN-Cheats",
-          "rank": 9,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/rehfgclelkkt/ROB-RUN-Cheats",
-          "stars": 43,
-          "forks": 43,
-          "openIssues": 1,
-          "language": "HTML",
-          "license": "Unspecified",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T13:20:20Z",
-          "release": "",
-          "summary": "rob run private mod menu download for PC",
-          "apply": {
-            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone rehfgclelkkt/ROB-RUN-Cheats\n  ```",
-            "notes": [
-              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
-            ],
-            "commands": [
-              {
-                "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone rehfgclelkkt/ROB-RUN-Cheats"
-              }
-            ]
-          },
-          "compatibility": {
-            "status": "ready",
-            "statusLabel": "Ready on Baseline",
-            "usesTools": [
-              "gh CLI"
-            ],
-            "missingDeps": []
-          }
-        },
-        {
-          "id": "Specterviresurrect/Adobe-Lightroom-ClassicAi2026",
-          "owner": "Specterviresurrect",
-          "name": "Adobe-Lightroom-ClassicAi2026",
-          "rank": 10,
-          "category": "rising",
-          "reportDate": "2026-11-19",
-          "url": "https://github.com/Specterviresurrect/Adobe-Lightroom-ClassicAi2026",
-          "stars": 42,
-          "forks": 0,
+          "url": "https://github.com/deepseek-ai/chat-demo",
+          "stars": 4996,
+          "forks": 1126,
           "openIssues": 0,
           "language": "TypeScript",
           "license": "MIT",
-          "created": "2026-11-19",
-          "pushed": "2026-11-19T12:23:18Z",
-          "release": "",
-          "summary": "How to get Adobe Lightroom Classic AI Latest",
+          "created": "2026-11-12",
+          "pushed": "2026-11-19T04:42:36Z",
+          "release": "v0.1.2",
+          "summary": "Official zero-backend static DeepSeek API chat client (React + Rspack + IndexedDB/localStorage) supporting streaming replies, deep thinking, smart search, KaTeX math, Mermaid diagrams, voice input/TTS, and ZIP chat history import/export.",
           "apply": {
-            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Specterviresurrect/Adobe-Lightroom-ClassicAi2026\n  Set-Location \"Adobe-Lightroom-ClassicAi2026\"\n  npm install\n  ```",
+            "raw": "- **Option A — Zero-Install Static Release / Web App:** Open `https://deepseek-ai.github.io/chat-demo/` or download the `v0.1.2` release archive via `gh`.\n- **Option B — Run Locally with Node.js `v24.20.0`:** Repo expects `Node.js 22.12+` and `pnpm`. Since `pnpm` is **not installed**, enable it with Corepack first:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  corepack enable\n  gh repo clone deepseek-ai/chat-demo\n  Set-Location \"chat-demo\"\n  pnpm install\n  pnpm dev\n  ```\n  Then open `http://localhost:8090`.",
             "notes": [
-              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+              "**Option A — Zero-Install Static Release / Web App:** Open `https://deepseek-ai.github.io/chat-demo/` or download the `v0.1.2` release archive via `gh`.",
+              "**Option B — Run Locally with Node.js `v24.20.0`:** Repo expects `Node.js 22.12+` and `pnpm`. Since `pnpm` is **not installed**, enable it with Corepack first:"
             ],
             "commands": [
               {
                 "lang": "powershell",
-                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Specterviresurrect/Adobe-Lightroom-ClassicAi2026\n  Set-Location \"Adobe-Lightroom-ClassicAi2026\"\n  npm install"
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  corepack enable\n  gh repo clone deepseek-ai/chat-demo\n  Set-Location \"chat-demo\"\n  pnpm install\n  pnpm dev"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": [
+              "pnpm (corepack)"
+            ]
+          }
+        },
+        {
+          "id": "erkamyaman/rust-anything",
+          "owner": "erkamyaman",
+          "name": "rust-anything",
+          "rank": 2,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/erkamyaman/rust-anything",
+          "stars": 4552,
+          "forks": 381,
+          "openIssues": 0,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-19T15:01:09Z",
+          "release": "v2.0.2",
+          "summary": "Incremental \"rewrite in Rust\" recording, bridging, diffing, and benchmarking harness (`v2.0.2`). Records edge cases from TypeScript/Node.js, Python, C, Go, Ruby, or Java codebases and verifies every ported Rust unit against recorded outputs (`0 mismatches`) before lifting into a pure Rust binary.",
+          "apply": {
+            "raw": "- **Fastest Path (via `npm`):** Even though `cargo` / `rustc` are **not installed**, the CLI binary is published on npm and works directly with your **`Node.js v24.20.0`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g rust-anything\n  rust-anything setup\n  ```\n- **Note on Compiling Ported Crates:** Actually building ported Rust crates/extensions requires the Rust toolchain (`winget install Rustlang.Rustup`).",
+            "notes": [
+              "**Fastest Path (via `npm`):** Even though `cargo` / `rustc` are **not installed**, the CLI binary is published on npm and works directly with your **`Node.js v24.20.0`**:",
+              "**Note on Compiling Ported Crates:** Actually building ported Rust crates/extensions requires the Rust toolchain (`winget install Rustlang.Rustup`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g rust-anything\n  rust-anything setup"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "krisgfx9/Wireless-Device-Battery-Monitor",
+          "owner": "krisgfx9",
+          "name": "Wireless-Device-Battery-Monitor",
+          "rank": 3,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+          "stars": 4424,
+          "forks": 376,
+          "openIssues": 2951,
+          "language": "C++",
+          "license": "GPL-3.0",
+          "created": "2026-11-16",
+          "pushed": "2026-11-19T06:15:50Z",
+          "release": "v1.1.0",
+          "summary": "Ultra-lightweight (~350 KB, ~2 MB RAM) C++/Win32 Windows 10/11 taskbar and tray widget displaying battery percentages, smart alerts, and local battery history charts for Logitech, Razer, SteelSeries, Corsair, HyperX, Glorious, PlayStation/Xbox controllers, and Bluetooth devices without vendor bloatware.",
+          "apply": {
+            "raw": "- **Fastest Path (Prebuilt Windows Installer / Portable Zip):** C++ compilers (`cmake` / `cl`) are **not installed** on this machine, so download `BatteryHub-Setup-1.1.0.exe` or `BatteryHub-1.1.0-portable.zip` directly from release `v1.1.0` via **`gh`** (no admin rights required):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.1.0 -R krisgfx9/Wireless-Device-Battery-Monitor --pattern \"BatteryHub-*\"\n  ```\n  Run `.\\BatteryHub-Setup-1.1.0.exe` or extract `BatteryHub-1.1.0-portable.zip`.",
+            "notes": [
+              "**Fastest Path (Prebuilt Windows Installer / Portable Zip):** C++ compilers (`cmake` / `cl`) are **not installed** on this machine, so download `BatteryHub-Setup-1.1.0.exe` or `BatteryHub-1.1.0-portable.zip` directly from release `v1.1.0` via **`gh`** (no admin rights required):"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.1.0 -R krisgfx9/Wireless-Device-Battery-Monitor --pattern \"BatteryHub-*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "Noniv/abyssal-garden",
+          "owner": "Noniv",
+          "name": "abyssal-garden",
+          "rank": 4,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/Noniv/abyssal-garden",
+          "stars": 2478,
+          "forks": 372,
+          "openIssues": 11,
+          "language": "JavaScript",
+          "license": "MIT",
+          "created": "2026-11-12",
+          "pushed": "2026-11-14T17:41:33Z",
+          "release": "",
+          "summary": "Procedural WebGPU 3D underwater scene (kelp forests, caustics, sunken wooden ship, manta rays, and Web Audio soundscape) packed into a single 96–97 KB `index.html` file with zero external assets.",
+          "apply": {
+            "raw": "- **Zero-Install:** Open the live demo at `https://noniv.github.io/abyssal-garden/` in Chrome or Edge (requires WebGPU support).\n- **Local Offline Server / Hackable Source (`Python 3.12.10` or `Node.js v24.20.0`):**\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Noniv/abyssal-garden\n  python -m http.server 8080 -d abyssal-garden\n  ```\n  Then open `http://localhost:8080` in Chrome or Edge. (To rebuild from `source/`, run `Set-Location \"abyssal-garden\\source\"; npm install; npm run build`.)",
+            "notes": [
+              "**Zero-Install:** Open the live demo at `https://noniv.github.io/abyssal-garden/` in Chrome or Edge (requires WebGPU support).",
+              "**Local Offline Server / Hackable Source (`Python 3.12.10` or `Node.js v24.20.0`):**"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Noniv/abyssal-garden\n  python -m http.server 8080 -d abyssal-garden"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "Immortal-Protocols/lastbook",
+          "owner": "Immortal-Protocols",
+          "name": "lastbook",
+          "rank": 5,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/Immortal-Protocols/lastbook",
+          "stars": 2281,
+          "forks": 300,
+          "openIssues": 166,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-12",
+          "pushed": "2026-11-19T06:54:13Z",
+          "release": "Lastbook 1.1.12",
+          "summary": "Offline desktop library for Windows 10/11, macOS, and Linux containing curated manuals, encyclopedias, videos, offline maps, and citation-grounded local AI chat (using WebView2 on Windows).",
+          "apply": {
+            "raw": "- **Recommended (Signed Windows Installer):** Download the Authenticode-signed 64-bit Windows 10/11 `v1.1.12` installer from `https://lastbook.org`.\n- **Inspect / Run Source Locally (`gh` + `uv` + `Python 3.12.10`):**\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Immortal-Protocols/lastbook\n  Set-Location \"lastbook\"\n  uv venv --python 3.12\n  ```",
+            "notes": [
+              "**Recommended (Signed Windows Installer):** Download the Authenticode-signed 64-bit Windows 10/11 `v1.1.12` installer from `https://lastbook.org`.",
+              "**Inspect / Run Source Locally (`gh` + `uv` + `Python 3.12.10`):**"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Immortal-Protocols/lastbook\n  Set-Location \"lastbook\"\n  uv venv --python 3.12"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "haziqahmedqasmi/PeakCut",
+          "owner": "haziqahmedqasmi",
+          "name": "PeakCut",
+          "rank": 6,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/haziqahmedqasmi/PeakCut",
+          "stars": 1227,
+          "forks": 428,
+          "openIssues": 42,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-14",
+          "pushed": "2026-11-17T13:20:20Z",
+          "release": "",
+          "summary": "Self-hosted AI video/livestream clipper for YouTube, Twitch, Kick, and local files. Performs local speech-to-text, selects highlights via your own AI key (Gemini, OpenAI, Claude, Groq, OpenRouter, Ollama) or loudness heuristics, renders captioned 9:16 vertical clips, and supports multi-platform posting.",
+          "apply": {
+            "raw": "- **Critical Windows Path-Length Warning:** PeakCut's README warns **against** cloning into deep paths (such as `g:\\My Drive\\Antigravity\\Projects\\...`) because Windows' 260-character path limit can prevent the speech model from loading. Clone into a short path like `C:\\peakcut`.\n- **Missing Dependency (`ffmpeg`):** Install `ffmpeg` via your installed **`winget`**, then set up an isolated **`uv 0.12.5` + Python `3.12.10`** environment (instead of Docker, which is not installed):\n  ```powershell\n  winget install Gyan.FFmpeg\n  gh repo clone haziqahmedqasmi/PeakCut C:\\peakcut\n  Set-Location \"C:\\peakcut\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -r requirements.txt\n  python -m studio.server\n  ```\n  Then open `http://127.0.0.1:8765` (first start downloads the ~480 MB speech model once).",
+            "notes": [
+              "**Critical Windows Path-Length Warning:** PeakCut's README warns **against** cloning into deep paths (such as `g:\\My Drive\\Antigravity\\Projects\\...`) because Windows' 260-character path limit can prevent the speech model from loading. Clone into a short path like `C:\\peakcut`.",
+              "**Missing Dependency (`ffmpeg`):** Install `ffmpeg` via your installed **`winget`**, then set up an isolated **`uv 0.12.5` + Python `3.12.10`** environment (instead of Docker, which is not installed):"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Gyan.FFmpeg\n  gh repo clone haziqahmedqasmi/PeakCut C:\\peakcut\n  Set-Location \"C:\\peakcut\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -r requirements.txt\n  python -m studio.server"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "sybil-solutions/inference-optimisation-skill",
+          "owner": "sybil-solutions",
+          "name": "inference-optimisation-skill",
+          "rank": 7,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+          "stars": 1202,
+          "forks": 111,
+          "openIssues": 6,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-16T18:40:08Z",
+          "release": "",
+          "summary": "`SKILL.md`-compatible agent skill and standard-library Python benchmarking harness (`bench.py`, `ceiling.py`) for systematically hill-climbing local LLM server throughput (decode, prefill, speculative decoding, KV cache, TTFT) with long-context retrieval gates.",
+          "apply": {
+            "raw": "- Works out of the box with your installed **`gh`** and **Python `3.12.10`** (no third-party pip packages needed for the Python harness; note that `queue.sh` and `mem.sh` are bash helpers intended for Linux/WSL2):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone sybil-solutions/inference-optimisation-skill\n  Set-Location \"inference-optimisation-skill\"\n  python skills\\inference-optimisation\\scripts\\ceiling.py skills\\inference-optimisation\\examples\\ceiling-ornith-b390.json\n  ```\n- To install as a reusable skill for local agents:\n  ```powershell\n  New-Item -ItemType Directory -Force \"$env:USERPROFILE\\.claude\\skills\" | Out-Null\n  Copy-Item -Recurse \"skills\\inference-optimisation\" \"$env:USERPROFILE\\.claude\\skills\\\"\n  ```\n  *(Benchmarking `bench.py` requires an active OpenAI-compatible local LLM endpoint such as Ollama, vLLM, or SGLang.)*",
+            "notes": [
+              "Works out of the box with your installed **`gh`** and **Python `3.12.10`** (no third-party pip packages needed for the Python harness; note that `queue.sh` and `mem.sh` are bash helpers intended for Linux/WSL2):",
+              "To install as a reusable skill for local agents:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone sybil-solutions/inference-optimisation-skill\n  Set-Location \"inference-optimisation-skill\"\n  python skills\\inference-optimisation\\scripts\\ceiling.py skills\\inference-optimisation\\examples\\ceiling-ornith-b390.json"
+              },
+              {
+                "lang": "powershell",
+                "code": "New-Item -ItemType Directory -Force \"$env:USERPROFILE\\.claude\\skills\" | Out-Null\n  Copy-Item -Recurse \"skills\\inference-optimisation\" \"$env:USERPROFILE\\.claude\\skills\\\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "joshpuckett/allo",
+          "owner": "joshpuckett",
+          "name": "allo",
+          "rank": 8,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/joshpuckett/allo",
+          "stars": 1121,
+          "forks": 31,
+          "openIssues": 4,
+          "language": "Python",
+          "license": "SIL Open Font License 1.1 (OFL-1.1)",
+          "created": "2026-11-15",
+          "pushed": "2026-11-18T07:19:43Z",
+          "release": "Allo 1.0.3",
+          "summary": "Free, open-source UI and display typeface with 3 variable axes (`opsz`, `wght`, `ROND`), 18 static OTF weights + true obliques, OpenType programming/UI ligatures, and WOFF2 web fonts.",
+          "apply": {
+            "raw": "- **For Web Projects (via installed `npm` / Node.js `v24.20.0`):**\n  ```powershell\n  npm install allo-font\n  ```\n  Then `import \"allo-font\";` (or `import \"allo-font/friendly\";`).\n- **For Windows Desktop Font Installation (via `gh`):** Download `Allo-1.0.3.zip`, extract, select the `.otf` or `AlloVariable.ttf` files, and right-click → **Install**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.0.3 -R joshpuckett/allo --pattern \"*.zip\"\n  ```",
+            "notes": [
+              "**For Web Projects (via installed `npm` / Node.js `v24.20.0`):**",
+              "**For Windows Desktop Font Installation (via `gh`):** Download `Allo-1.0.3.zip`, extract, select the `.otf` or `AlloVariable.ttf` files, and right-click → **Install**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npm install allo-font"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.0.3 -R joshpuckett/allo --pattern \"*.zip\""
               }
             ]
           },
@@ -928,6 +922,92 @@
               "gh CLI"
             ],
             "missingDeps": []
+          }
+        },
+        {
+          "id": "huggingface/pybot",
+          "owner": "huggingface",
+          "name": "pybot",
+          "rank": 9,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/huggingface/pybot",
+          "stars": 906,
+          "forks": 90,
+          "openIssues": 0,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "created": "2026-11-12",
+          "pushed": "2026-11-16T11:07:29Z",
+          "release": "",
+          "summary": "A rule-based chatbot (~640k lines of pure Python written by a swarm of 1,000+ agents, with zero neural weights or training) achieving a 26% win rate on SmolTalkBench—on par with SmolLM-360M-Instruct.",
+          "apply": {
+            "raw": "- Requires zero third-party packages and no model downloads—runs directly on your installed **`gh`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone huggingface/pybot\n  Set-Location \"pybot\"\n  python -m pybot\n  ```\n- Or run a one-shot query without entering the REPL: `python -m pybot -p \"Why do onions make you cry?\"`.",
+            "notes": [
+              "Requires zero third-party packages and no model downloads—runs directly on your installed **`gh`** and **Python `3.12.10`**:",
+              "Or run a one-shot query without entering the REPL: `python -m pybot -p \"Why do onions make you cry?\"`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone huggingface/pybot\n  Set-Location \"pybot\"\n  python -m pybot"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "opencoredev/islandcn",
+          "owner": "opencoredev",
+          "name": "islandcn",
+          "rank": 10,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/opencoredev/islandcn",
+          "stars": 815,
+          "forks": 66,
+          "openIssues": 0,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-11-13",
+          "pushed": "2026-11-19T14:21:30Z",
+          "release": "",
+          "summary": "Open-source Dynamic Island component and activity-stack engine for React apps, installed via `shadcn` with presets for uploads, timers, media playback, calls, ETAs, recordings, and battery status.",
+          "apply": {
+            "raw": "- **Into an Existing React + shadcn Project (via Node.js `v24.20.0` / `npx`):**\n  ```powershell\n  npx shadcn@latest add https://islandcn.dev/r/island-core.json\n  ```\n- **Run the Local Playground / Docs Site:** The repo uses `pnpm` (`pnpm-workspace.yaml`), which is **not installed** on this machine; enable it with Corepack first:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  corepack enable\n  gh repo clone opencoredev/islandcn\n  Set-Location \"islandcn\"\n  pnpm install\n  pnpm dev\n  ```\n  Then open `http://localhost:3000`.",
+            "notes": [
+              "**Into an Existing React + shadcn Project (via Node.js `v24.20.0` / `npx`):**",
+              "**Run the Local Playground / Docs Site:** The repo uses `pnpm` (`pnpm-workspace.yaml`), which is **not installed** on this machine; enable it with Corepack first:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx shadcn@latest add https://islandcn.dev/r/island-core.json"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  corepack enable\n  gh repo clone opencoredev/islandcn\n  Set-Location \"islandcn\"\n  pnpm install\n  pnpm dev"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": [
+              "pnpm (corepack)"
+            ]
           }
         }
       ],

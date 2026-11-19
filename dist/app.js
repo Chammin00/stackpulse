@@ -236,13 +236,17 @@ function matchesGoal(repo, goal) {
   const text = `${repo.id} ${repo.summary} ${repo.topic}`.toLowerCase();
   switch (goal) {
     case 'local-ai':
-      return text.includes('agent') || text.includes('gateway') || text.includes('harness') || text.includes('llm') || text.includes('opencode');
+      return text.includes('agent') || text.includes('gateway') || text.includes('harness') || text.includes('llm') || text.includes('opencode') || text.includes('pybot');
+    case 'gaming-vr':
+      return text.includes('game') || text.includes('gaming') || text.includes('ps5') || text.includes('emulator') || text.includes('vr') || text.includes('3d') || text.includes('webgpu') || text.includes('gpucanvas') || text.includes('blender') || text.includes('pbr') || text.includes('frame generation') || text.includes('controller') || text.includes('point-cloud');
     case 'replace-paid':
-      return text.includes('self-hosted') || text.includes('docker') || text.includes('photoshop') || text.includes('converter') || text.includes('workflow');
+      return text.includes('self-hosted') || text.includes('docker') || text.includes('photoshop') || text.includes('converter') || text.includes('workflow') || text.includes('kiri') || text.includes('firecrawl');
+    case 'dev-reverse':
+      return text.includes('reverse') || text.includes('rust') || text.includes('skill') || text.includes('worktree') || text.includes('mcp') || text.includes('cc-switch') || text.includes('gstack');
     case 'zero-install':
-      return text.includes('offline') || text.includes('static') || text.includes('single') || text.includes('webgpu') || text.includes('chat-demo');
+      return text.includes('offline') || text.includes('static') || text.includes('single') || text.includes('webgpu') || text.includes('chat-demo') || text.includes('lastbook');
     case 'media-hardware':
-      return text.includes('video') || text.includes('battery') || text.includes('frame') || text.includes('typeface') || text.includes('clipper') || text.includes('raster');
+      return text.includes('video') || text.includes('battery') || text.includes('frame') || text.includes('typeface') || text.includes('clipper') || text.includes('raster') || text.includes('iptv');
     default:
       return true;
   }
@@ -380,6 +384,14 @@ function renderCounts(windowRepos) {
   document.getElementById('cat-saved').textContent = String(
     windowRepos.filter((r) => state.saved.has(r.id)).length
   );
+
+  const allMonthRepos = getWindowData('1m').repos;
+  for (const goal of ['local-ai', 'gaming-vr', 'replace-paid', 'dev-reverse', 'zero-install', 'media-hardware']) {
+    const elGoal = document.getElementById(`goal-count-${goal}`);
+    if (elGoal) {
+      elGoal.textContent = String(allMonthRepos.filter((r) => matchesGoal(r, goal)).length);
+    }
+  }
 }
 
 function renderFilters(windowRepos) {
@@ -877,12 +889,34 @@ function bindEvents() {
       const targetGoal = btn.dataset.goal;
       state.goal = state.goal === targetGoal ? 'all' : targetGoal;
       state.page = 1;
+      state.category = 'all';
+      state.topic = 'all';
+      state.language = 'all';
+
+      if (state.goal !== 'all') {
+        const currentMatches = getWindowData(state.window).repos.filter((r) =>
+          matchesGoal(r, state.goal)
+        ).length;
+        if (currentMatches < 2) {
+          state.window = '1m';
+          document.querySelectorAll('[data-window]').forEach((b) => {
+            const active = b.dataset.window === '1m';
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+        }
+      }
+
+      document.querySelectorAll('[data-category]').forEach((b) =>
+        b.classList.toggle('active', b.dataset.category === 'all')
+      );
       document.querySelectorAll('[data-goal]').forEach((b) =>
         b.classList.toggle('active', b.dataset.goal === state.goal)
       );
       el.resetGoalBtn.classList.toggle('hidden', state.goal === 'all');
       render();
-      document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+      const feedTop = (document.querySelector('.workspace-main')?.offsetTop || 0) - 136;
+      window.scrollTo({ top: Math.max(0, feedTop), behavior: 'smooth' });
     });
   });
 
