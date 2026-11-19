@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-18T17:46:06.992Z",
-  "latestDate": "2026-11-18",
-  "reportCount": 8,
+  "generatedAt": "2026-11-19T14:00:57.510Z",
+  "latestDate": "2026-11-19",
+  "reportCount": 9,
   "baseline": [
     {
       "tool": "Git",
@@ -43,7 +43,7 @@
       "tool": "Docker",
       "status": "Not installed",
       "installed": false,
-      "notes": "Required for container-first workflows unless using a native runtime or installing Docker / Kiri"
+      "notes": "Required for container-first workflows unless using a native runtime or Kiri"
     },
     {
       "tool": "pnpm / bun",
@@ -71,6 +71,868 @@
     }
   ],
   "reports": [
+    {
+      "date": "2026-11-19",
+      "filename": "2026-11-19.md",
+      "title": "GitHub Daily Trending & Rising Projects Report — 2026-11-19",
+      "baseline": [
+        {
+          "tool": "Git",
+          "status": "Installed",
+          "installed": true,
+          "notes": "git version 2.53.0.windows.3"
+        },
+        {
+          "tool": "GitHub CLI (gh)",
+          "status": "Installed",
+          "installed": true,
+          "notes": "gh version 2.97.0 (authenticated as Chammin00)"
+        },
+        {
+          "tool": "Node.js / npm",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v24.20.0 (npm available)"
+        },
+        {
+          "tool": "Python",
+          "status": "Installed",
+          "installed": true,
+          "notes": "Python 3.12.10"
+        },
+        {
+          "tool": "uv",
+          "status": "Installed",
+          "installed": true,
+          "notes": "uv 0.12.5"
+        },
+        {
+          "tool": "winget",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v1.29.380"
+        },
+        {
+          "tool": "Docker",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required for container-first workflows unless using a native runtime or Kiri"
+        },
+        {
+          "tool": "pnpm / bun",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Can be enabled via corepack enable or npm install -g pnpm"
+        },
+        {
+          "tool": "Rust (cargo/rustc)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when building Rust projects from source (winget install Rustlang.Rustup)"
+        },
+        {
+          "tool": "Go (go)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when building Go projects from source (winget install GoLang.Go)"
+        },
+        {
+          "tool": "CMake / C++ build tools",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when compiling C++ apps from source"
+        }
+      ],
+      "popular": [
+        {
+          "id": "codecrafters-io/build-your-own-x",
+          "owner": "codecrafters-io",
+          "name": "build-your-own-x",
+          "rank": 1,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/codecrafters-io/build-your-own-x",
+          "stars": 563849,
+          "forks": 52743,
+          "openIssues": 633,
+          "language": "Markdown",
+          "license": "Unspecified",
+          "created": "2018-05-09",
+          "pushed": "2026-11-19T05:32:02Z",
+          "release": "",
+          "summary": "Master programming by recreating your favorite technologies from scratch.",
+          "apply": {
+            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone codecrafters-io/build-your-own-x\n  ```",
+            "notes": [
+              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone codecrafters-io/build-your-own-x"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "morluto/rea",
+          "owner": "morluto",
+          "name": "rea",
+          "rank": 2,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/morluto/rea",
+          "stars": 469341,
+          "forks": 114681,
+          "openIssues": 1340,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-04-14",
+          "pushed": "2026-11-19T13:56:36Z",
+          "release": "",
+          "summary": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  Set-Location \"rea\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  Set-Location \"rea\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "freeCodeCamp/freeCodeCamp",
+          "owner": "freeCodeCamp",
+          "name": "freeCodeCamp",
+          "rank": 3,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/freeCodeCamp/freeCodeCamp",
+          "stars": 459333,
+          "forks": 47482,
+          "openIssues": 166,
+          "language": "TypeScript",
+          "license": "BSD-3-CLAUSE",
+          "created": "2014-12-24",
+          "pushed": "2026-11-19T08:29:08Z",
+          "release": "",
+          "summary": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone freeCodeCamp/freeCodeCamp\n  Set-Location \"freeCodeCamp\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone freeCodeCamp/freeCodeCamp\n  Set-Location \"freeCodeCamp\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "openclaw/openclaw",
+          "owner": "openclaw",
+          "name": "openclaw",
+          "rank": 4,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/openclaw/openclaw",
+          "stars": 394802,
+          "forks": 82927,
+          "openIssues": 8474,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-11-24",
+          "pushed": "2026-11-19T13:59:26Z",
+          "release": "",
+          "summary": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone openclaw/openclaw\n  Set-Location \"openclaw\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone openclaw/openclaw\n  Set-Location \"openclaw\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "nilbuild/developer-roadmap",
+          "owner": "nilbuild",
+          "name": "developer-roadmap",
+          "rank": 5,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/nilbuild/developer-roadmap",
+          "stars": 372353,
+          "forks": 46520,
+          "openIssues": 3,
+          "language": "TypeScript",
+          "license": "OTHER",
+          "created": "2017-03-15",
+          "pushed": "2026-11-19T10:52:06Z",
+          "release": "",
+          "summary": "Interactive roadmaps, guides and other educational content to help developers grow in their careers.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone nilbuild/developer-roadmap\n  Set-Location \"developer-roadmap\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone nilbuild/developer-roadmap\n  Set-Location \"developer-roadmap\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "mattpocock/skills",
+          "owner": "mattpocock",
+          "name": "skills",
+          "rank": 6,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/mattpocock/skills",
+          "stars": 327886,
+          "forks": 27540,
+          "openIssues": 257,
+          "language": "Shell",
+          "license": "MIT",
+          "created": "2026-02-03",
+          "pushed": "2026-11-19T13:35:13Z",
+          "release": "",
+          "summary": "Skills for Real Engineers. Straight from my .agents directory.",
+          "apply": {
+            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone mattpocock/skills\n  ```",
+            "notes": [
+              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone mattpocock/skills"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "NousResearch/hermes-agent",
+          "owner": "NousResearch",
+          "name": "hermes-agent",
+          "rank": 7,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "stars": 264659,
+          "forks": 59753,
+          "openIssues": 53897,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2025-07-22",
+          "pushed": "2026-11-19T13:55:34Z",
+          "release": "",
+          "summary": "The agent that grows with you",
+          "apply": {
+            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
+            "notes": [
+              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e ."
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "react/react",
+          "owner": "react",
+          "name": "react",
+          "rank": 8,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/react/react",
+          "stars": 252763,
+          "forks": 52812,
+          "openIssues": 1575,
+          "language": "JavaScript",
+          "license": "MIT",
+          "created": "2013-05-24",
+          "pushed": "2026-11-19T13:07:44Z",
+          "release": "",
+          "summary": "The library for web and native user interfaces.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone react/react\n  Set-Location \"react\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone react/react\n  Set-Location \"react\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "anomalyco/opencode",
+          "owner": "anomalyco",
+          "name": "opencode",
+          "rank": 9,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/anomalyco/opencode",
+          "stars": 227959,
+          "forks": 30935,
+          "openIssues": 3992,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-04-30",
+          "pushed": "2026-11-19T14:00:47Z",
+          "release": "",
+          "summary": "The open source coding agent.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone anomalyco/opencode\n  Set-Location \"opencode\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone anomalyco/opencode\n  Set-Location \"opencode\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "n8n-io/n8n",
+          "owner": "n8n-io",
+          "name": "n8n",
+          "rank": 10,
+          "category": "popular",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/n8n-io/n8n",
+          "stars": 211387,
+          "forks": 61588,
+          "openIssues": 1231,
+          "language": "TypeScript",
+          "license": "OTHER",
+          "created": "2019-06-22",
+          "pushed": "2026-11-19T13:58:57Z",
+          "release": "",
+          "summary": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone n8n-io/n8n\n  Set-Location \"n8n\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone n8n-io/n8n\n  Set-Location \"n8n\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        }
+      ],
+      "rising": [
+        {
+          "id": "MilliMailmanOverpass/KytyPS5-Enhanced",
+          "owner": "MilliMailmanOverpass",
+          "name": "KytyPS5-Enhanced",
+          "rank": 1,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/MilliMailmanOverpass/KytyPS5-Enhanced",
+          "stars": 131,
+          "forks": 18,
+          "openIssues": 0,
+          "language": "Unknown",
+          "license": "Unspecified",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T12:29:09Z",
+          "release": "",
+          "summary": "Enhanced KytyPS5 PS5 emulator with launcher, shader cache, frame pacing and per-game profiles. Tuned for Grand Theft Auto VI on Windows. Bring your own legally dumped game.",
+          "apply": {
+            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone MilliMailmanOverpass/KytyPS5-Enhanced\n  ```",
+            "notes": [
+              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone MilliMailmanOverpass/KytyPS5-Enhanced"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "duwqijlk/google-trial-tool",
+          "owner": "duwqijlk",
+          "name": "google-trial-tool",
+          "rank": 2,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/duwqijlk/google-trial-tool",
+          "stars": 110,
+          "forks": 68,
+          "openIssues": 1,
+          "language": "JavaScript",
+          "license": "Unspecified",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T11:54:58Z",
+          "release": "",
+          "summary": "Active open-source repository on GitHub.",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone duwqijlk/google-trial-tool\n  Set-Location \"google-trial-tool\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone duwqijlk/google-trial-tool\n  Set-Location \"google-trial-tool\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "PolygonMaintenance/FlstudioAIproducer",
+          "owner": "PolygonMaintenance",
+          "name": "FlstudioAIproducer",
+          "rank": 3,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/PolygonMaintenance/FlstudioAIproducer",
+          "stars": 85,
+          "forks": 0,
+          "openIssues": 0,
+          "language": "Go",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T12:23:30Z",
+          "release": "",
+          "summary": "How to get Fl studio Producer 2026",
+          "apply": {
+            "raw": "- **Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R PolygonMaintenance/FlstudioAIproducer\n  gh release download -R PolygonMaintenance/FlstudioAIproducer --pattern \"*windows*\"\n  ```\n- To build from source, install Go: `winget install GoLang.Go`.",
+            "notes": [
+              "**Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:",
+              "To build from source, install Go: `winget install GoLang.Go`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R PolygonMaintenance/FlstudioAIproducer\n  gh release download -R PolygonMaintenance/FlstudioAIproducer --pattern \"*windows*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Go (source only)"
+            ]
+          }
+        },
+        {
+          "id": "setyamickala/airdrop-agent",
+          "owner": "setyamickala",
+          "name": "airdrop-agent",
+          "rank": 4,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/setyamickala/airdrop-agent",
+          "stars": 65,
+          "forks": 28,
+          "openIssues": 8,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T08:02:36Z",
+          "release": "",
+          "summary": "Autonomous airdrop operator: identities, wallets, socials, testnets, quests, radar — guarded CLI + MCP",
+          "apply": {
+            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone setyamickala/airdrop-agent\n  Set-Location \"airdrop-agent\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
+            "notes": [
+              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone setyamickala/airdrop-agent\n  Set-Location \"airdrop-agent\"\n  uv venv --python 3.12\n  uv pip install -e ."
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "emblembathollow/MsOfficeLatestVersion2026",
+          "owner": "emblembathollow",
+          "name": "MsOfficeLatestVersion2026",
+          "rank": 5,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/emblembathollow/MsOfficeLatestVersion2026",
+          "stars": 64,
+          "forks": 0,
+          "openIssues": 0,
+          "language": "Go",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T12:23:19Z",
+          "release": "",
+          "summary": "how to get Office 2026",
+          "apply": {
+            "raw": "- **Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R emblembathollow/MsOfficeLatestVersion2026\n  gh release download -R emblembathollow/MsOfficeLatestVersion2026 --pattern \"*windows*\"\n  ```\n- To build from source, install Go: `winget install GoLang.Go`.",
+            "notes": [
+              "**Prebuilt Release Path:** `go` is **not installed** on this machine; download prebuilt Windows binaries via `gh`:",
+              "To build from source, install Go: `winget install GoLang.Go`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R emblembathollow/MsOfficeLatestVersion2026\n  gh release download -R emblembathollow/MsOfficeLatestVersion2026 --pattern \"*windows*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Go (source only)"
+            ]
+          }
+        },
+        {
+          "id": "KJGX66F/unikraft-xray-node",
+          "owner": "KJGX66F",
+          "name": "unikraft-xray-node",
+          "rank": 6,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/KJGX66F/unikraft-xray-node",
+          "stars": 52,
+          "forks": 113,
+          "openIssues": 0,
+          "language": "Shell",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T09:17:57Z",
+          "release": "",
+          "summary": "Unikraft Cloud xray VLESS node: WS primary + XHTTP backup, direct + Cloudflare dual links. GitHub Actions builds the image to GHCR; fork and build your own.",
+          "apply": {
+            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone KJGX66F/unikraft-xray-node\n  ```",
+            "notes": [
+              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone KJGX66F/unikraft-xray-node"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "flex36ty/switch2-gamevault",
+          "owner": "flex36ty",
+          "name": "switch2-gamevault",
+          "rank": 7,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/flex36ty/switch2-gamevault",
+          "stars": 46,
+          "forks": 0,
+          "openIssues": 1,
+          "language": "C++",
+          "license": "Unspecified",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T03:17:59Z",
+          "release": "",
+          "summary": "Game Vault for Switch 2 — game and save backup/restore, decrypted backups, USB MTP, FTP and SMB storage.",
+          "apply": {
+            "raw": "- **Prebuilt Windows Release:** C/C++ compilers are **not installed** on this machine; inspect and download releases via `gh`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R flex36ty/switch2-gamevault\n  gh release download -R flex36ty/switch2-gamevault\n  ```",
+            "notes": [
+              "**Prebuilt Windows Release:** C/C++ compilers are **not installed** on this machine; inspect and download releases via `gh`:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release list -R flex36ty/switch2-gamevault\n  gh release download -R flex36ty/switch2-gamevault"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "iamajmeena/neonclipping",
+          "owner": "iamajmeena",
+          "name": "neonclipping",
+          "rank": 8,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/iamajmeena/neonclipping",
+          "stars": 45,
+          "forks": 0,
+          "openIssues": 0,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T12:28:02Z",
+          "release": "",
+          "summary": "Paste a link, get captioned 9:16 clips in ~2 min. Free, local, open-source clipping engine (audio-first, YouTube captions, local LLM).",
+          "apply": {
+            "raw": "- Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```",
+            "notes": [
+              "Create an isolated environment with your installed **`uv 0.12.5`** and **Python `3.12.10`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  uv venv --python 3.12\n  uv pip install -e ."
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "rehfgclelkkt/ROB-RUN-Cheats",
+          "owner": "rehfgclelkkt",
+          "name": "ROB-RUN-Cheats",
+          "rank": 9,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/rehfgclelkkt/ROB-RUN-Cheats",
+          "stars": 43,
+          "forks": 43,
+          "openIssues": 1,
+          "language": "HTML",
+          "license": "Unspecified",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T13:20:20Z",
+          "release": "",
+          "summary": "rob run private mod menu download for PC",
+          "apply": {
+            "raw": "- Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone rehfgclelkkt/ROB-RUN-Cheats\n  ```",
+            "notes": [
+              "Clone and inspect locally with your installed **GitHub CLI (`gh 2.97.0`)**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone rehfgclelkkt/ROB-RUN-Cheats"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "Specterviresurrect/Adobe-Lightroom-ClassicAi2026",
+          "owner": "Specterviresurrect",
+          "name": "Adobe-Lightroom-ClassicAi2026",
+          "rank": 10,
+          "category": "rising",
+          "reportDate": "2026-11-19",
+          "url": "https://github.com/Specterviresurrect/Adobe-Lightroom-ClassicAi2026",
+          "stars": 42,
+          "forks": 0,
+          "openIssues": 0,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-19T12:23:18Z",
+          "release": "",
+          "summary": "How to get Adobe Lightroom Classic AI Latest",
+          "apply": {
+            "raw": "- Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Specterviresurrect/Adobe-Lightroom-ClassicAi2026\n  Set-Location \"Adobe-Lightroom-ClassicAi2026\"\n  npm install\n  ```",
+            "notes": [
+              "Runs natively on your installed **Node.js `v24.20.0`** and **`npm`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone Specterviresurrect/Adobe-Lightroom-ClassicAi2026\n  Set-Location \"Adobe-Lightroom-ClassicAi2026\"\n  npm install"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        }
+      ],
+      "totalProjects": 20
+    },
     {
       "date": "2026-11-18",
       "filename": "2026-11-18.md",
