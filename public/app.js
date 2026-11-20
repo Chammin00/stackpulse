@@ -61,6 +61,7 @@ const el = {
   globalSearch: document.getElementById('globalSearch'),
   clearSearchBtn: document.getElementById('clearSearchBtn'),
   resetGoalBtn: document.getElementById('resetGoalBtn'),
+  goalSpotlight: document.getElementById('goalSpotlight'),
   stackBuilderCount: document.getElementById('stackBuilderCount'),
   stackChipsWrap: document.getElementById('stackChipsWrap'),
   stackScriptPreview: document.getElementById('stackScriptPreview'),
@@ -125,10 +126,16 @@ function normalizeLang(lang) {
 
 function classifyTopic(repo) {
   const text = `${repo.id} ${repo.summary}`.toLowerCase();
+  if (text.includes('vr') || text.includes('webxr') || text.includes('openxr') || text.includes('webgpu') || text.includes('3d') || text.includes('shader')) {
+    return 'VR & Spatial 3D';
+  }
+  if (text.includes('emulator') || text.includes('ps5') || text.includes('ps4') || text.includes('rpcs3') || text.includes('game') || text.includes('frame generation') || text.includes('controller')) {
+    return 'Gaming & Emulators';
+  }
   if (text.includes('agent') || text.includes('llm') || text.includes('deepseek') || text.includes('ai ') || text.includes('inference')) {
     return 'AI & Agents';
   }
-  if (text.includes('video') || text.includes('photo') || text.includes('render') || text.includes('webgpu') || text.includes('font') || text.includes('typeface')) {
+  if (text.includes('video') || text.includes('photo') || text.includes('render') || text.includes('font') || text.includes('typeface')) {
     return 'Graphics & Media';
   }
   if (text.includes('offline') || text.includes('self-hosted') || text.includes('local') || text.includes('gateway')) {
@@ -231,25 +238,298 @@ function getWindowData(windowKey) {
   };
 }
 
+const GOAL_CONFIG = {
+  'local-ai': {
+    title: 'Run Local AI Agents',
+    subtitle: 'Self-hosted agent gateways, terminal coding CLIs, and local LLM optimization.',
+    envNote: 'Ready on Node.js v24.20.0 + Python 3.12.10 + uv 0.12.5 (no Docker required).',
+    picks: [
+      {
+        id: 'openclaw/openclaw',
+        url: 'https://github.com/openclaw/openclaw',
+        meta: 'TypeScript · Gateway',
+        desc: 'Local-first AI assistant gateway bridging 20+ messaging channels with swappable models.',
+        cmd: 'npm install -g openclaw@latest --allow-scripts=openclaw',
+      },
+      {
+        id: 'NousResearch/hermes-agent',
+        url: 'https://github.com/NousResearch/hermes-agent',
+        meta: 'Python · Self-Improving',
+        desc: 'Native Windows PowerShell agent with FTS5 memory, cron tasks & autonomous skills.',
+        cmd: 'iex (irm https://hermes-agent.nousresearch.com/install.ps1)',
+      },
+      {
+        id: 'anomalyco/opencode',
+        url: 'https://github.com/anomalyco/opencode',
+        meta: 'TypeScript · Coding CLI',
+        desc: 'Open-source terminal & desktop coding agent with build/plan modes.',
+        cmd: 'npm install -g @opencode/cli@latest',
+      },
+    ],
+  },
+  'replace-paid': {
+    title: 'Replace Paid SaaS & Docker',
+    subtitle: 'Self-hosted automation, native container runtimes, and desktop alternatives.',
+    envNote: 'Docker is not installed—commands below use native Node.js v24.20.0 or prebuilt Windows installers.',
+    picks: [
+      {
+        id: 'n8n-io/n8n',
+        url: 'https://github.com/n8n-io/n8n',
+        meta: 'TypeScript · Workflows',
+        desc: 'Replace Zapier/Make with 400+ integrations running natively on Node.js.',
+        cmd: 'npx n8n',
+      },
+      {
+        id: 'libracoder/kiri',
+        url: 'https://github.com/libracoder/kiri',
+        meta: 'Rust · Containers',
+        desc: 'Lightweight Docker Desktop replacement speaking the Docker Engine API & Compose.',
+        cmd: 'gh release download -R libracoder/kiri --pattern "*win*"',
+      },
+      {
+        id: 'storytold/photocraft',
+        url: 'https://github.com/storytold/photocraft',
+        meta: 'Rust · PSD Editor',
+        desc: 'Offline Rust image editor with layers, masks, CMYK/Lab & PSD support.',
+        cmd: 'gh release download v0.23.1 -R storytold/photocraft --pattern "*win*"',
+      },
+    ],
+  },
+  'zero-install': {
+    title: 'Zero-Install & Offline Apps',
+    subtitle: 'Single-file WebGPU worlds, static AI chat UIs, and offline knowledge libraries.',
+    envNote: 'Runs in Chrome/Edge or on Python 3.12.10 / Node.js v24.20.0 with minimal setup.',
+    picks: [
+      {
+        id: 'Noniv/abyssal-garden',
+        url: 'https://github.com/Noniv/abyssal-garden',
+        meta: 'WebGPU · 97 KB HTML',
+        desc: 'Single-file procedural WebGPU underwater world with zero external assets.',
+        cmd: 'gh repo clone Noniv/abyssal-garden; python -m http.server 8080 -d abyssal-garden',
+      },
+      {
+        id: 'deepseek-ai/chat-demo',
+        url: 'https://github.com/deepseek-ai/chat-demo',
+        meta: 'TypeScript · Static UI',
+        desc: 'Zero-backend DeepSeek chat client with KaTeX, Mermaid & IndexedDB history.',
+        cmd: 'corepack enable; gh repo clone deepseek-ai/chat-demo',
+      },
+      {
+        id: 'huggingface/pybot',
+        url: 'https://github.com/huggingface/pybot',
+        meta: 'Python · Zero Deps',
+        desc: '640k-line pure-Python rule-based chatbot with no weights or pip packages.',
+        cmd: 'gh repo clone huggingface/pybot; python -m pybot',
+      },
+    ],
+  },
+  'media-hardware': {
+    title: 'Video, Graphics & Hardware',
+    subtitle: 'AI video clippers, variable UI fonts, 3D pipelines, and Windows peripheral tools.',
+    envNote: 'Prebuilt Windows binaries via gh CLI; PeakCut requires winget install Gyan.FFmpeg.',
+    picks: [
+      {
+        id: 'haziqahmedqasmi/PeakCut',
+        url: 'https://github.com/haziqahmedqasmi/PeakCut',
+        meta: 'Python · Video Clipper',
+        desc: 'Self-hosted 9:16 livestream & video clipper (clone to C:\\peakcut for Windows path limits).',
+        cmd: 'winget install Gyan.FFmpeg; gh repo clone haziqahmedqasmi/PeakCut C:\\peakcut',
+      },
+      {
+        id: 'krisgfx9/Wireless-Device-Battery-Monitor',
+        url: 'https://github.com/krisgfx9/Wireless-Device-Battery-Monitor',
+        meta: 'C++/Win32 · BatteryHub',
+        desc: '350 KB Windows taskbar battery widget for mice, headsets & controllers.',
+        cmd: 'gh release download v1.1.0 -R krisgfx9/Wireless-Device-Battery-Monitor --pattern "BatteryHub-*"',
+      },
+      {
+        id: 'joshpuckett/allo',
+        url: 'https://github.com/joshpuckett/allo',
+        meta: 'OFL-1.1 · Variable Font',
+        desc: 'Open-source UI & display typeface with weight, roundness & optical-size axes.',
+        cmd: 'npm install allo-font',
+      },
+    ],
+  },
+  gaming: {
+    title: 'Gaming, Engines & Frame-Gen',
+    subtitle: 'Open-source game engines, neural frame generation, shaders, and controller utilities.',
+    envNote: 'Prebuilt Windows binaries via winget/gh (no C++ or Rust compiler needed to run).',
+    picks: [
+      {
+        id: 'godotengine/godot',
+        url: 'https://github.com/godotengine/godot',
+        meta: 'C++ · 120k+ stars',
+        desc: 'Multi-platform 2D & 3D open-source game engine with native Windows editor.',
+        cmd: 'winget install GodotEngine.GodotEngine',
+      },
+      {
+        id: 'apex-compute/ANR',
+        url: 'https://github.com/apex-compute/ANR',
+        meta: 'C++ · Neural Frame-Gen',
+        desc: 'Apex Neural Rendering frame generation & lossless comparison recorder for Windows.',
+        cmd: 'gh release download FG-V.B19 -R apex-compute/ANR --pattern "*windows*"',
+      },
+      {
+        id: 'bevyengine/bevy',
+        url: 'https://github.com/bevyengine/bevy',
+        meta: 'Rust · 49k+ stars',
+        desc: 'Data-driven ECS game engine in Rust (install Rustup via winget to compile games).',
+        cmd: 'winget install Rustlang.Rustup; gh repo clone bevyengine/bevy',
+      },
+    ],
+  },
+  emulators: {
+    title: 'Emulators & Console Tools',
+    subtitle: 'PlayStation, retro, Flash, and browser-based x86 emulation plus console dump tools.',
+    envNote: 'Download prebuilt Windows binaries directly with gh CLI (no C++/Rust build tools needed).',
+    picks: [
+      {
+        id: 'shadps4-emu/shadPS4',
+        url: 'https://github.com/shadps4-emu/shadPS4',
+        meta: 'C++ · 34k+ stars',
+        desc: 'Actively developed PlayStation 4 emulator for Windows, Linux, and macOS.',
+        cmd: 'gh release download -R shadps4-emu/shadPS4 --pattern "*win64*"',
+      },
+      {
+        id: 'RPCS3/rpcs3',
+        url: 'https://github.com/RPCS3/rpcs3',
+        meta: 'C++ · 20k+ stars',
+        desc: 'Open-source PlayStation 3 emulator and debugger with Vulkan/DX12 backends.',
+        cmd: 'gh release download -R RPCS3/rpcs3 --pattern "*win64*"',
+      },
+      {
+        id: 'ruffle-rs/ruffle',
+        url: 'https://github.com/ruffle-rs/ruffle',
+        meta: 'Rust · 18k+ stars',
+        desc: 'Memory-safe Flash Player emulator for desktop & WebAssembly.',
+        cmd: 'gh release download -R ruffle-rs/ruffle --pattern "*windows*"',
+      },
+      {
+        id: 'quer3q/kraken-mount',
+        url: 'https://github.com/quer3q/kraken-mount',
+        meta: 'Rust · PS5 Mounter',
+        desc: 'Minimalist PS5 game mounter supporting PKG, folder dumps, zstd, and lz4.',
+        cmd: 'gh release list -R quer3q/kraken-mount; gh repo clone quer3q/kraken-mount',
+      },
+    ],
+  },
+  vr: {
+    title: 'VR, WebXR & Spatial 3D',
+    subtitle: 'Wireless PC-to-headset VR streaming, WebXR frameworks, RE Engine VR mods & WebGPU 3D.',
+    envNote: 'ALVR & REFramework ship prebuilt Windows binaries via gh; A-Frame & WebGPU run via Node.js/browser.',
+    picks: [
+      {
+        id: 'alvr-org/ALVR',
+        url: 'https://github.com/alvr-org/ALVR',
+        meta: 'Rust · PC VR Streaming',
+        desc: 'Stream SteamVR games from your Windows PC to standalone headsets over Wi-Fi.',
+        cmd: 'gh release download -R alvr-org/ALVR --pattern "*windows*"',
+      },
+      {
+        id: 'aframevr/aframe',
+        url: 'https://github.com/aframevr/aframe',
+        meta: 'JavaScript · WebXR',
+        desc: 'Declarative HTML/ECS framework for building browser-based VR & AR experiences.',
+        cmd: 'npm install aframe',
+      },
+      {
+        id: 'praydog/REFramework',
+        url: 'https://github.com/praydog/REFramework',
+        meta: 'C++ · 6DOF VR Mods',
+        desc: 'Mod loader, scripting platform & full VR support for RE Engine games on Windows.',
+        cmd: 'gh release list -R praydog/REFramework; gh release download -R praydog/REFramework',
+      },
+    ],
+  },
+};
+
 function matchesGoal(repo, goal) {
   if (goal === 'all') return true;
   const text = `${repo.id} ${repo.summary} ${repo.topic}`.toLowerCase();
   switch (goal) {
     case 'local-ai':
-      return text.includes('agent') || text.includes('gateway') || text.includes('harness') || text.includes('llm') || text.includes('opencode') || text.includes('pybot');
-    case 'gaming-vr':
-      return text.includes('game') || text.includes('gaming') || text.includes('ps5') || text.includes('emulator') || text.includes('vr') || text.includes('3d') || text.includes('webgpu') || text.includes('gpucanvas') || text.includes('blender') || text.includes('pbr') || text.includes('frame generation') || text.includes('controller') || text.includes('point-cloud');
+      return text.includes('agent') || text.includes('gateway') || text.includes('harness') || text.includes('llm') || text.includes('opencode');
     case 'replace-paid':
-      return text.includes('self-hosted') || text.includes('docker') || text.includes('photoshop') || text.includes('converter') || text.includes('workflow') || text.includes('kiri') || text.includes('firecrawl');
-    case 'dev-reverse':
-      return text.includes('reverse') || text.includes('rust') || text.includes('skill') || text.includes('worktree') || text.includes('mcp') || text.includes('cc-switch') || text.includes('gstack');
+      return text.includes('self-hosted') || text.includes('docker') || text.includes('photoshop') || text.includes('converter') || text.includes('workflow');
     case 'zero-install':
-      return text.includes('offline') || text.includes('static') || text.includes('single') || text.includes('webgpu') || text.includes('chat-demo') || text.includes('lastbook');
+      return text.includes('offline') || text.includes('static') || text.includes('single') || text.includes('webgpu') || text.includes('chat-demo');
     case 'media-hardware':
-      return text.includes('video') || text.includes('battery') || text.includes('frame') || text.includes('typeface') || text.includes('clipper') || text.includes('raster') || text.includes('iptv');
+      return text.includes('video') || text.includes('battery') || text.includes('frame') || text.includes('typeface') || text.includes('clipper') || text.includes('raster');
+    case 'gaming':
+      return text.includes('game') || text.includes('frame') || text.includes('controller') || text.includes('xbox') || text.includes('playstation') || text.includes('shader') || text.includes('godot') || text.includes('bevy');
+    case 'emulators':
+      return text.includes('emulator') || text.includes('ps5') || text.includes('ps4') || text.includes('rpcs3') || text.includes('pkg') || text.includes('switch2') || text.includes('kraken-mount');
+    case 'vr':
+      return text.includes('vr') || text.includes('webxr') || text.includes('openxr') || text.includes('webgpu') || text.includes('3d') || text.includes('spatial') || text.includes('shader');
     default:
       return true;
   }
+}
+
+function renderGoalSpotlight(filteredRepos) {
+  if (!el.goalSpotlight) return;
+  const cfg = GOAL_CONFIG[state.goal];
+  if (!cfg) {
+    el.goalSpotlight.classList.add('hidden');
+    el.goalSpotlight.innerHTML = '';
+    return;
+  }
+
+  el.goalSpotlight.classList.remove('hidden');
+  el.goalSpotlight.innerHTML = `
+    <div class="goal-spotlight-head">
+      <div>
+        <h3>${escapeHtml(cfg.title)} <span class="topic-tag">${filteredRepos.length} in current feed</span></h3>
+        <p>${escapeHtml(cfg.subtitle)} <strong>Windows fit:</strong> ${escapeHtml(cfg.envNote)}</p>
+      </div>
+      <div class="goal-spotlight-actions">
+        <button type="button" class="btn-primary btn-sm" id="loadGoalStarterBtn">Load Starter .ps1</button>
+        <button type="button" class="copy-mini-btn" id="jumpToGoalFeedBtn">Jump to Feed ↓</button>
+      </div>
+    </div>
+    <div class="goal-picks-grid">
+      ${cfg.picks
+        .map(
+          (p) => `
+          <div class="goal-pick-card">
+            <div class="goal-pick-top">
+              <a class="goal-pick-name" href="${escapeHtml(p.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.id)}</a>
+              <span class="topic-tag">${escapeHtml(p.meta)}</span>
+            </div>
+            <p class="goal-pick-desc">${escapeHtml(p.desc)}</p>
+            <div class="goal-pick-cmd">
+              <code title="${escapeHtml(p.cmd)}">$ ${escapeHtml(p.cmd)}</code>
+              <button type="button" class="copy-mini-btn" data-goal-copy="${escapeHtml(p.cmd)}">Copy</button>
+            </div>
+          </div>
+        `
+        )
+        .join('')}
+    </div>
+  `;
+
+  el.goalSpotlight.querySelectorAll('[data-goal-copy]').forEach((btn) => {
+    btn.addEventListener('click', () => copyText(btn.dataset.goalCopy));
+  });
+
+  document.getElementById('jumpToGoalFeedBtn')?.addEventListener('click', () => {
+    document.getElementById('intelligence')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('loadGoalStarterBtn')?.addEventListener('click', () => {
+    const lines = [
+      `# StackPulse Starter Script — ${cfg.title}`,
+      '$ErrorActionPreference = "Stop"',
+      'Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"',
+      '',
+      ...cfg.picks.flatMap((p) => [`# ${p.id} (${p.meta})`, p.cmd, '']),
+    ];
+    const script = lines.join('\n').trim();
+    el.stackScriptPreview.querySelector('code').textContent = script;
+    copyText(script);
+    showToast(`Loaded ${cfg.title} starter into .ps1 preview & clipboard`);
+  });
 }
 
 function getFilteredRepos(windowRepos) {
@@ -384,14 +664,6 @@ function renderCounts(windowRepos) {
   document.getElementById('cat-saved').textContent = String(
     windowRepos.filter((r) => state.saved.has(r.id)).length
   );
-
-  const allMonthRepos = getWindowData('1m').repos;
-  for (const goal of ['local-ai', 'gaming-vr', 'replace-paid', 'dev-reverse', 'zero-install', 'media-hardware']) {
-    const elGoal = document.getElementById(`goal-count-${goal}`);
-    if (elGoal) {
-      elGoal.textContent = String(allMonthRepos.filter((r) => matchesGoal(r, goal)).length);
-    }
-  }
 }
 
 function renderFilters(windowRepos) {
@@ -820,6 +1092,7 @@ function render() {
   el.kpiReviewed.textContent = `${state.reviewed.size} reviewed`;
 
   renderAltFinder();
+  renderGoalSpotlight(filtered);
   renderStackBuilder(repos);
   renderCounts(repos);
   renderFilters(repos);
@@ -853,7 +1126,12 @@ async function fetchReports(notify = false) {
   }
 
   state.data = payload;
-  render();
+  const hashGoalMatch = location.hash.match(/^#goal=([a-z0-9-]+)$/i);
+  if (hashGoalMatch && GOAL_CONFIG[hashGoalMatch[1]] && state.goal === 'all') {
+    applyGoalSelection(hashGoalMatch[1], false);
+  } else {
+    render();
+  }
   if (notify) showToast(`Synced ${state.data.reportCount} report(s)`);
 }
 
@@ -883,48 +1161,59 @@ function connectLiveUpdates() {
   }, 60_000);
 }
 
+function applyGoalSelection(goal, shouldScroll = true) {
+  state.goal = goal;
+  state.page = 1;
+
+  if (goal !== 'all' && state.data) {
+    const currentMatches = getFilteredRepos(getWindowData(state.window).repos);
+    if (currentMatches.length === 0) {
+      for (const fallbackWin of ['1w', '1m']) {
+        const candidateMatches = getWindowData(fallbackWin).repos.filter((r) => matchesGoal(r, goal));
+        if (candidateMatches.length > 0) {
+          state.window = fallbackWin;
+          document.querySelectorAll('[data-window]').forEach((b) => {
+            const active = b.dataset.window === fallbackWin;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          break;
+        }
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-goal]').forEach((b) =>
+    b.classList.toggle('active', b.dataset.goal === state.goal)
+  );
+  el.resetGoalBtn.classList.toggle('hidden', state.goal === 'all');
+
+  if (state.goal === 'all') {
+    if (location.hash.startsWith('#goal=')) {
+      history.replaceState(null, '', location.pathname + location.search);
+    }
+  } else {
+    history.replaceState(null, '', `#goal=${encodeURIComponent(state.goal)}`);
+  }
+
+  render();
+
+  if (shouldScroll && state.goal !== 'all') {
+    el.goalSpotlight?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
 function bindEvents() {
   document.querySelectorAll('[data-goal]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetGoal = btn.dataset.goal;
-      state.goal = state.goal === targetGoal ? 'all' : targetGoal;
-      state.page = 1;
-      state.category = 'all';
-      state.topic = 'all';
-      state.language = 'all';
-
-      if (state.goal !== 'all') {
-        const currentMatches = getWindowData(state.window).repos.filter((r) =>
-          matchesGoal(r, state.goal)
-        ).length;
-        if (currentMatches < 2) {
-          state.window = '1m';
-          document.querySelectorAll('[data-window]').forEach((b) => {
-            const active = b.dataset.window === '1m';
-            b.classList.toggle('active', active);
-            b.setAttribute('aria-selected', active ? 'true' : 'false');
-          });
-        }
-      }
-
-      document.querySelectorAll('[data-category]').forEach((b) =>
-        b.classList.toggle('active', b.dataset.category === 'all')
-      );
-      document.querySelectorAll('[data-goal]').forEach((b) =>
-        b.classList.toggle('active', b.dataset.goal === state.goal)
-      );
-      el.resetGoalBtn.classList.toggle('hidden', state.goal === 'all');
-      render();
-      const feedTop = (document.querySelector('.workspace-main')?.offsetTop || 0) - 136;
-      window.scrollTo({ top: Math.max(0, feedTop), behavior: 'smooth' });
+      const nextGoal = state.goal === targetGoal ? 'all' : targetGoal;
+      applyGoalSelection(nextGoal, true);
     });
   });
 
   el.resetGoalBtn?.addEventListener('click', () => {
-    state.goal = 'all';
-    document.querySelectorAll('[data-goal]').forEach((b) => b.classList.remove('active'));
-    el.resetGoalBtn.classList.add('hidden');
-    render();
+    applyGoalSelection('all', false);
   });
 
   el.copyStackScriptBtn?.addEventListener('click', () => {
