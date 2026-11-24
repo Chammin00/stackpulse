@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-20T00:03:16.727Z",
-  "latestDate": "2026-11-19",
-  "reportCount": 9,
+  "generatedAt": "2026-11-21T16:24:54.111Z",
+  "latestDate": "2026-11-21",
+  "reportCount": 10,
   "baseline": [
     {
       "tool": "Git",
@@ -43,7 +43,7 @@
       "tool": "Docker",
       "status": "Not installed",
       "installed": false,
-      "notes": "Required for container-first workflows unless using a native runtime (winget install Docker.DockerDesktop)"
+      "notes": "Required for container-first stacks unless using a native runtime (winget install Docker.DockerDesktop)"
     },
     {
       "tool": "pnpm / bun",
@@ -71,6 +71,964 @@
     }
   ],
   "reports": [
+    {
+      "date": "2026-11-21",
+      "filename": "2026-11-21.md",
+      "title": "GitHub Daily Trending & Rising Projects Report — 2026-11-21",
+      "baseline": [
+        {
+          "tool": "Git",
+          "status": "Installed",
+          "installed": true,
+          "notes": "git version 2.53.0.windows.3"
+        },
+        {
+          "tool": "GitHub CLI (gh)",
+          "status": "Installed",
+          "installed": true,
+          "notes": "gh version 2.97.0 (authenticated as Chammin00)"
+        },
+        {
+          "tool": "Node.js / npm",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v24.20.0 (npm available)"
+        },
+        {
+          "tool": "Python",
+          "status": "Installed",
+          "installed": true,
+          "notes": "Python 3.12.10"
+        },
+        {
+          "tool": "uv",
+          "status": "Installed",
+          "installed": true,
+          "notes": "uv 0.12.5"
+        },
+        {
+          "tool": "winget",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v1.29.380"
+        },
+        {
+          "tool": "Docker",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required for container-first stacks unless using a native runtime (winget install Docker.DockerDesktop)"
+        },
+        {
+          "tool": "pnpm / bun",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "pnpm can be enabled via corepack enable; bun via winget install --id Oven-sh.Bun -e"
+        },
+        {
+          "tool": "Rust (cargo/rustc)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when building Rust projects from source (winget install Rustlang.Rustup)"
+        },
+        {
+          "tool": "Go (go)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when building Go projects from source (winget install GoLang.Go)"
+        },
+        {
+          "tool": "CMake / C++ build tools",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required only when compiling C/C++ apps from source"
+        }
+      ],
+      "popular": [
+        {
+          "id": "morluto/rea",
+          "owner": "morluto",
+          "name": "rea",
+          "rank": 1,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/morluto/rea",
+          "stars": 472304,
+          "forks": 115289,
+          "openIssues": 1382,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-04-14",
+          "pushed": "2026-11-21T15:02:40Z",
+          "release": "rea-agents-6.10.1",
+          "summary": "Reverse Engineer Anything (REA) — an MCP server and agent toolkit that inspects native binaries, JavaScript/Electron apps, .NET assemblies, and websites to explain runtime behavior with evidence and help construct clean-room equivalents.",
+          "apply": {
+            "raw": "- Runs directly with your installed **Node.js `v24.20.0`** (`npx`) to register REA's MCP server and workflow instructions with supported coding agents:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx rea-agents setup\n  ```\n- Static JS/Electron analysis works out of the box; native binary analysis optionally integrates with an existing Ghidra, Hopper, IDA, or Kuna installation if present. To inspect the source locally:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea\n  ```",
+            "notes": [
+              "Runs directly with your installed **Node.js `v24.20.0`** (`npx`) to register REA's MCP server and workflow instructions with supported coding agents:",
+              "Static JS/Electron analysis works out of the box; native binary analysis optionally integrates with an existing Ghidra, Hopper, IDA, or Kuna installation if present. To inspect the source locally:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx rea-agents setup"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone morluto/rea"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "openclaw/openclaw",
+          "owner": "openclaw",
+          "name": "openclaw",
+          "rank": 2,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/openclaw/openclaw",
+          "stars": 394959,
+          "forks": 82939,
+          "openIssues": 8709,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-11-24",
+          "pushed": "2026-11-21T14:59:07Z",
+          "release": "v2026.11.6",
+          "summary": "Self-hosted open-source personal AI assistant gateway keeping state, memory, and credentials local while bridging 20+ messaging surfaces (Discord, Slack, Teams, Telegram, WhatsApp, Signal, iMessage) and swappable model/agent plugins.",
+          "apply": {
+            "raw": "- Your installed **Node.js `v24.20.0`** meets the runtime baseline (upgrade to `24.22.1+` via `winget upgrade OpenJS.NodeJS.LTS` if you want the latest security patch level).\n- Install globally using `npm`, then run onboarding:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g openclaw@latest\n  openclaw onboard --install-daemon\n  ```\n- Alternative official Windows PowerShell installer:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iwr -useb https://openclaw.ai/install.ps1 | iex\n  ```\n- Note: Building the monorepo from source requires `pnpm` (currently **not installed**; run `corepack enable` first), and containerized deployment requires Docker (**not installed**).",
+            "notes": [
+              "Your installed **Node.js `v24.20.0`** meets the runtime baseline (upgrade to `24.22.1+` via `winget upgrade OpenJS.NodeJS.LTS` if you want the latest security patch level).",
+              "Install globally using `npm`, then run onboarding:",
+              "Alternative official Windows PowerShell installer:",
+              "Note: Building the monorepo from source requires `pnpm` (currently **not installed**; run `corepack enable` first), and containerized deployment requires Docker (**not installed**)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g openclaw@latest\n  openclaw onboard --install-daemon"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iwr -useb https://openclaw.ai/install.ps1 | iex"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "winget"
+            ],
+            "missingDeps": [
+              "Docker (optional/workaround)",
+              "pnpm (corepack)"
+            ]
+          }
+        },
+        {
+          "id": "NousResearch/hermes-agent",
+          "owner": "NousResearch",
+          "name": "hermes-agent",
+          "rank": 3,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "stars": 265129,
+          "forks": 59911,
+          "openIssues": 54149,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2025-07-22",
+          "pushed": "2026-11-21T13:30:30Z",
+          "release": "v0.23.3",
+          "summary": "Nous Research's self-improving autonomous agent featuring skill creation, FTS5 cross-session search, built-in cron scheduling, subagent delegation, and multi-platform gateway support (CLI/TUI, Telegram, Discord, Slack, WhatsApp, Signal).",
+          "apply": {
+            "raw": "- Native Windows PowerShell is supported without WSL (uses the local execution backend since **Docker is not installed**; Docker-isolated sandboxing requires Docker Desktop):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iex (irm https://hermes-agent.nousresearch.com/install.ps1)\n  ```\n- Or clone and run from source using **`gh`**, **`uv 0.12.5`**, and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -e .\n  ```",
+            "notes": [
+              "Native Windows PowerShell is supported without WSL (uses the local execution backend since **Docker is not installed**; Docker-isolated sandboxing requires Docker Desktop):",
+              "Or clone and run from source using **`gh`**, **`uv 0.12.5`**, and **Python `3.12.10`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  iex (irm https://hermes-agent.nousresearch.com/install.ps1)"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -e ."
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": [
+              "Docker (optional/workaround)"
+            ]
+          }
+        },
+        {
+          "id": "anomalyco/opencode",
+          "owner": "anomalyco",
+          "name": "opencode",
+          "rank": 4,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/anomalyco/opencode",
+          "stars": 228361,
+          "forks": 31015,
+          "openIssues": 4048,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-04-30",
+          "pushed": "2026-11-21T14:10:27Z",
+          "release": "v1.19.6",
+          "summary": "Open-source terminal and desktop AI coding agent featuring switchable `build` (full-access) and `plan` (read-only analysis) agents plus `@general` subagent orchestration.",
+          "apply": {
+            "raw": "- **CLI (via installed Node.js `v24.20.0` / `npm`):**\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g @opencode/cli@latest\n  ```\n- **Desktop / Standalone Windows Binary (via `gh`):** Release `v1.19.6` publishes both `opencode-desktop-win-x64.exe` and `opencode-windows-x64.zip`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.19.6 -R anomalyco/opencode --pattern \"opencode-desktop-win-x64.exe\"\n  .\\opencode-desktop-win-x64.exe\n  ```\n- Note: Building from source uses `bun` (**not installed**; install via `winget install --id Oven-sh.Bun -e` if contributing).",
+            "notes": [
+              "**CLI (via installed Node.js `v24.20.0` / `npm`):**",
+              "**Desktop / Standalone Windows Binary (via `gh`):** Release `v1.19.6` publishes both `opencode-desktop-win-x64.exe` and `opencode-windows-x64.zip`:",
+              "Note: Building from source uses `bun` (**not installed**; install via `winget install --id Oven-sh.Bun -e` if contributing)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g @opencode/cli@latest"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.19.6 -R anomalyco/opencode --pattern \"opencode-desktop-win-x64.exe\"\n  .\\opencode-desktop-win-x64.exe"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "n8n-io/n8n",
+          "owner": "n8n-io",
+          "name": "n8n",
+          "rank": 5,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/n8n-io/n8n",
+          "stars": 211595,
+          "forks": 61600,
+          "openIssues": 1250,
+          "language": "TypeScript",
+          "license": "Other (Fair-code)",
+          "created": "2019-06-22",
+          "pushed": "2026-11-21T14:59:01Z",
+          "release": "n8n@2.48.7",
+          "summary": "Fair-code workflow automation and native AI agent platform combining a visual node canvas with custom JavaScript/Python code nodes and 400+ integrations.",
+          "apply": {
+            "raw": "- **Important Environment Note:** n8n's primary quickstart defaults to **Docker**, which is **not installed** on this machine.\n- **Native Windows Option (Ready on Baseline via Node.js `v24.20.0`):** Run directly with `npx` or install globally (opens at `http://localhost:5678`):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx n8n\n  # Or install globally:\n  npm install -g n8n\n  n8n start\n  ```\n- **Docker Option (Optional):** Install Docker Desktop first via `winget install Docker.DockerDesktop`.",
+            "notes": [
+              "**Important Environment Note:** n8n's primary quickstart defaults to **Docker**, which is **not installed** on this machine.",
+              "**Native Windows Option (Ready on Baseline via Node.js `v24.20.0`):** Run directly with `npx` or install globally (opens at `http://localhost:5678`):",
+              "**Docker Option (Optional):** Install Docker Desktop first via `winget install Docker.DockerDesktop`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npx n8n\n  # Or install globally:\n  npm install -g n8n\n  n8n start"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "yt-dlp/yt-dlp",
+          "owner": "yt-dlp",
+          "name": "yt-dlp",
+          "rank": 6,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/yt-dlp/yt-dlp",
+          "stars": 209571,
+          "forks": 18505,
+          "openIssues": 2793,
+          "language": "Python",
+          "license": "Unlicense",
+          "created": "2020-10-26",
+          "pushed": "2026-11-21T00:05:22Z",
+          "release": "2026.10.26",
+          "summary": "Feature-rich command-line audio/video downloader supporting thousands of sites, custom format selection, SponsorBlock integration, metadata embedding, and Python embedding.",
+          "apply": {
+            "raw": "- **Fastest Path (via installed `winget` or `uv` + `Python 3.12.10`):**\n  ```powershell\n  winget install yt-dlp.yt-dlp\n  ```\n  Or install into an isolated Python CLI tool environment with **`uv`**:\n  ```powershell\n  uv tool install yt-dlp\n  ```\n- **Recommended Companion (`ffmpeg`):** Merging high-resolution video+audio streams or remuxing requires FFmpeg, which is **not installed**; add it via `winget install Gyan.FFmpeg`.",
+            "notes": [
+              "**Fastest Path (via installed `winget` or `uv` + `Python 3.12.10`):**",
+              "**Recommended Companion (`ffmpeg`):** Merging high-resolution video+audio streams or remuxing requires FFmpeg, which is **not installed**; add it via `winget install Gyan.FFmpeg`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install yt-dlp.yt-dlp"
+              },
+              {
+                "lang": "powershell",
+                "code": "uv tool install yt-dlp"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "winget"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "firecrawl/firecrawl",
+          "owner": "firecrawl",
+          "name": "firecrawl",
+          "rank": 7,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/firecrawl/firecrawl",
+          "stars": 205823,
+          "forks": 10760,
+          "openIssues": 896,
+          "language": "TypeScript",
+          "license": "AGPL-3.0",
+          "created": "2024-04-15",
+          "pushed": "2026-11-21T14:27:44Z",
+          "release": "v2.11.0",
+          "summary": "Web search, scraping, crawling, document parsing (PDF/DOCX), and interactive page-action infrastructure delivering LLM-ready Markdown and structured JSON for AI agents.",
+          "apply": {
+            "raw": "- **Important Environment Note:** Self-hosting the full Firecrawl stack (`docker-compose.yaml`) requires **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop` if local self-hosting is desired).\n- **Direct SDK Usage (Ready Now with `uv 0.12.5` + `Python 3.12.10`):** Connect to Firecrawl Cloud or a remote server:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install firecrawl-py\n  ```\n  Or clone locally with **`gh`** to inspect `SELF_HOST.md`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone firecrawl/firecrawl\n  ```",
+            "notes": [
+              "**Important Environment Note:** Self-hosting the full Firecrawl stack (`docker-compose.yaml`) requires **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop` if local self-hosting is desired).",
+              "**Direct SDK Usage (Ready Now with `uv 0.12.5` + `Python 3.12.10`):** Connect to Firecrawl Cloud or a remote server:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install firecrawl-py"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone firecrawl/firecrawl"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "ollama/ollama",
+          "owner": "ollama",
+          "name": "ollama",
+          "rank": 8,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/ollama/ollama",
+          "stars": 187821,
+          "forks": 19120,
+          "openIssues": 4713,
+          "language": "Go",
+          "license": "MIT",
+          "created": "2023-06-26",
+          "pushed": "2026-11-21T04:05:50Z",
+          "release": "v0.40.17",
+          "summary": "Local LLM runtime and REST API server (`localhost:11434`) for running open-weight models (Gemma, Qwen, DeepSeek, Kimi, GLM, MiniMax) and powering coding agents like Claude Code, OpenCode, and OpenClaw.",
+          "apply": {
+            "raw": "- **Fastest Path (Prebuilt Windows Installer via `winget` or `gh`):** `go` and `cmake` are **not installed**, so install the official Windows binary (`OllamaSetup.exe` is also in release `v0.40.17`):\n  ```powershell\n  winget install Ollama.Ollama\n  ```\n  Or via official PowerShell installer:\n  ```powershell\n  irm https://ollama.com/install.ps1 | iex\n  ```\n- **Connect from Python / Node.js:** After starting Ollama, integrate via `uv pip install ollama` or `npm install ollama`.",
+            "notes": [
+              "**Fastest Path (Prebuilt Windows Installer via `winget` or `gh`):** `go` and `cmake` are **not installed**, so install the official Windows binary (`OllamaSetup.exe` is also in release `v0.40.17`):",
+              "**Connect from Python / Node.js:** After starting Ollama, integrate via `uv pip install ollama` or `npm install ollama`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Ollama.Ollama"
+              },
+              {
+                "lang": "powershell",
+                "code": "irm https://ollama.com/install.ps1 | iex"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "uv",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "open-webui/open-webui",
+          "owner": "open-webui",
+          "name": "open-webui",
+          "rank": 9,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/open-webui/open-webui",
+          "stars": 159199,
+          "forks": 23105,
+          "openIssues": 279,
+          "language": "Svelte",
+          "license": "Other",
+          "created": "2023-10-06",
+          "pushed": "2026-11-21T14:59:03Z",
+          "release": "v0.13.4",
+          "summary": "Extensible, offline-capable self-hosted AI web interface supporting Ollama, OpenAI-compatible APIs, local RAG knowledge bases, and agent terminals.",
+          "apply": {
+            "raw": "- **Native Python Path (No Docker Needed):** Although Docker is **not installed**, Open WebUI runs directly on your installed **`uv 0.12.5`** and **Python `3.12.10`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  $env:DATA_DIR = \"$env:USERPROFILE\\.open-webui\"\n  uvx --python 3.12 open-webui@latest serve\n  ```\n  Then open `http://localhost:8080`.\n- **Docker Option (Optional):** Requires `winget install Docker.DockerDesktop`.",
+            "notes": [
+              "**Native Python Path (No Docker Needed):** Although Docker is **not installed**, Open WebUI runs directly on your installed **`uv 0.12.5`** and **Python `3.12.10`**:",
+              "**Docker Option (Optional):** Requires `winget install Docker.DockerDesktop`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  $env:DATA_DIR = \"$env:USERPROFILE\\.open-webui\"\n  uvx --python 3.12 open-webui@latest serve"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "anthropics/claude-code",
+          "owner": "anthropics",
+          "name": "claude-code",
+          "rank": 10,
+          "category": "popular",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/anthropics/claude-code",
+          "stars": 156532,
+          "forks": 25073,
+          "openIssues": 15946,
+          "language": "TypeScript",
+          "license": "Unspecified",
+          "created": "2025-02-22",
+          "pushed": "2026-11-21T06:03:58Z",
+          "release": "v2.1.330",
+          "summary": "Anthropic's agentic terminal coding assistant that reads repositories, edits files, runs shell/git workflows, and integrates with IDE and plugin ecosystems.",
+          "apply": {
+            "raw": "- **Recommended Windows Install (via `winget` or native PowerShell installer):**\n  ```powershell\n  winget install Anthropic.ClaudeCode\n  ```\n  Or run the official Windows installer:\n  ```powershell\n  irm https://claude.ai/install.ps1 | iex\n  ```\n- Note: The README marks npm installation (`npm install -g @anthropic-ai/claude-code`) as deprecated in favor of the native Windows installer / `winget` package; release `v2.1.330` also provides `claude-win32-x64.zip`.",
+            "notes": [
+              "**Recommended Windows Install (via `winget` or native PowerShell installer):**",
+              "Note: The README marks npm installation (`npm install -g @anthropic-ai/claude-code`) as deprecated in favor of the native Windows installer / `winget` package; release `v2.1.330` also provides `claude-win32-x64.zip`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Anthropic.ClaudeCode"
+              },
+              {
+                "lang": "powershell",
+                "code": "irm https://claude.ai/install.ps1 | iex"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "winget",
+              "git"
+            ],
+            "missingDeps": []
+          }
+        }
+      ],
+      "rising": [
+        {
+          "id": "erkamyaman/rust-anything",
+          "owner": "erkamyaman",
+          "name": "rust-anything",
+          "rank": 1,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/erkamyaman/rust-anything",
+          "stars": 7139,
+          "forks": 565,
+          "openIssues": 0,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-21T15:00:24Z",
+          "release": "v2.1.0",
+          "summary": "Incremental \"rewrite in Rust\" recording, bridging, diffing, and benchmarking harness (`v2.1.0`). Records edge cases from TypeScript/Node.js, Python, C, Go, Ruby, or Java codebases and verifies each ported Rust unit against recorded behavior before lifting into a standalone Rust binary.",
+          "apply": {
+            "raw": "- **Fastest Path (`npm` or Prebuilt Windows Binary):** Even though `cargo` / `rustc` are **not installed**, `rust-anything` ships on npm (via your **`Node.js v24.20.0`**) and also provides `rust-anything-v2.1.0-x86_64-pc-windows-msvc.zip` in release `v2.1.0`:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g rust-anything\n  rust-anything setup\n  ```\n  Or download the standalone Windows binary via **`gh`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v2.1.0 -R erkamyaman/rust-anything --pattern \"*windows-msvc.zip\"\n  ```\n- **Note on Compiling Ported Crates:** Actually compiling generated Rust units/crates requires installing Rust (`winget install Rustlang.Rustup`).",
+            "notes": [
+              "**Fastest Path (`npm` or Prebuilt Windows Binary):** Even though `cargo` / `rustc` are **not installed**, `rust-anything` ships on npm (via your **`Node.js v24.20.0`**) and also provides `rust-anything-v2.1.0-x86_64-pc-windows-msvc.zip` in release `v2.1.0`:",
+              "**Note on Compiling Ported Crates:** Actually compiling generated Rust units/crates requires installing Rust (`winget install Rustlang.Rustup`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  npm install -g rust-anything\n  rust-anything setup"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v2.1.0 -R erkamyaman/rust-anything --pattern \"*windows-msvc.zip\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "krisgfx9/Wireless-Device-Battery-Monitor",
+          "owner": "krisgfx9",
+          "name": "Wireless-Device-Battery-Monitor",
+          "rank": 2,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/krisgfx9/Wireless-Device-Battery-Monitor",
+          "stars": 5663,
+          "forks": 474,
+          "openIssues": 3613,
+          "language": "C++",
+          "license": "GPL-3.0",
+          "created": "2026-11-16",
+          "pushed": "2026-11-21T13:57:06Z",
+          "release": "v1.1.0",
+          "summary": "BatteryHub — a lightweight C++/Win32 Windows 10/11 taskbar and system-tray monitor displaying battery levels, alerts, and local history charts for wireless mice, headsets, keyboards, and PlayStation/Xbox/Bluetooth peripherals without vendor software.",
+          "apply": {
+            "raw": "- **Fastest Path (Prebuilt Windows Installer / Portable Zip):** C++ compilers (`cmake` / MSVC) are **not installed**, so download `BatteryHub-Setup-1.1.0.exe` or `BatteryHub-1.1.0-portable.zip` from release `v1.1.0` via **`gh`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.1.0 -R krisgfx9/Wireless-Device-Battery-Monitor --pattern \"BatteryHub-*\"\n  ```\n  Run `.\\BatteryHub-Setup-1.1.0.exe` or extract `BatteryHub-1.1.0-portable.zip`.",
+            "notes": [
+              "**Fastest Path (Prebuilt Windows Installer / Portable Zip):** C++ compilers (`cmake` / MSVC) are **not installed**, so download `BatteryHub-Setup-1.1.0.exe` or `BatteryHub-1.1.0-portable.zip` from release `v1.1.0` via **`gh`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.1.0 -R krisgfx9/Wireless-Device-Battery-Monitor --pattern \"BatteryHub-*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "CzzzzzzJ/mdldm-maitian",
+          "owner": "CzzzzzzJ",
+          "name": "mdldm-maitian",
+          "rank": 3,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/CzzzzzzJ/mdldm-maitian",
+          "stars": 1769,
+          "forks": 516,
+          "openIssues": 8,
+          "language": "JavaScript",
+          "license": "MIT",
+          "created": "2026-11-14",
+          "pushed": "2026-11-21T04:13:34Z",
+          "release": "media",
+          "summary": "Maitian (麦田) — open-source multi-platform creator publishing scheduler, analytics dashboard, and agent skill (`skills/maitian-publish`) supporting Bilibili, Douyin, Xiaohongshu, WeChat Channels, YouTube, X, and Instagram via a Chrome extension and built-in `node:sqlite`.",
+          "apply": {
+            "raw": "- **Demo & Local Run (Ready on Node.js `v24.20.0`):** Note that the repo originally targeted macOS (`launchd` auto-start), so Windows uses a community installer (`scripts/install-windows.ps1`, requiring Google Chrome and Node.js `22.5+` — your `v24.20.0` qualifies) without automatic `launchd` startup:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone CzzzzzzJ/mdldm-maitian\n  Set-Location \"mdldm-maitian\"\n  node src/demo.mjs\n  ```\n  Open `http://localhost:8788/?key=demo` to preview the dashboard with mock data, or run `node src/init.mjs` for full setup with the Chrome extension.",
+            "notes": [
+              "**Demo & Local Run (Ready on Node.js `v24.20.0`):** Note that the repo originally targeted macOS (`launchd` auto-start), so Windows uses a community installer (`scripts/install-windows.ps1`, requiring Google Chrome and Node.js `22.5+` — your `v24.20.0` qualifies) without automatic `launchd` startup:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone CzzzzzzJ/mdldm-maitian\n  Set-Location \"mdldm-maitian\"\n  node src/demo.mjs"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "haziqahmedqasmi/PeakCut",
+          "owner": "haziqahmedqasmi",
+          "name": "PeakCut",
+          "rank": 4,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/haziqahmedqasmi/PeakCut",
+          "stars": 1619,
+          "forks": 519,
+          "openIssues": 45,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-14",
+          "pushed": "2026-11-20T13:52:57Z",
+          "release": "",
+          "summary": "Self-hosted AI video and livestream clipper for YouTube, Twitch, Kick, and local files. Performs local speech-to-text, ranks moments with your own AI key (Gemini, OpenAI, Claude, Groq, OpenRouter, Ollama) or loudness heuristics, renders captioned 9:16 vertical clips, and supports multi-platform posting.",
+          "apply": {
+            "raw": "- **Critical Windows Path-Length Warning:** PeakCut warns against cloning into deep paths like `g:\\My Drive\\Antigravity\\Projects\\...` because Windows' 260-character path limit can prevent the speech model from loading. Clone into a short path such as `C:\\peakcut`.\n- **Missing Dependency (`ffmpeg`):** Install FFmpeg via **`winget`**, then create an isolated **`uv 0.12.5` + Python `3.12.10`** environment (instead of Docker, which is not installed):\n  ```powershell\n  winget install Gyan.FFmpeg\n  gh repo clone haziqahmedqasmi/PeakCut C:\\peakcut\n  Set-Location \"C:\\peakcut\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -r requirements.txt\n  python -m studio.server\n  ```\n  Open `http://127.0.0.1:8765`.",
+            "notes": [
+              "**Critical Windows Path-Length Warning:** PeakCut warns against cloning into deep paths like `g:\\My Drive\\Antigravity\\Projects\\...` because Windows' 260-character path limit can prevent the speech model from loading. Clone into a short path such as `C:\\peakcut`.",
+              "**Missing Dependency (`ffmpeg`):** Install FFmpeg via **`winget`**, then create an isolated **`uv 0.12.5` + Python `3.12.10`** environment (instead of Docker, which is not installed):"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Gyan.FFmpeg\n  gh repo clone haziqahmedqasmi/PeakCut C:\\peakcut\n  Set-Location \"C:\\peakcut\"\n  uv venv --python 3.12\n  .\\.venv\\Scripts\\Activate.ps1\n  uv pip install -r requirements.txt\n  python -m studio.server"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "iamajmeena/neonclipping",
+          "owner": "iamajmeena",
+          "name": "neonclipping",
+          "rank": 5,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/iamajmeena/neonclipping",
+          "stars": 1594,
+          "forks": 78,
+          "openIssues": 14,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-19",
+          "pushed": "2026-11-21T11:36:33Z",
+          "release": "v1.0.0",
+          "summary": "Local-first 9:16 short-form video clipping engine (no cloud upload, no API cost required). Uses audio-first downloads, YouTube word-timed captions (or local Whisper fallback), loudness/voice scoring, optional Ollama LLM hooks/titles, and 11 gaming/facecam layouts.",
+          "apply": {
+            "raw": "- Requires Python 3.10–3.13 (your **Python `3.12.10`** is supported) and **FFmpeg** (not installed — install via `winget install Gyan.FFmpeg`). No Docker required.\n- **Clone & Run (`gh` + `winget`):**\n  ```powershell\n  winget install Gyan.FFmpeg\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  .\\run.ps1\n  ```\n  Or download `NeonClipping-Setup.bat` from release `v1.0.0` via `gh release download v1.0.0 -R iamajmeena/neonclipping --pattern \"NeonClipping-Setup.bat\"`. Open `http://127.0.0.1:8770` once running (optional: install Ollama and run `ollama pull llama3.2:3b` for AI titles/hooks).",
+            "notes": [
+              "Requires Python 3.10–3.13 (your **Python `3.12.10`** is supported) and **FFmpeg** (not installed — install via `winget install Gyan.FFmpeg`). No Docker required.",
+              "**Clone & Run (`gh` + `winget`):**"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Gyan.FFmpeg\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone iamajmeena/neonclipping\n  Set-Location \"neonclipping\"\n  .\\run.ps1"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "sybil-solutions/inference-optimisation-skill",
+          "owner": "sybil-solutions",
+          "name": "inference-optimisation-skill",
+          "rank": 6,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/sybil-solutions/inference-optimisation-skill",
+          "stars": 1426,
+          "forks": 129,
+          "openIssues": 7,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-16T18:40:08Z",
+          "release": "",
+          "summary": "`SKILL.md`-compatible agent skill and zero-dependency standard-library Python benchmarking harness (`bench.py`, `ceiling.py`) for systematically hill-climbing local LLM serving throughput (decode, prefill, speculative decoding, KV cache, TTFT) with long-context retrieval gates.",
+          "apply": {
+            "raw": "- Runs directly with your installed **`gh`** and **Python `3.12.10`** (standard library only for the Python scripts; note that `queue.sh` and `mem.sh` are bash helpers targeting Linux/WSL2):\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone sybil-solutions/inference-optimisation-skill\n  Set-Location \"inference-optimisation-skill\"\n  python skills\\inference-optimisation\\scripts\\ceiling.py skills\\inference-optimisation\\examples\\ceiling-ornith-b390.json\n  ```\n- To install as a reusable agent skill locally:\n  ```powershell\n  New-Item -ItemType Directory -Force \"$env:USERPROFILE\\.claude\\skills\" | Out-Null\n  Copy-Item -Recurse \"skills\\inference-optimisation\" \"$env:USERPROFILE\\.claude\\skills\\\"\n  ```\n  *(Live benchmarking via `bench.py` requires an active OpenAI-compatible local endpoint such as Ollama, vLLM, or SGLang.)*",
+            "notes": [
+              "Runs directly with your installed **`gh`** and **Python `3.12.10`** (standard library only for the Python scripts; note that `queue.sh` and `mem.sh` are bash helpers targeting Linux/WSL2):",
+              "To install as a reusable agent skill locally:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone sybil-solutions/inference-optimisation-skill\n  Set-Location \"inference-optimisation-skill\"\n  python skills\\inference-optimisation\\scripts\\ceiling.py skills\\inference-optimisation\\examples\\ceiling-ornith-b390.json"
+              },
+              {
+                "lang": "powershell",
+                "code": "New-Item -ItemType Directory -Force \"$env:USERPROFILE\\.claude\\skills\" | Out-Null\n  Copy-Item -Recurse \"skills\\inference-optimisation\" \"$env:USERPROFILE\\.claude\\skills\\\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "joshpuckett/allo",
+          "owner": "joshpuckett",
+          "name": "allo",
+          "rank": 7,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/joshpuckett/allo",
+          "stars": 1290,
+          "forks": 38,
+          "openIssues": 6,
+          "language": "Python",
+          "license": "OFL-1.1",
+          "created": "2026-11-15",
+          "pushed": "2026-11-18T07:19:43Z",
+          "release": "v1.0.3",
+          "summary": "Free, open-source UI and display typeface featuring 3 variable axes (`opsz`, `wght`, `ROND`), 18 static OTF weights with true obliques, OpenType UI/coding ligatures, and WOFF2 web fonts.",
+          "apply": {
+            "raw": "- **For Web Projects (via installed `npm` / Node.js `v24.20.0`):**\n  ```powershell\n  npm install allo-font\n  ```\n  Then `import \"allo-font\";` (or `import \"allo-font/friendly\";`).\n- **For Windows Desktop Font Installation (via `gh`):** Download `Allo-1.0.3.zip`, extract, select the `.otf` or `AlloVariable.ttf` files, and right-click → **Install**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.0.3 -R joshpuckett/allo --pattern \"Allo-1.0.3.zip\"\n  ```",
+            "notes": [
+              "**For Web Projects (via installed `npm` / Node.js `v24.20.0`):**",
+              "**For Windows Desktop Font Installation (via `gh`):** Download `Allo-1.0.3.zip`, extract, select the `.otf` or `AlloVariable.ttf` files, and right-click → **Install**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npm install allo-font"
+              },
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v1.0.3 -R joshpuckett/allo --pattern \"Allo-1.0.3.zip\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "chuanqisun/spaceship",
+          "owner": "chuanqisun",
+          "name": "spaceship",
+          "rank": 8,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/chuanqisun/spaceship",
+          "stars": 1007,
+          "forks": 108,
+          "openIssues": 0,
+          "language": "HTML",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-20T15:52:59Z",
+          "release": "",
+          "summary": "Spaceship IDE — experimental realtime human-LLM steering interface (\"Steer ideas like a space pilot!\") demonstrating Focus Monitor, Attention Lock, Future Vector Steering, and realtime regeneration scrubbing for low-latency models.",
+          "apply": {
+            "raw": "- **Zero-Install Web Demo:** Try the hosted simulator at `https://chuanqisun.github.io/spaceship/` (optionally supply Cerebras or Gemini API keys stored locally in browser `localStorage`).\n- **Run Locally (via installed `gh` + `Python 3.12.10` static server):**\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone chuanqisun/spaceship\n  python -m http.server 8080 -d spaceship\n  ```\n  Open `http://localhost:8080` in Chrome or Edge.",
+            "notes": [
+              "**Zero-Install Web Demo:** Try the hosted simulator at `https://chuanqisun.github.io/spaceship/` (optionally supply Cerebras or Gemini API keys stored locally in browser `localStorage`).",
+              "**Run Locally (via installed `gh` + `Python 3.12.10` static server):**"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone chuanqisun/spaceship\n  python -m http.server 8080 -d spaceship"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "siliconjungle/shapeshift-labs-ink-studio",
+          "owner": "siliconjungle",
+          "name": "shapeshift-labs-ink-studio",
+          "rank": 9,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/siliconjungle/shapeshift-labs-ink-studio",
+          "stars": 924,
+          "forks": 74,
+          "openIssues": 6,
+          "language": "JavaScript",
+          "license": "MIT",
+          "created": "2026-11-16",
+          "pushed": "2026-11-21T06:19:16Z",
+          "release": "",
+          "summary": "Zero-dependency JavaScript toolkit (`@shapeshift-labs/ink-studio`) for sculpting signed-distance solids, baking them into pixel-art Gaussian splats, and simulating physics, particles, animation, and procedural worlds in Node CLI or WebGL 2 browsers.",
+          "apply": {
+            "raw": "- Requires Node.js `18+` with zero runtime dependencies — runs immediately on your installed **Node.js `v24.20.0`** and **`gh`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone siliconjungle/shapeshift-labs-ink-studio\n  Set-Location \"shapeshift-labs-ink-studio\"\n  node cli/ink-studio.js scenes\n  node cli/ink-studio.js render watcher --t 2.6 --colored\n  npm test\n  ```\n- Or install directly into another Node project from GitHub:\n  ```powershell\n  npm install github:siliconjungle/shapeshift-labs-ink-studio\n  npx ink-studio help\n  ```",
+            "notes": [
+              "Requires Node.js `18+` with zero runtime dependencies — runs immediately on your installed **Node.js `v24.20.0`** and **`gh`**:",
+              "Or install directly into another Node project from GitHub:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh repo clone siliconjungle/shapeshift-labs-ink-studio\n  Set-Location \"shapeshift-labs-ink-studio\"\n  node cli/ink-studio.js scenes\n  node cli/ink-studio.js render watcher --t 2.6 --colored\n  npm test"
+              },
+              {
+                "lang": "powershell",
+                "code": "npm install github:siliconjungle/shapeshift-labs-ink-studio\n  npx ink-studio help"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "Lemxy/WinRust",
+          "owner": "Lemxy",
+          "name": "WinRust",
+          "rank": 10,
+          "category": "rising",
+          "reportDate": "2026-11-21",
+          "url": "https://github.com/Lemxy/WinRust",
+          "stars": 881,
+          "forks": 44,
+          "openIssues": 22,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "created": "2026-11-17",
+          "pushed": "2026-11-21T14:46:56Z",
+          "release": "v0.5.3",
+          "summary": "Native Rust Windows 10/11 desktop shell and utility suite (no .NET, no Electron) bundling replacements for the taskbar (`topbar`), File Explorer (`rust-explorer`), NTFS search (`rust-search`), Task Manager (`rtaskmgr-win32`), disk usage map, and photo viewer with one-click install and rollback.",
+          "apply": {
+            "raw": "- **Important Caution:** WinRust modifies Windows shell/taskbar/search services and the executable is **not code-signed** (SmartScreen will warn). Test in a VM or spare machine first and verify a Windows restore point exists before enabling `rust-explorer`.\n- **Prebuilt Installer (No Rust Compiler Needed):** Although `cargo` is **not installed**, you can download `WinRust.exe` directly from release `v0.5.3` using **`gh`**:\n  ```powershell\n  Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v0.5.3 -R Lemxy/WinRust --pattern \"WinRust.exe\"\n  ```\n  Run `WinRust.exe` as Administrator and choose individual components (or **Remove all** to restore Windows defaults). Building from source requires Rust (`winget install Rustlang.Rustup`).",
+            "notes": [
+              "**Important Caution:** WinRust modifies Windows shell/taskbar/search services and the executable is **not code-signed** (SmartScreen will warn). Test in a VM or spare machine first and verify a Windows restore point exists before enabling `rust-explorer`.",
+              "**Prebuilt Installer (No Rust Compiler Needed):** Although `cargo` is **not installed**, you can download `WinRust.exe` directly from release `v0.5.3` using **`gh`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Set-Location \"g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects\"\n  gh release download v0.5.3 -R Lemxy/WinRust --pattern \"WinRust.exe\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        }
+      ],
+      "totalProjects": 20
+    },
     {
       "date": "2026-11-19",
       "filename": "2026-11-19.md",
