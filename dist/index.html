@@ -161,15 +161,19 @@
           <div class="utility-head">
             <div>
               <h2>Stack Script Builder (<span id="stackBuilderCount">0</span>)</h2>
-              <p>Save tools below to bundle their install commands into one runnable PowerShell script.</p>
+              <p>Quick-select tools below or batch-select to bundle their install commands into one PowerShell script.</p>
             </div>
             <div class="stack-builder-actions">
+              <button type="button" class="copy-mini-btn" id="selectPageStackBtn" title="Select all tools on current page">Select Page</button>
+              <button type="button" class="copy-mini-btn" id="selectAllStackBtn" title="Select all tools in active filter">Select All</button>
+              <button type="button" class="copy-mini-btn" id="clearStackBtn" title="Clear selected tools">Clear</button>
+              <button type="button" class="copy-mini-btn" id="selectStackTextBtn" title="Highlight script text">Select Text</button>
               <button type="button" class="copy-mini-btn" id="copyStackScriptBtn">Copy .ps1</button>
               <button type="button" class="btn-primary btn-sm" id="downloadStackScriptBtn">Download .ps1</button>
             </div>
           </div>
           <div class="stack-chips-wrap" id="stackChipsWrap">
-            <span class="stack-empty-hint">Click "Save" on any repository below to add it to your install script.</span>
+            <span class="stack-empty-hint">Check any repository or use "Select Page" / "Select All" to build your script.</span>
           </div>
           <pre class="stack-preview-code" id="stackScriptPreview"><code># Save repositories to generate a combined Windows PowerShell setup script</code></pre>
         </div>

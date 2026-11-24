@@ -34,10 +34,13 @@ function broadcastUpdate(filename) {
 
 let watchTimer = null;
 try {
-  fsSync.watch(REPORTS_DIR, { persistent: false }, (_eventType, filename) => {
+  const watcher = fsSync.watch(REPORTS_DIR, { persistent: false }, (_eventType, filename) => {
     if (!filename || !filename.endsWith('.md')) return;
     clearTimeout(watchTimer);
     watchTimer = setTimeout(() => broadcastUpdate(filename), 350);
+  });
+  watcher.on('error', () => {
+    // Ignore transient FSWatcher errors on Google Drive virtual mounts (errno -4094)
   });
 } catch {
   // Ignore if reports directory is absent at startup
@@ -48,6 +51,8 @@ const SECURITY_HEADERS = {
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+  'Content-Security-Policy':
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com; img-src 'self' data: https://github.com https://*.githubusercontent.com; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",
 };
 
 const server = http.createServer(async (req, res) => {

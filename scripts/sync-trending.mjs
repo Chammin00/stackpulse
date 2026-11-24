@@ -24,7 +24,7 @@ function getApplyInstructions(repo) {
     return [
       `- Runs natively on your installed **Node.js \`v24.20.0\`** and **\`npm\`**:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh repo clone ${fullName}`,
       `  Set-Location "${dirName}"`,
       `  npm install`,
@@ -36,7 +36,7 @@ function getApplyInstructions(repo) {
     return [
       `- Create an isolated environment with your installed **\`uv 0.12.5\`** and **Python \`3.12.10\`**:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh repo clone ${fullName}`,
       `  Set-Location "${dirName}"`,
       `  uv venv --python 3.12`,
@@ -49,7 +49,7 @@ function getApplyInstructions(repo) {
     return [
       `- **Prebuilt Release Path:** \`cargo\` / \`rustc\` are **not installed** on this machine; check for Windows release binaries via \`gh\` first:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh release list -R ${fullName}`,
       `  gh release download -R ${fullName} --pattern "*windows*"`,
       '  ```',
@@ -61,7 +61,7 @@ function getApplyInstructions(repo) {
     return [
       `- **Prebuilt Release Path:** \`go\` is **not installed** on this machine; download prebuilt Windows binaries via \`gh\`:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh release list -R ${fullName}`,
       `  gh release download -R ${fullName} --pattern "*windows*"`,
       '  ```',
@@ -73,7 +73,7 @@ function getApplyInstructions(repo) {
     return [
       `- **Prebuilt Windows Release:** C/C++ compilers are **not installed** on this machine; inspect and download releases via \`gh\`:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh release list -R ${fullName}`,
       `  gh release download -R ${fullName}`,
       '  ```',
@@ -84,7 +84,7 @@ function getApplyInstructions(repo) {
     return [
       `- **Note:** \`docker\` is **not installed** on this machine; clone with \`gh\` to inspect native or Kiri-compatible setup:`,
       '  ```powershell',
-      `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+      `  Set-Location "."`,
       `  gh repo clone ${fullName}`,
       '  ```',
     ].join('\n');
@@ -93,7 +93,7 @@ function getApplyInstructions(repo) {
   return [
     `- Clone and inspect locally with your installed **GitHub CLI (\`gh 2.97.0\`)**:`,
     '  ```powershell',
-    `  Set-Location "g:\\My Drive\\Antigravity\\Projects\\Popular Github Projects"`,
+    `  Set-Location "."`,
     `  gh repo clone ${fullName}`,
     '  ```',
   ].join('\n');

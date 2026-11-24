@@ -65,6 +65,10 @@ const el = {
   stackBuilderCount: document.getElementById('stackBuilderCount'),
   stackChipsWrap: document.getElementById('stackChipsWrap'),
   stackScriptPreview: document.getElementById('stackScriptPreview'),
+  selectPageStackBtn: document.getElementById('selectPageStackBtn'),
+  selectAllStackBtn: document.getElementById('selectAllStackBtn'),
+  clearStackBtn: document.getElementById('clearStackBtn'),
+  selectStackTextBtn: document.getElementById('selectStackTextBtn'),
   copyStackScriptBtn: document.getElementById('copyStackScriptBtn'),
   downloadStackScriptBtn: document.getElementById('downloadStackScriptBtn'),
   rightInspector: document.getElementById('rightInspector'),
@@ -97,6 +101,11 @@ function escapeHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function sanitizeHttpUrl(url) {
+  const trimmed = String(url ?? '').trim();
+  return /^https?:\/\//i.test(trimmed) ? trimmed : '#';
 }
 
 function formatNumber(n) {
@@ -194,13 +203,23 @@ function showToast(message) {
   }, 2000);
 }
 
-async function copyText(text) {
+async function copyText(text, customMessage = 'Copied to clipboard') {
   try {
     await navigator.clipboard.writeText(text);
-    showToast('Copied to clipboard');
+    showToast(customMessage);
   } catch {
     showToast('Clipboard permission denied');
   }
+}
+
+function selectElementText(targetNode) {
+  if (!targetNode || typeof window.getSelection === 'undefined') return;
+  const selection = window.getSelection();
+  const range = document.createRange();
+  range.selectNodeContents(targetNode);
+  selection.removeAllRanges();
+  selection.addRange(range);
+  showToast('Code selected (Ctrl+C to copy)');
 }
 
 function getWindowData(windowKey) {
@@ -772,6 +791,9 @@ function renderLedger(filteredRepos) {
         <article class="ledger-row ${isSelected ? 'selected' : ''}" data-id="${escapeHtml(repo.id)}">
           <div class="row-header">
             <div class="row-title-wrap">
+              <label class="repo-check-label" title="Quick-select for Stack Script Builder">
+                <input type="checkbox" class="repo-select-cb" data-check-save="${escapeHtml(repo.id)}" ${isSaved ? 'checked' : ''} />
+              </label>
               <span class="row-rank">#${displayRank}</span>
               <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" loading="lazy" />
               <span class="row-repo-name">${escapeHtml(repo.id)}</span>
@@ -788,7 +810,10 @@ function renderLedger(filteredRepos) {
             cmd
               ? `<div class="row-cmd-inline">
                   <code class="row-cmd-text">$ ${escapeHtml(cmd)}</code>
-                  <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+                  <div class="row-cmd-actions">
+                    <button type="button" class="copy-mini-btn" data-select-inline="true" title="Highlight command text">Select</button>
+                    <button type="button" class="copy-mini-btn" data-copy="${escapeHtml(cmd)}">Copy</button>
+                  </div>
                 </div>`
               : ''
           }
@@ -823,6 +848,33 @@ function renderLedger(filteredRepos) {
 
   el.repoGrid.querySelectorAll('.ledger-row').forEach((row) => {
     row.addEventListener('click', (e) => {
+      const checkLabel = e.target.closest('.repo-check-label');
+      if (checkLabel) {
+        e.stopPropagation();
+        const cb = checkLabel.querySelector('[data-check-save]');
+        if (cb && e.target === cb) {
+          const id = cb.dataset.checkSave;
+          if (cb.checked) {
+            state.saved.add(id);
+            showToast('Added to Stack Script');
+          } else {
+            state.saved.delete(id);
+            showToast('Removed from Stack Script');
+          }
+          saveSet(STORAGE_KEYS.saved, state.saved);
+          render();
+        }
+        return;
+      }
+
+      const selectInlineBtn = e.target.closest('[data-select-inline]');
+      if (selectInlineBtn) {
+        e.stopPropagation();
+        const codeNode = row.querySelector('.row-cmd-text');
+        selectElementText(codeNode);
+        return;
+      }
+
       const copyBtn = e.target.closest('[data-copy]');
       if (copyBtn) {
         e.stopPropagation();
@@ -873,18 +925,53 @@ function renderBrief(allWindowRepos) {
     return;
   }
 
+  let totalLinesCount = 0;
   const commandsHtml = repo.apply.commands
-    .map(
-      (cmd, idx) => `
-      <div class="code-block-card">
+    .map((cmd, idx) => {
+      const rawLines = (cmd.code || '')
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => l && !/^Set-Location\s+(?:-Path\s+)?["']?[gG]:\\My Drive\\/i.test(l));
+      totalLinesCount += rawLines.length;
+
+      const linesRowsHtml = rawLines
+        .map(
+          (lineText, lineIdx) => `
+          <div class="code-line-row" data-block-idx="${idx}" data-line-idx="${lineIdx}">
+            <label class="code-line-label">
+              <input
+                type="checkbox"
+                class="code-line-cb"
+                data-line-cb="${idx}:${lineIdx}"
+                data-block-parent="${idx}"
+                data-line-code="${escapeHtml(lineText)}"
+                checked
+              />
+              <code class="code-line-text">${escapeHtml(lineText)}</code>
+            </label>
+            <button type="button" class="copy-line-btn" data-copy-line="${escapeHtml(lineText)}" title="Copy this line">Copy</button>
+          </div>
+        `
+        )
+        .join('');
+
+      return `
+      <div class="code-block-card" data-code-card="${idx}">
         <div class="code-block-bar">
-          <span>${escapeHtml(cmd.lang || 'powershell')}</span>
-          <button type="button" class="copy-mini-btn" data-cmd-idx="${idx}">Copy</button>
+          <label class="code-block-check-label" title="Toggle all lines in this block">
+            <input type="checkbox" class="code-block-cb" data-block-cb="${idx}" checked />
+            <span>Option ${idx + 1} · ${escapeHtml(cmd.lang || 'powershell')}</span>
+          </label>
+          <div class="code-block-actions">
+            <button type="button" class="copy-mini-btn" data-select-block="${idx}" title="Highlight raw text in this block">Select Text</button>
+            <button type="button" class="copy-mini-btn" data-cmd-idx="${idx}">Copy Block</button>
+          </div>
         </div>
-        <pre class="code-block-pre"><code>${escapeHtml(cmd.code)}</code></pre>
+        <div class="code-lines-list" data-lines-container="${idx}">${linesRowsHtml}</div>
+        <pre class="code-block-pre hidden" data-raw-pre="${idx}"><code>${escapeHtml(cmd.code)}</code></pre>
       </div>
-    `
-    )
+    `;
+    })
     .join('');
 
   const notesHtml = repo.apply.notes.length
@@ -902,13 +989,29 @@ function renderBrief(allWindowRepos) {
     ),
   ].join('');
 
+  const quickSelectToolbarHtml =
+    repo.apply.commands.length > 0
+      ? `
+        <div class="brief-cmd-toolbar">
+          <div class="brief-cmd-toolbar-left">
+            <button type="button" class="copy-mini-btn" id="playbookToggleAllBtn" data-all-checked="true">Deselect All</button>
+            <button type="button" class="copy-mini-btn" id="playbookToggleRawBtn">Raw Text View</button>
+          </div>
+          <div class="brief-cmd-toolbar-right">
+            <button type="button" class="copy-mini-btn" id="playbookCopySelectedBtn">Copy Selected (${totalLinesCount})</button>
+            <button type="button" class="copy-mini-btn" id="playbookCopyAllBtn">Copy All</button>
+          </div>
+        </div>
+      `
+      : '';
+
   el.inspectorBody.innerHTML = `
     <div class="brief-head">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
         <img class="repo-avatar" src="${escapeHtml(getAvatarUrl(repo.owner))}" alt="${escapeHtml(repo.owner)} avatar" />
         <div>
           <h2 style="margin:0;">${escapeHtml(repo.id)}</h2>
-          <a class="brief-link" href="${escapeHtml(repo.url)}" target="_blank" rel="noopener noreferrer">
+          <a class="brief-link" href="${escapeHtml(sanitizeHttpUrl(repo.url))}" target="_blank" rel="noopener noreferrer">
             <span>Open on GitHub</span>
           </a>
         </div>
@@ -953,17 +1056,119 @@ function renderBrief(allWindowRepos) {
     </div>
 
     <div class="brief-section">
-      <h3>Quick-Start Commands</h3>
+      <div class="brief-section-head">
+        <h3>Quick-Start Commands</h3>
+        <span class="brief-cmd-hint">Tick the exact lines or blocks you want to copy</span>
+      </div>
       ${notesHtml}
+      ${quickSelectToolbarHtml}
       ${commandsHtml}
     </div>
   `;
+
+  function updatePlaybookSelectionCounts() {
+    const allLineCbs = [...el.inspectorBody.querySelectorAll('.code-line-cb')];
+    const checkedCbs = allLineCbs.filter((cb) => cb.checked);
+    const copySelBtn = el.inspectorBody.querySelector('#playbookCopySelectedBtn');
+    const toggleAllBtn = el.inspectorBody.querySelector('#playbookToggleAllBtn');
+
+    if (copySelBtn) {
+      copySelBtn.textContent = `Copy Selected (${checkedCbs.length})`;
+    }
+    if (toggleAllBtn) {
+      const allChecked = allLineCbs.length > 0 && checkedCbs.length === allLineCbs.length;
+      toggleAllBtn.dataset.allChecked = allChecked ? 'true' : 'false';
+      toggleAllBtn.textContent = allChecked ? 'Deselect All' : 'Select All';
+    }
+
+    el.inspectorBody.querySelectorAll('.code-block-cb').forEach((blockCb) => {
+      const bIdx = blockCb.dataset.blockCb;
+      const blockLines = [...el.inspectorBody.querySelectorAll(`.code-line-cb[data-block-parent="${bIdx}"]`)];
+      const blockChecked = blockLines.filter((cb) => cb.checked);
+      blockCb.checked = blockLines.length > 0 && blockChecked.length === blockLines.length;
+      blockCb.indeterminate = blockChecked.length > 0 && blockChecked.length < blockLines.length;
+    });
+  }
+
+  el.inspectorBody.querySelectorAll('.code-line-cb').forEach((cb) => {
+    cb.addEventListener('change', updatePlaybookSelectionCounts);
+  });
+
+  el.inspectorBody.querySelectorAll('.code-block-cb').forEach((blockCb) => {
+    blockCb.addEventListener('change', () => {
+      const bIdx = blockCb.dataset.blockCb;
+      el.inspectorBody
+        .querySelectorAll(`.code-line-cb[data-block-parent="${bIdx}"]`)
+        .forEach((lineCb) => {
+          lineCb.checked = blockCb.checked;
+        });
+      updatePlaybookSelectionCounts();
+    });
+  });
+
+  el.inspectorBody.querySelector('#playbookToggleAllBtn')?.addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const nextState = btn.dataset.allChecked !== 'true';
+    el.inspectorBody.querySelectorAll('.code-line-cb').forEach((cb) => {
+      cb.checked = nextState;
+    });
+    updatePlaybookSelectionCounts();
+  });
+
+  el.inspectorBody.querySelector('#playbookToggleRawBtn')?.addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const showingRaw = btn.dataset.raw === 'true';
+    btn.dataset.raw = showingRaw ? 'false' : 'true';
+    btn.textContent = showingRaw ? 'Raw Text View' : 'Checklist View';
+    el.inspectorBody.querySelectorAll('[data-lines-container]').forEach((node) => {
+      node.classList.toggle('hidden', !showingRaw);
+    });
+    el.inspectorBody.querySelectorAll('[data-raw-pre]').forEach((node) => {
+      node.classList.toggle('hidden', showingRaw);
+    });
+  });
+
+  el.inspectorBody.querySelector('#playbookCopySelectedBtn')?.addEventListener('click', () => {
+    const selectedLines = [...el.inspectorBody.querySelectorAll('.code-line-cb:checked')].map(
+      (cb) => cb.dataset.lineCode
+    );
+    if (selectedLines.length === 0) {
+      showToast('Select at least one command line first');
+      return;
+    }
+    copyText(selectedLines.join('\n'), `Copied ${selectedLines.length} selected line(s)`);
+  });
+
+  el.inspectorBody.querySelector('#playbookCopyAllBtn')?.addEventListener('click', () => {
+    const allBlocks = repo.apply.commands.map((c) => c.code).join('\n\n');
+    copyText(allBlocks, 'Copied all playbook commands');
+  });
+
+  el.inspectorBody.querySelectorAll('[data-copy-line]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      copyText(btn.dataset.copyLine, 'Copied command line');
+    });
+  });
+
+  el.inspectorBody.querySelectorAll('[data-select-block]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = Number(btn.dataset.selectBlock);
+      const rawPre = el.inspectorBody.querySelector(`[data-raw-pre="${idx}"]`);
+      const linesContainer = el.inspectorBody.querySelector(`[data-lines-container="${idx}"]`);
+      if (rawPre && rawPre.classList.contains('hidden')) {
+        rawPre.classList.remove('hidden');
+        linesContainer?.classList.add('hidden');
+      }
+      selectElementText(rawPre?.querySelector('code') || rawPre);
+    });
+  });
 
   el.inspectorBody.querySelectorAll('[data-cmd-idx]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const idx = Number(btn.dataset.cmdIdx);
       const code = repo.apply.commands[idx]?.code || '';
-      copyText(code);
+      copyText(code, `Copied Option ${idx + 1}`);
     });
   });
 }
@@ -1216,9 +1421,41 @@ function bindEvents() {
     applyGoalSelection('all', false);
   });
 
+  el.selectPageStackBtn?.addEventListener('click', () => {
+    const { repos } = getWindowData(state.window);
+    const filtered = getFilteredRepos(repos);
+    const startIdx = (state.page - 1) * PAGE_SIZE;
+    const pageRepos = filtered.slice(startIdx, startIdx + PAGE_SIZE);
+    pageRepos.forEach((r) => state.saved.add(r.id));
+    saveSet(STORAGE_KEYS.saved, state.saved);
+    render();
+    showToast(`Selected ${pageRepos.length} tools on current page`);
+  });
+
+  el.selectAllStackBtn?.addEventListener('click', () => {
+    const { repos } = getWindowData(state.window);
+    const filtered = getFilteredRepos(repos);
+    filtered.forEach((r) => state.saved.add(r.id));
+    saveSet(STORAGE_KEYS.saved, state.saved);
+    render();
+    showToast(`Selected all ${filtered.length} tools in active view`);
+  });
+
+  el.clearStackBtn?.addEventListener('click', () => {
+    state.saved.clear();
+    saveSet(STORAGE_KEYS.saved, state.saved);
+    render();
+    showToast('Cleared Stack Script Builder');
+  });
+
+  el.selectStackTextBtn?.addEventListener('click', () => {
+    const codeNode = el.stackScriptPreview?.querySelector('code') || el.stackScriptPreview;
+    selectElementText(codeNode);
+  });
+
   el.copyStackScriptBtn?.addEventListener('click', () => {
     const { repos } = getWindowData(state.window);
-    copyText(buildStackScript(repos));
+    copyText(buildStackScript(repos), 'Copied Stack Script (.ps1)');
   });
 
   el.downloadStackScriptBtn?.addEventListener('click', () => {

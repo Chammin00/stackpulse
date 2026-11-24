@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fresh-new-tech-v8';
+const CACHE_NAME = 'fresh-new-tech-v9';
 const APP_SHELL = [
   './',
   './index.html',
@@ -6,6 +6,7 @@ const APP_SHELL = [
   './app.js',
   './icon.svg',
   './manifest.webmanifest',
+  './data/reports.json',
 ];
 
 self.addEventListener('install', (event) => {
