@@ -103,6 +103,13 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function formatInlineMarkdown(text) {
+  const escaped = escapeHtml(text);
+  return escaped
+    .replace(/\*\*((?:[^*]|\*(?!\*))+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
+}
+
 function sanitizeHttpUrl(url) {
   const trimmed = String(url ?? '').trim();
   return /^https?:\/\//i.test(trimmed) ? trimmed : '#';
@@ -976,7 +983,7 @@ function renderBrief(allWindowRepos) {
 
   const notesHtml = repo.apply.notes.length
     ? `<ul class="brief-notes">${repo.apply.notes
-        .map((n) => `<li>${escapeHtml(n.replace(/`/g, ''))}</li>`)
+        .map((n) => `<li>${formatInlineMarkdown(n)}</li>`)
         .join('')}</ul>`
     : '';
 
@@ -1047,7 +1054,7 @@ function renderBrief(allWindowRepos) {
 
     <div class="brief-section">
       <h3>What It Does</h3>
-      <p class="brief-summary-text">${escapeHtml(repo.summary)}</p>
+      <p class="brief-summary-text">${formatInlineMarkdown(repo.summary)}</p>
     </div>
 
     <div class="brief-section">

@@ -1115,6 +1115,23 @@ select:focus-visible {
   color: var(--ink-body);
 }
 
+.brief-notes strong,
+.brief-summary-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.brief-notes code,
+.brief-summary-text code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--ink);
+}
+
 .code-block-card {
   border: 1px solid var(--border-strong);
   border-radius: 8px;
