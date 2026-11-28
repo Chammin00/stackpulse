@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-11-26T16:58:35.646Z",
-  "latestDate": "2026-11-26",
-  "reportCount": 15,
+  "generatedAt": "2026-11-27T15:16:27.486Z",
+  "latestDate": "2026-11-27",
+  "reportCount": 16,
   "baseline": [
     {
       "tool": "Git",
       "status": "Installed",
       "installed": true,
-      "notes": "git version 2.53.0.windows.3"
+      "notes": "git version 2.53.0.windows.3 (git-lfs/3.7.1 also installed)"
     },
     {
       "tool": "GitHub CLI (gh)",
@@ -43,7 +43,7 @@
       "tool": "FFmpeg",
       "status": "Installed",
       "installed": true,
-      "notes": "ffmpeg 9.0.2 (Gyan.FFmpeg winget package)"
+      "notes": "ffmpeg 9.0.2 (Gyan.FFmpeg)"
     },
     {
       "tool": ".NET SDK",
@@ -55,7 +55,7 @@
       "tool": "Vulkan Runtime",
       "status": "Installed",
       "installed": true,
-      "notes": "vulkaninfo.exe present (C:\\Windows\\system32\\vulkaninfo.exe)"
+      "notes": "vulkaninfo.exe present (C:\\Windows\\System32\\vulkaninfo.exe)"
     },
     {
       "tool": "Docker",
@@ -89,6 +89,1510 @@
     }
   ],
   "reports": [
+    {
+      "date": "2026-11-27",
+      "filename": "2026-11-27.md",
+      "title": "GitHub Daily Trending & Rising Projects Report — 2026-11-27",
+      "baseline": [
+        {
+          "tool": "Git",
+          "status": "Installed",
+          "installed": true,
+          "notes": "git version 2.53.0.windows.3 (git-lfs/3.7.1 also installed)"
+        },
+        {
+          "tool": "GitHub CLI (gh)",
+          "status": "Installed",
+          "installed": true,
+          "notes": "gh version 2.97.0"
+        },
+        {
+          "tool": "Node.js / npm",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v24.20.0 (npm and npx available)"
+        },
+        {
+          "tool": "Python",
+          "status": "Installed",
+          "installed": true,
+          "notes": "Python 3.12.10"
+        },
+        {
+          "tool": "uv",
+          "status": "Installed",
+          "installed": true,
+          "notes": "uv 0.12.5"
+        },
+        {
+          "tool": "winget",
+          "status": "Installed",
+          "installed": true,
+          "notes": "v1.29.380"
+        },
+        {
+          "tool": "FFmpeg",
+          "status": "Installed",
+          "installed": true,
+          "notes": "ffmpeg 9.0.2 (Gyan.FFmpeg)"
+        },
+        {
+          "tool": ".NET SDK",
+          "status": "Installed",
+          "installed": true,
+          "notes": ".NET SDK 10.0.300"
+        },
+        {
+          "tool": "Vulkan Runtime",
+          "status": "Installed",
+          "installed": true,
+          "notes": "vulkaninfo.exe present (C:\\Windows\\System32\\vulkaninfo.exe)"
+        },
+        {
+          "tool": "Docker",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required for container-first stacks (winget install Docker.DockerDesktop)"
+        },
+        {
+          "tool": "pnpm / bun",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "pnpm can be enabled via corepack enable; bun via winget install --id Oven-sh.Bun -e"
+        },
+        {
+          "tool": "Rust (cargo/rustc)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required when building Rust crates from source (winget install Rustlang.Rustup)"
+        },
+        {
+          "tool": "Go (go)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required when building Go projects from source (winget install GoLang.Go)"
+        },
+        {
+          "tool": "C/C++ Build Tools (cl/cmake)",
+          "status": "Not installed",
+          "installed": false,
+          "notes": "Required when compiling C/C++ or MSVC-linked projects (winget install Kitware.CMake + Visual Studio C++ workload)"
+        }
+      ],
+      "popular": [
+        {
+          "id": "morluto/rea",
+          "owner": "morluto",
+          "name": "rea",
+          "rank": 1,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/morluto/rea",
+          "stars": 480683,
+          "forks": 116762,
+          "openIssues": 1130,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-04-14",
+          "pushed": "2026-11-27T14:25:42Z",
+          "release": "rea-agents-6.10.1",
+          "summary": "Reverse Engineer Anything (REA) — a CLI and MCP server (`rea-agents`) bridging coding agents to reverse-engineering workflows across native binaries, JavaScript/Electron applications, .NET assemblies, and runtime behavior.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Run directly with your installed **Node.js `v24.20.0`** (`npx`) to register REA's MCP server and skills with supported coding agents:\n  ```powershell\n  npx rea-agents setup\n  ```\n- Or clone and inspect the repository locally using **`gh 2.97.0`**:\n  ```powershell\n  gh repo clone morluto/rea\n  ```\n- Note: Static JS/Electron/website workflows work immediately (and **.NET SDK `10.0.300`** is installed for .NET target inspection); native binary disassembly bridges optionally require an external Ghidra, Hopper, IDA, or Kuna installation when analyzing compiled executables.",
+            "notes": [
+              "**Ready on Baseline:** Run directly with your installed **Node.js `v24.20.0`** (`npx`) to register REA's MCP server and skills with supported coding agents:",
+              "Or clone and inspect the repository locally using **`gh 2.97.0`**:",
+              "Note: Static JS/Electron/website workflows work immediately (and **.NET SDK `10.0.300`** is installed for .NET target inspection); native binary disassembly bridges optionally require an external Ghidra, Hopper, IDA, or Kuna installation when analyzing compiled executables."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx rea-agents setup"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone morluto/rea"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "openclaw/openclaw",
+          "owner": "openclaw",
+          "name": "openclaw",
+          "rank": 2,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/openclaw/openclaw",
+          "stars": 395334,
+          "forks": 83016,
+          "openIssues": 9314,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-11-24",
+          "pushed": "2026-11-27T15:01:20Z",
+          "release": "v2026.11.10",
+          "summary": "Self-hosted open-source personal AI assistant and local gateway that keeps state, memory, and credentials on your own hardware while bridging 20+ chat channels and swappable model/agent plugins.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install natively on Windows with your installed **Node.js `v24.20.0`** (`npm`) without Docker and launch the local onboarding wizard:\n  ```powershell\n  npm install -g openclaw@latest --allow-scripts=openclaw\n  openclaw onboard --install-daemon\n  openclaw gateway status\n  openclaw dashboard\n  ```\n- Or run the official Windows PowerShell installer:\n  ```powershell\n  Invoke-RestMethod -UseBasicParsing https://openclaw.ai/install.ps1 | Invoke-Expression\n  ```\n- Note: Containerized deployment requires **Docker** (**not installed**; `winget install Docker.DockerDesktop`), and building the monorepo from source requires `pnpm` (**not installed**; enable with `corepack enable`).",
+            "notes": [
+              "**Ready on Baseline:** Install natively on Windows with your installed **Node.js `v24.20.0`** (`npm`) without Docker and launch the local onboarding wizard:",
+              "Or run the official Windows PowerShell installer:",
+              "Note: Containerized deployment requires **Docker** (**not installed**; `winget install Docker.DockerDesktop`), and building the monorepo from source requires `pnpm` (**not installed**; enable with `corepack enable`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npm install -g openclaw@latest --allow-scripts=openclaw\n  openclaw onboard --install-daemon\n  openclaw gateway status\n  openclaw dashboard"
+              },
+              {
+                "lang": "powershell",
+                "code": "Invoke-RestMethod -UseBasicParsing https://openclaw.ai/install.ps1 | Invoke-Expression"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "winget"
+            ],
+            "missingDeps": [
+              "pnpm (corepack)"
+            ]
+          }
+        },
+        {
+          "id": "obra/superpowers",
+          "owner": "obra",
+          "name": "superpowers",
+          "rank": 3,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/obra/superpowers",
+          "stars": 328038,
+          "forks": 29134,
+          "openIssues": 374,
+          "language": "Shell",
+          "license": "MIT",
+          "created": "2025-10-09",
+          "pushed": "2026-11-26T11:33:33Z",
+          "release": "v7.0.2",
+          "summary": "Agentic skills framework and structured software development methodology enforcing brainstormed specs, implementation plans, red/green TDD, and subagent-driven development across coding agents including Google Antigravity, Claude Code, Codex, and OpenCode.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install directly as a native **Google Antigravity** plugin (`agy` CLI) or clone with **`gh 2.97.0`** to inspect the composable skills:\n  ```powershell\n  agy plugin install https://github.com/obra/superpowers\n  ```\n- Or clone into a local workspace for inspection or manual installation into another agent harness:\n  ```powershell\n  gh repo clone obra/superpowers\n  ```",
+            "notes": [
+              "**Ready on Baseline:** Install directly as a native **Google Antigravity** plugin (`agy` CLI) or clone with **`gh 2.97.0`** to inspect the composable skills:",
+              "Or clone into a local workspace for inspection or manual installation into another agent harness:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "agy plugin install https://github.com/obra/superpowers"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone obra/superpowers"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "NousResearch/hermes-agent",
+          "owner": "NousResearch",
+          "name": "hermes-agent",
+          "rank": 4,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "stars": 266563,
+          "forks": 60490,
+          "openIssues": 54764,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2025-07-22",
+          "pushed": "2026-11-27T15:00:45Z",
+          "release": "v0.23.4",
+          "summary": "Nous Research's self-improving autonomous agent featuring skill creation from experience, cross-session conversation search, cron scheduling, subagent delegation, and native Windows TUI and messaging gateway support.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Native Windows PowerShell installation is officially supported without WSL or Docker (installs under `%LOCALAPPDATA%\\hermes`):\n  ```powershell\n  Invoke-RestMethod https://hermes-agent.nousresearch.com/install.ps1 | Invoke-Expression\n  ```\n- Or clone with **`gh 2.97.0`** and set up an isolated environment using **`uv 0.12.5`** + **Python `3.12.10`**:\n  ```powershell\n  gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e .\n  ```\n- Note: Runs with the local execution backend on Windows because **Docker is not installed** (`winget install Docker.DockerDesktop` is needed only for container-isolated backends).",
+            "notes": [
+              "**Ready on Baseline:** Native Windows PowerShell installation is officially supported without WSL or Docker (installs under `%LOCALAPPDATA%\\hermes`):",
+              "Or clone with **`gh 2.97.0`** and set up an isolated environment using **`uv 0.12.5`** + **Python `3.12.10`**:",
+              "Note: Runs with the local execution backend on Windows because **Docker is not installed** (`winget install Docker.DockerDesktop` is needed only for container-isolated backends)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "Invoke-RestMethod https://hermes-agent.nousresearch.com/install.ps1 | Invoke-Expression"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone NousResearch/hermes-agent\n  Set-Location \"hermes-agent\"\n  uv venv --python 3.12\n  uv pip install -e ."
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Docker (optional/workaround)"
+            ]
+          }
+        },
+        {
+          "id": "anomalyco/opencode",
+          "owner": "anomalyco",
+          "name": "opencode",
+          "rank": 5,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/anomalyco/opencode",
+          "stars": 229567,
+          "forks": 31270,
+          "openIssues": 4147,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2025-04-30",
+          "pushed": "2026-11-27T14:58:50Z",
+          "release": "v2.4.2",
+          "summary": "Open-source AI coding agent for terminal and desktop workflows with multi-provider model support, LSP integration, and a client/server TUI architecture.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install the CLI globally using your installed **Node.js `v24.20.0`** (`npm`):\n  ```powershell\n  npm install -g @opencode/cli@latest\n  opencode --version\n  ```\n- Or download the prebuilt Windows x64 CLI archive (`opencode-windows-x64.zip`) or desktop installer (`opencode-desktop-win-x64.exe`) from release `v2.4.2` via **`gh 2.97.0`**:\n  ```powershell\n  gh release download v2.4.2 -R anomalyco/opencode --pattern \"*win*x64*\"\n  ```\n- Note: Building the monorepo from source requires **Bun** (**not installed**; `winget install --id Oven-sh.Bun -e`).",
+            "notes": [
+              "**Ready on Baseline:** Install the CLI globally using your installed **Node.js `v24.20.0`** (`npm`):",
+              "Or download the prebuilt Windows x64 CLI archive (`opencode-windows-x64.zip`) or desktop installer (`opencode-desktop-win-x64.exe`) from release `v2.4.2` via **`gh 2.97.0`**:",
+              "Note: Building the monorepo from source requires **Bun** (**not installed**; `winget install --id Oven-sh.Bun -e`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npm install -g @opencode/cli@latest\n  opencode --version"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh release download v2.4.2 -R anomalyco/opencode --pattern \"*win*x64*\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "n8n-io/n8n",
+          "owner": "n8n-io",
+          "name": "n8n",
+          "rank": 6,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/n8n-io/n8n",
+          "stars": 212409,
+          "forks": 61691,
+          "openIssues": 1326,
+          "language": "TypeScript",
+          "license": "Other (Fair-code)",
+          "created": "2019-06-22",
+          "pushed": "2026-11-27T15:01:03Z",
+          "release": "n8n@2.49.8",
+          "summary": "Fair-code workflow automation platform combining a visual node canvas with JavaScript/Python code nodes, AI agent orchestration, and 400+ (1,500+ ecosystem) integrations.",
+          "apply": {
+            "raw": "- **Missing Tool Note:** The README's primary self-hosted quick start uses **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop`).\n- As a native Windows alternative without Docker, run `n8n` directly with your installed **Node.js `v24.20.0`** (`npx`):\n  ```powershell\n  npx n8n\n  ```\n  Then open `http://localhost:5678` in your browser. Building the monorepo from source requires `pnpm` (**not installed**; enable with `corepack enable`).",
+            "notes": [
+              "**Missing Tool Note:** The README's primary self-hosted quick start uses **Docker**, which is **not installed** on this machine (`winget install Docker.DockerDesktop`).",
+              "As a native Windows alternative without Docker, run `n8n` directly with your installed **Node.js `v24.20.0`** (`npx`):"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx n8n"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "extra-tool",
+            "statusLabel": "Needs Extra Tool",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "winget"
+            ],
+            "missingDeps": [
+              "pnpm (corepack)"
+            ]
+          }
+        },
+        {
+          "id": "firecrawl/firecrawl",
+          "owner": "firecrawl",
+          "name": "firecrawl",
+          "rank": 7,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/firecrawl/firecrawl",
+          "stars": 211413,
+          "forks": 11108,
+          "openIssues": 933,
+          "language": "TypeScript",
+          "license": "AGPL-3.0",
+          "created": "2024-04-15",
+          "pushed": "2026-11-27T00:15:09Z",
+          "release": "v2.11.0",
+          "summary": "Knowledge infrastructure turning websites into clean LLM-ready markdown, structured data, search results, and crawl maps across 550+ data providers through one API, CLI, and MCP server.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Use the Python or Node.js SDKs immediately with your installed **`uv 0.12.5`** / **Python `3.12.10`** or **Node.js `v24.20.0`** against Firecrawl Cloud or a remote server:\n  ```powershell\n  uv init firecrawl-demo --python 3.12\n  Set-Location \"firecrawl-demo\"\n  uv add firecrawl-py\n  ```\n- **Missing Tools for Self-Hosting:** Running the full `docker-compose.yaml` stack requires **Docker** (**not installed**; `winget install Docker.DockerDesktop`), and compiling `firecrawl-local` via `cargo` requires **Rust** and a **C/C++ compiler** (**not installed**).",
+            "notes": [
+              "**Ready on Baseline:** Use the Python or Node.js SDKs immediately with your installed **`uv 0.12.5`** / **Python `3.12.10`** or **Node.js `v24.20.0`** against Firecrawl Cloud or a remote server:",
+              "**Missing Tools for Self-Hosting:** Running the full `docker-compose.yaml` stack requires **Docker** (**not installed**; `winget install Docker.DockerDesktop`), and compiling `firecrawl-local` via `cargo` requires **Rust** and a **C/C++ compiler** (**not installed**)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "uv init firecrawl-demo --python 3.12\n  Set-Location \"firecrawl-demo\"\n  uv add firecrawl-py"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "ultraworkers/claw-code",
+          "owner": "ultraworkers",
+          "name": "claw-code",
+          "rank": 8,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/ultraworkers/claw-code",
+          "stars": 194711,
+          "forks": 107052,
+          "openIssues": 0,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-03-31",
+          "pushed": "2026-11-27T05:10:45Z",
+          "release": "v0.1.15",
+          "summary": "Rust-based agentic coding harness and terminal CLI (`claw-windows-x64.exe`) featuring interactive sessions, diagnostic `doctor` checks, local OpenAI-compatible provider support, and prebuilt Windows binaries.",
+          "apply": {
+            "raw": "- **Prebuilt Windows Binary (No Rust Toolchain Needed):** Even though `cargo` is **not installed**, release `v0.1.15` ships `claw-windows-x64.exe` downloadable via **`gh 2.97.0`**:\n  ```powershell\n  gh release download v0.1.15 -R ultraworkers/claw-code --pattern \"claw-windows-x64.exe*\"\n  .\\claw-windows-x64.exe --help\n  .\\claw-windows-x64.exe doctor\n  ```\n- Note: Do **not** run `cargo install claw-code` (the crates.io package is unrelated). Building `rust/` from source requires Rust (`winget install Rustlang.Rustup`).",
+            "notes": [
+              "**Prebuilt Windows Binary (No Rust Toolchain Needed):** Even though `cargo` is **not installed**, release `v0.1.15` ships `claw-windows-x64.exe` downloadable via **`gh 2.97.0`**:",
+              "Note: Do **not** run `cargo install claw-code` (the crates.io package is unrelated). Building `rust/` from source requires Rust (`winget install Rustlang.Rustup`)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download v0.1.15 -R ultraworkers/claw-code --pattern \"claw-windows-x64.exe*\"\n  .\\claw-windows-x64.exe --help\n  .\\claw-windows-x64.exe doctor"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "ollama/ollama",
+          "owner": "ollama",
+          "name": "ollama",
+          "rank": 9,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/ollama/ollama",
+          "stars": 188301,
+          "forks": 19230,
+          "openIssues": 4797,
+          "language": "Go",
+          "license": "MIT",
+          "created": "2023-06-26",
+          "pushed": "2026-11-27T10:05:28Z",
+          "release": "v0.40.18",
+          "summary": "Local LLM runner and OpenAI-compatible model server supporting Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma, and custom GGUF/MLX models with a native Windows installer.",
+          "apply": {
+            "raw": "- **Ready Native Windows Install (No Go/CMake Needed):** Even though `go` and `cmake` are **not installed**, install Ollama directly via **`winget v1.29.380`** or download `OllamaSetup.exe` from release `v0.40.18` via **`gh 2.97.0`**:\n  ```powershell\n  winget install Ollama.Ollama\n  # Or via release assets:\n  gh release download v0.40.18 -R ollama/ollama --pattern \"OllamaSetup.exe\"\n  ```\n- Note: Building from source requires **Go** (`winget install GoLang.Go`), **CMake** (`winget install Kitware.CMake`), and **Visual Studio C++ Build Tools** (**not installed**).",
+            "notes": [
+              "**Ready Native Windows Install (No Go/CMake Needed):** Even though `go` and `cmake` are **not installed**, install Ollama directly via **`winget v1.29.380`** or download `OllamaSetup.exe` from release `v0.40.18` via **`gh 2.97.0`**:",
+              "Note: Building from source requires **Go** (`winget install GoLang.Go`), **CMake** (`winget install Kitware.CMake`), and **Visual Studio C++ Build Tools** (**not installed**)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Ollama.Ollama\n  # Or via release assets:\n  gh release download v0.40.18 -R ollama/ollama --pattern \"OllamaSetup.exe\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Go (source only)"
+            ]
+          }
+        },
+        {
+          "id": "Significant-Gravitas/AutoGPT",
+          "owner": "Significant-Gravitas",
+          "name": "AutoGPT",
+          "rank": 10,
+          "category": "popular",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/Significant-Gravitas/AutoGPT",
+          "stars": 188208,
+          "forks": 45834,
+          "openIssues": 790,
+          "language": "Python",
+          "license": "Other (MIT / Polyform Shield)",
+          "created": "2023-03-16",
+          "pushed": "2026-11-27T14:31:17Z",
+          "release": "autogpt-platform-beta-v0.12.1",
+          "summary": "Autonomous AI agent platform and visual workflow builder (\"AutoGPT — Your team of AI Experts\") with specialist agents, scheduled routines, API/MCP server endpoints, and the open-source `classic/` / `forge/` agent libraries.",
+          "apply": {
+            "raw": "- **Missing Tool (`Docker`):** The AutoGPT Platform self-hosting quickstart (`significantgravitas/autogpt:latest` single-container image and Docker Compose stack) requires **Docker**, which is **not installed** on this machine:\n  ```powershell\n  winget install Docker.DockerDesktop\n  ```\n- Once Docker Desktop is installed, run the single-container AutoGPT Platform locally:\n  ```powershell\n  docker run -d --name autogpt --restart unless-stopped --shm-size 2g -p 127.0.0.1:3000:3000 -e AUTOGPT_PUBLIC_URL=http://localhost:3000 -v autogpt-data:/data significantgravitas/autogpt:latest\n  ```\n- To inspect the codebase or explore the MIT-licensed `classic/` Python components without Docker using **`gh 2.97.0`** and **`uv 0.12.5`**:\n  ```powershell\n  gh repo clone Significant-Gravitas/AutoGPT\n  ```",
+            "notes": [
+              "**Missing Tool (`Docker`):** The AutoGPT Platform self-hosting quickstart (`significantgravitas/autogpt:latest` single-container image and Docker Compose stack) requires **Docker**, which is **not installed** on this machine:",
+              "Once Docker Desktop is installed, run the single-container AutoGPT Platform locally:",
+              "To inspect the codebase or explore the MIT-licensed `classic/` Python components without Docker using **`gh 2.97.0`** and **`uv 0.12.5`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Docker.DockerDesktop"
+              },
+              {
+                "lang": "powershell",
+                "code": "docker run -d --name autogpt --restart unless-stopped --shm-size 2g -p 127.0.0.1:3000:3000 -e AUTOGPT_PUBLIC_URL=http://localhost:3000 -v autogpt-data:/data significantgravitas/autogpt:latest"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone Significant-Gravitas/AutoGPT"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        }
+      ],
+      "rising": [
+        {
+          "id": "Marvisak/VIctory",
+          "owner": "Marvisak",
+          "name": "VIctory",
+          "rank": 1,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/Marvisak/VIctory",
+          "stars": 13663,
+          "forks": 2328,
+          "openIssues": 2211,
+          "language": "Rust",
+          "license": "GPL-3.0",
+          "created": "2026-11-23",
+          "pushed": "2026-11-25T23:27:48Z",
+          "release": "",
+          "summary": "Native Windows compatibility runtime written in Rust that executes user-supplied Xbox Series X|S GTA VI x86-64 code in-process while reimplementing console services and recompiling console shaders to DXIL on host Direct3D 12.",
+          "apply": {
+            "raw": "- **Missing Tools (`Rust` + `MSVC`):** No prebuilt release binaries are published, and building the workspace requires **Rust (`cargo`)** (pinned via `rust-toolchain.toml`) plus **Visual Studio C++ Build Tools (MSVC)** (**not installed**), as well as a D3D12 SM 6.6 / mesh-shader GPU and your own user-supplied game files:\n  ```powershell\n  winget install Rustlang.Rustup\n  # Also install Visual Studio Build Tools with \"Desktop development with C++\"\n  gh repo clone Marvisak/VIctory\n  Set-Location \"VIctory\"\n  cargo test --workspace\n  ```\n- Note: Diagnostic testing uses `VICTORY_D3D12_WARP=1` for software WARP rendering without triggering GPU driver resets.",
+            "notes": [
+              "**Missing Tools (`Rust` + `MSVC`):** No prebuilt release binaries are published, and building the workspace requires **Rust (`cargo`)** (pinned via `rust-toolchain.toml`) plus **Visual Studio C++ Build Tools (MSVC)** (**not installed**), as well as a D3D12 SM 6.6 / mesh-shader GPU and your own user-supplied game files:",
+              "Note: Diagnostic testing uses `VICTORY_D3D12_WARP=1` for software WARP rendering without triggering GPU driver resets."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Rustlang.Rustup\n  # Also install Visual Studio Build Tools with \"Desktop development with C++\"\n  gh repo clone Marvisak/VIctory\n  Set-Location \"VIctory\"\n  cargo test --workspace"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "xcl-dev/xcl",
+          "owner": "xcl-dev",
+          "name": "xcl",
+          "rank": 2,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/xcl-dev/xcl",
+          "stars": 8686,
+          "forks": 1211,
+          "openIssues": 1956,
+          "language": "Rust",
+          "license": "GPL-3.0",
+          "created": "2026-11-20",
+          "pushed": "2026-11-27T14:21:57Z",
+          "release": "",
+          "summary": "Wine/Proton-style Xbox Series X|S → Windows compatibility layer in Rust that runs unpacked GDK titles natively on x64 Windows by reimplementing `kernelx.dll`, XGameRuntime, DirectStorage, and `d3d12_xs.dll` and recompiling RDNA2 shaders via HLSL → DXIL.",
+          "apply": {
+            "raw": "- **Missing Tools (`Rust` + `Windows SDK / DXC` + `MSVC`):** No prebuilt binaries are published; compiling `xcl.exe` requires **Rust (`stable-x86_64-pc-windows-msvc`)**, **Visual Studio C++ Build Tools**, and the **Windows SDK** (plus DXC 1.8+ pointed to by `XCL_DXC_DIR`):\n  ```powershell\n  winget install Rustlang.Rustup\n  # Install Visual Studio C++ Build Tools and Windows 10/11 SDK (plus DXC 1.8+ if needed)\n  gh repo clone xcl-dev/xcl\n  Set-Location \"xcl\"\n  cargo build --release --workspace\n  .\\scripts\\test.ps1\n  ```\n- Note: Works only on unpacked game files you already own (no DRM decryption or game assets are included).",
+            "notes": [
+              "**Missing Tools (`Rust` + `Windows SDK / DXC` + `MSVC`):** No prebuilt binaries are published; compiling `xcl.exe` requires **Rust (`stable-x86_64-pc-windows-msvc`)**, **Visual Studio C++ Build Tools**, and the **Windows SDK** (plus DXC 1.8+ pointed to by `XCL_DXC_DIR`):",
+              "Note: Works only on unpacked game files you already own (no DRM decryption or game assets are included)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Rustlang.Rustup\n  # Install Visual Studio C++ Build Tools and Windows 10/11 SDK (plus DXC 1.8+ if needed)\n  gh repo clone xcl-dev/xcl\n  Set-Location \"xcl\"\n  cargo build --release --workspace\n  .\\scripts\\test.ps1"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "4lwayz/portwatch-vi",
+          "owner": "4lwayz",
+          "name": "portwatch-vi",
+          "rank": 3,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/4lwayz/portwatch-vi",
+          "stars": 6361,
+          "forks": 180,
+          "openIssues": 227,
+          "language": "JavaScript",
+          "license": "Unspecified",
+          "created": "2026-11-21",
+          "pushed": "2026-11-27T14:47:43Z",
+          "release": "",
+          "summary": "Static GitHub Pages dashboard and automated 3-hour scout (`scripts/scout.mjs`) scoring community GTA VI PC recompilation and emulation efforts, deduplicating clone networks, watching DMCA logs, and building a static site.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Runs directly on your installed **Node.js `v24.20.0`** and **`gh 2.97.0`**:\n  ```powershell\n  gh repo clone 4lwayz/portwatch-vi\n  Set-Location \"portwatch-vi\"\n  npm install\n  npm run scout:dry\n  ```\n- Note: Optional AI review/news generation in the scout uses `ANTHROPIC_API_KEY`; keyless sources run without any API key.",
+            "notes": [
+              "**Ready on Baseline:** Runs directly on your installed **Node.js `v24.20.0`** and **`gh 2.97.0`**:",
+              "Note: Optional AI review/news generation in the scout uses `ANTHROPIC_API_KEY`; keyless sources run without any API key."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone 4lwayz/portwatch-vi\n  Set-Location \"portwatch-vi\"\n  npm install\n  npm run scout:dry"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "EL4CTEO/fast-anything",
+          "owner": "EL4CTEO",
+          "name": "fast-anything",
+          "rank": 4,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/EL4CTEO/fast-anything",
+          "stars": 4404,
+          "forks": 316,
+          "openIssues": 4,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-21",
+          "pushed": "2026-11-27T14:44:46Z",
+          "release": "v0.8.10",
+          "summary": "\"Don't rewrite it in Rust. Rewrite the 5% that's slow\" — profiles Python, Node/TypeScript, Ruby, Java, Kotlin, Go, PHP, C/C++, C#, and R apps to isolate hot functions, lets your coding agent port them to Rust via its CLI/MCP/plugin, proves call parity, and swaps them in.",
+          "apply": {
+            "raw": "- **Ready CLI Install via `Node.js v24.20.0` or `gh` Prebuilt Binary:**\n  ```powershell\n  npm install -g @el4cteo/fast-anything\n  fast-anything --help\n  ```\n  Or download `fast-anything-x86_64-pc-windows-msvc.zip` from release `v0.8.10` via **`gh 2.97.0`**:\n  ```powershell\n  gh release download v0.8.10 -R EL4CTEO/fast-anything --pattern \"*windows-msvc.zip\"\n  ```\n- **Missing Tool Note for Building Ports:** Actually compiling the generated Rust FFI extensions on your machine requires installing **Rust** (`winget install Rustlang.Rustup`) and MSVC C++ Build Tools.",
+            "notes": [
+              "**Ready CLI Install via `Node.js v24.20.0` or `gh` Prebuilt Binary:**",
+              "**Missing Tool Note for Building Ports:** Actually compiling the generated Rust FFI extensions on your machine requires installing **Rust** (`winget install Rustlang.Rustup`) and MSVC C++ Build Tools."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npm install -g @el4cteo/fast-anything\n  fast-anything --help"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh release download v0.8.10 -R EL4CTEO/fast-anything --pattern \"*windows-msvc.zip\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "AFK-surf/xnulinux",
+          "owner": "AFK-surf",
+          "name": "xnulinux",
+          "rank": 5,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/AFK-surf/xnulinux",
+          "stars": 4323,
+          "forks": 223,
+          "openIssues": 8,
+          "language": "C",
+          "license": "Other (Custom)",
+          "created": "2026-11-20",
+          "pushed": "2026-11-27T13:51:28Z",
+          "release": "",
+          "summary": "Builds Apple's open-source XNU kernel from source as a loadable Linux kernel module (`xnu.ko` + `fki.ko`) inside an unmodified arm64 Linux kernel so macOS userspace processes run natively alongside Linux without a hypervisor.",
+          "apply": {
+            "raw": "- **Platform Limitation (Not Native Windows):** `xnulinux` requires an **arm64 Linux host** (bare-metal or VM) plus macOS userspace/kernel build toolchains — it cannot compile or load `xnu.ko` directly on x64 Windows.\n- To clone and inspect the kernel bridge and build scripts locally using **`gh 2.97.0`**:\n  ```powershell\n  gh repo clone AFK-surf/xnulinux\n  ```\n  To execute the build, provision an arm64 Linux environment and follow `scripts/` and `docs/`.",
+            "notes": [
+              "**Platform Limitation (Not Native Windows):** `xnulinux` requires an **arm64 Linux host** (bare-metal or VM) plus macOS userspace/kernel build toolchains — it cannot compile or load `xnu.ko` directly on x64 Windows.",
+              "To clone and inspect the kernel bridge and build scripts locally using **`gh 2.97.0`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone AFK-surf/xnulinux"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "ubiquitarianism/leonida",
+          "owner": "ubiquitarianism",
+          "name": "leonida",
+          "rank": 6,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/ubiquitarianism/leonida",
+          "stars": 2596,
+          "forks": 590,
+          "openIssues": 1554,
+          "language": "Python",
+          "license": "GPL-3.0",
+          "created": "2026-11-23",
+          "pushed": "2026-11-27T13:19:01Z",
+          "release": "",
+          "summary": "Continuation of NotRexed's static recompilation runtime for Xbox Series builds on Windows/Proton, reimplementing console system software and translating all 26,503 precompiled RDNA2 shaders to SPIR-V for Vulkan.",
+          "apply": {
+            "raw": "- **Partially Ready (`Python 3.12.10` + `Vulkan Runtime` present; C/C++/LLVM build tools missing):** Your machine has **Python `3.12.10`**, **`uv 0.12.5`**, and **`vulkaninfo.exe`**, while compiling the native runtime (`Build.bat`) requires C/C++ build tools and the Vulkan SDK + LLVM/SPIR-V tooling:\n  ```powershell\n  gh repo clone ubiquitarianism/leonida\n  Set-Location \"leonida\"\n  # Inspect build prerequisites and docs\\first_run_ui.md before running Build.bat\n  ```\n- Note: Contains no game files or decryption tools; you must supply your own readable copy of the title.",
+            "notes": [
+              "**Partially Ready (`Python 3.12.10` + `Vulkan Runtime` present; C/C++/LLVM build tools missing):** Your machine has **Python `3.12.10`**, **`uv 0.12.5`**, and **`vulkaninfo.exe`**, while compiling the native runtime (`Build.bat`) requires C/C++ build tools and the Vulkan SDK + LLVM/SPIR-V tooling:",
+              "Note: Contains no game files or decryption tools; you must supply your own readable copy of the title."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone ubiquitarianism/leonida\n  Set-Location \"leonida\"\n  # Inspect build prerequisites and docs\\first_run_ui.md before running Build.bat"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "R0Y00/Xbox2Windows",
+          "owner": "R0Y00",
+          "name": "Xbox2Windows",
+          "rank": 7,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/R0Y00/Xbox2Windows",
+          "stars": 2031,
+          "forks": 245,
+          "openIssues": 243,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-20",
+          "pushed": "2026-11-27T15:01:10Z",
+          "release": "gpu-check-v0.1.0",
+          "summary": "Static recompilation research translating selected Xbox Series X|S x64 machine code to C++ and gfx1013 RDNA2 shaders to desktop DXIL, with public CPU/GPU test harnesses and a prebuilt Windows GPU diagnostic (`Xbox2Windows-GpuCheck-win-x64.zip`).",
+          "apply": {
+            "raw": "- **Prebuilt GPU Diagnostic Ready + Python Scripts:** Download and run the standalone Windows x64 GPU check without any game installation via **`gh 2.97.0`**:\n  ```powershell\n  gh release download gpu-check-v0.1.0 -R R0Y00/Xbox2Windows --pattern \"Xbox2Windows-GpuCheck-win-x64.zip*\"\n  Expand-Archive .\\Xbox2Windows-GpuCheck-win-x64.zip -DestinationPath .\\Xbox2Windows-GpuCheck\n  ```\n- To run the Python tooling with **`uv 0.12.5`** + **Python `3.12.10`**:\n  ```powershell\n  gh repo clone R0Y00/Xbox2Windows\n  Set-Location \"Xbox2Windows\"\n  uv venv --python 3.12\n  uv pip install -r requirements-dev.txt\n  ```\n- **Missing Tools for C++ Build:** Compiling the C++ runtime (`CMakeLists.txt`) requires **CMake** (`winget install Kitware.CMake`) and **Visual Studio C++ Build Tools**.",
+            "notes": [
+              "**Prebuilt GPU Diagnostic Ready + Python Scripts:** Download and run the standalone Windows x64 GPU check without any game installation via **`gh 2.97.0`**:",
+              "To run the Python tooling with **`uv 0.12.5`** + **Python `3.12.10`**:",
+              "**Missing Tools for C++ Build:** Compiling the C++ runtime (`CMakeLists.txt`) requires **CMake** (`winget install Kitware.CMake`) and **Visual Studio C++ Build Tools**."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download gpu-check-v0.1.0 -R R0Y00/Xbox2Windows --pattern \"Xbox2Windows-GpuCheck-win-x64.zip*\"\n  Expand-Archive .\\Xbox2Windows-GpuCheck-win-x64.zip -DestinationPath .\\Xbox2Windows-GpuCheck"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone R0Y00/Xbox2Windows\n  Set-Location \"Xbox2Windows\"\n  uv venv --python 3.12\n  uv pip install -r requirements-dev.txt"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "os6/nospeaker",
+          "owner": "os6",
+          "name": "nospeaker",
+          "rank": 8,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/os6/nospeaker",
+          "stars": 1981,
+          "forks": 106,
+          "openIssues": 22,
+          "language": "Swift",
+          "license": "MIT",
+          "created": "2026-11-22",
+          "pushed": "2026-11-24T02:43:05Z",
+          "release": "v1.1",
+          "summary": "macOS hardware art demo that drives a MacBook Force Touch trackpad's haptic actuator up to 4,000 Hz so the glass trackpad speaks, sings, and acts as a touch instrument even with system audio muted.",
+          "apply": {
+            "raw": "- **Platform Limitation (macOS Hardware Only):** Requires an Apple MacBook with a Force Touch trackpad and macOS (`swift` + Apple private haptic actuation frameworks) — it cannot run on Windows.\n- To clone and study the Swift DSP/haptic synthesis source on Windows using **`gh 2.97.0`**:\n  ```powershell\n  gh repo clone os6/nospeaker\n  ```",
+            "notes": [
+              "**Platform Limitation (macOS Hardware Only):** Requires an Apple MacBook with a Force Touch trackpad and macOS (`swift` + Apple private haptic actuation frameworks) — it cannot run on Windows.",
+              "To clone and study the Swift DSP/haptic synthesis source on Windows using **`gh 2.97.0`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone os6/nospeaker"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "nexu-io/opengame",
+          "owner": "nexu-io",
+          "name": "opengame",
+          "rank": 9,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/nexu-io/opengame",
+          "stars": 1901,
+          "forks": 312,
+          "openIssues": 71,
+          "language": "TypeScript",
+          "license": "Apache-2.0",
+          "created": "2026-11-25",
+          "pushed": "2026-11-27T15:00:25Z",
+          "release": "",
+          "summary": "Open-source full-stack AI Game Studio (\"The Super Game Agent\") turning local coding agents (Claude Code, Codex, Gemini CLI, DeepSeek Harness, etc.) into a Three.js/2D/voxel game studio with 25 playable templates, headless playtesting, and MCP tools (`openmotion_game_*`).",
+          "apply": {
+            "raw": "- **Ready on Baseline:** All core prerequisites (**Git `2.53.0`**, **Git LFS `3.7.1`**, **Node.js `v24.20.0`**, and **FFmpeg `9.0.2`**) are already installed. Install the entry skill via `npx`, or clone and build the local Game Studio:\n  ```powershell\n  npx --yes skills@1.9.0 add https://github.com/nexu-io/opengame/tree/skills --skill opengame\n  git -c filter.lfs.process= -c filter.lfs.smudge= -c filter.lfs.required=false clone --depth 1 --single-branch --branch main https://github.com/nexu-io/opengame.git\n  Set-Location \"opengame\"\n  git lfs install --local --skip-smudge\n  npm ci\n  npm run build:studio\n  npm start\n  ```\n- Note: Headless automated screenshots and play-tests also expect Chrome/Chromium installed locally.",
+            "notes": [
+              "**Ready on Baseline:** All core prerequisites (**Git `2.53.0`**, **Git LFS `3.7.1`**, **Node.js `v24.20.0`**, and **FFmpeg `9.0.2`**) are already installed. Install the entry skill via `npx`, or clone and build the local Game Studio:",
+              "Note: Headless automated screenshots and play-tests also expect Chrome/Chromium installed locally."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx --yes skills@1.9.0 add https://github.com/nexu-io/opengame/tree/skills --skill opengame\n  git -c filter.lfs.process= -c filter.lfs.smudge= -c filter.lfs.required=false clone --depth 1 --single-branch --branch main https://github.com/nexu-io/opengame.git\n  Set-Location \"opengame\"\n  git lfs install --local --skip-smudge\n  npm ci\n  npm run build:studio\n  npm start"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "git"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "alesha-pro/llm.asm",
+          "owner": "alesha-pro",
+          "name": "llm.asm",
+          "rank": 10,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/alesha-pro/llm.asm",
+          "stars": 1893,
+          "forks": 297,
+          "openIssues": 18,
+          "language": "Assembly",
+          "license": "MIT",
+          "created": "2026-11-25",
+          "pushed": "2026-11-25T15:42:44Z",
+          "release": "",
+          "summary": "Three zero-dependency LLM systems written in 100% pure x86-64 NASM assembly (17,252 lines total): a 14.7 KB static Linux ELF running `Qwen3-0.6B` (`Q8_0`), a 24.3 KB bootable bare-metal `Qwen3-0.6B` OS, and a 32.9 KB Mini-GPT trainer with a live Unicode Braille TUI.",
+          "apply": {
+            "raw": "- **Platform / Toolchain Limitation (Linux ELF + NASM/QEMU):** The binaries target Linux ELF syscalls (`clone`/`futex`) or bare-metal multiboot x86-64 and require `nasm`, GNU `ld`, `make`, and optionally `qemu-system-x86_64` inside **WSL2** or a Linux VM.\n- Clone on Windows with **`gh 2.97.0`** and inspect or build inside WSL2:\n  ```powershell\n  gh repo clone alesha-pro/llm.asm\n  # Inside WSL2 (Ubuntu/Debian with AVX2+FMA+F16C CPU):\n  # sudo apt install nasm binutils make qemu-system-x86\n  # cd llm.asm && make all\n  ```",
+            "notes": [
+              "**Platform / Toolchain Limitation (Linux ELF + NASM/QEMU):** The binaries target Linux ELF syscalls (`clone`/`futex`) or bare-metal multiboot x86-64 and require `nasm`, GNU `ld`, `make`, and optionally `qemu-system-x86_64` inside **WSL2** or a Linux VM.",
+              "Clone on Windows with **`gh 2.97.0`** and inspect or build inside WSL2:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone alesha-pro/llm.asm\n  # Inside WSL2 (Ubuntu/Debian with AVX2+FMA+F16C CPU):\n  # sudo apt install nasm binutils make qemu-system-x86\n  # cd llm.asm && make all"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "omonkeyz/xbox-emulator",
+          "owner": "omonkeyz",
+          "name": "xbox-emulator",
+          "rank": 11,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/omonkeyz/xbox-emulator",
+          "stars": 1852,
+          "forks": 125,
+          "openIssues": 53,
+          "language": "Rust",
+          "license": "GPL-3.0",
+          "created": "2026-11-21",
+          "pushed": "2026-11-25T13:47:56Z",
+          "release": "",
+          "summary": "Continuation of TomBox (`drycheetah84/TomBox`) reimplementing Xbox Series X|S console libraries, Xbox-flavored Direct3D 12, and RDNA2 shader translation in Rust so decrypted game dumps run as normal Windows processes (already booting *Trackmania*, *Terraria*, and *Fortnite* lobbies).",
+          "apply": {
+            "raw": "- **Missing Tools (`Rust` + `MSVC`):** No prebuilt Windows binaries are published yet; building the Rust workspace requires installing **Rust** and **Visual Studio C++ Build Tools**:\n  ```powershell\n  winget install Rustlang.Rustup\n  # Also install Visual Studio C++ Build Tools\n  gh repo clone omonkeyz/xbox-emulator\n  Set-Location \"xbox-emulator\"\n  cargo build --release\n  ```\n- Note: Progress chart generation (`tools/progress/gen.py`) runs directly with your installed **Python `3.12.10`**. You must supply your own legally obtained, decrypted Xbox Series game dump.",
+            "notes": [
+              "**Missing Tools (`Rust` + `MSVC`):** No prebuilt Windows binaries are published yet; building the Rust workspace requires installing **Rust** and **Visual Studio C++ Build Tools**:",
+              "Note: Progress chart generation (`tools/progress/gen.py`) runs directly with your installed **Python `3.12.10`**. You must supply your own legally obtained, decrypted Xbox Series game dump."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Rustlang.Rustup\n  # Also install Visual Studio C++ Build Tools\n  gh repo clone omonkeyz/xbox-emulator\n  Set-Location \"xbox-emulator\"\n  cargo build --release"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "qianyiai/KuroCat",
+          "owner": "qianyiai",
+          "name": "KuroCat",
+          "rank": 12,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/qianyiai/KuroCat",
+          "stars": 1730,
+          "forks": 244,
+          "openIssues": 66,
+          "language": "TypeScript",
+          "license": "MIT",
+          "created": "2026-11-21",
+          "pushed": "2026-11-27T06:32:21Z",
+          "release": "v5.1.3",
+          "summary": "Lightweight Rust + Tauri v2 transparent desktop typing cat and AI coding companion (Bongo Cat alternative) with 2D/3D avatars, password-field eye-closing privacy, OBS green-screen/transparent capture window, and an MCP character-customization server.",
+          "apply": {
+            "raw": "- **Prebuilt Windows Installer (No Rust Needed):** Download the official `KuroCat-5.1.3-x64-setup.exe` directly from GitHub Releases using **`gh 2.97.0`** (note the repo's security warning to avoid unofficial mirror domains):\n  ```powershell\n  gh release download v5.1.3 -R qianyiai/KuroCat --pattern \"KuroCat-5.1.3-x64-setup.exe\"\n  .\\KuroCat-5.1.3-x64-setup.exe\n  ```\n- Note: Building the Tauri v2 desktop app from source requires **Rust** (`winget install Rustlang.Rustup`) and MSVC C++ Build Tools (**not installed**).",
+            "notes": [
+              "**Prebuilt Windows Installer (No Rust Needed):** Download the official `KuroCat-5.1.3-x64-setup.exe` directly from GitHub Releases using **`gh 2.97.0`** (note the repo's security warning to avoid unofficial mirror domains):",
+              "Note: Building the Tauri v2 desktop app from source requires **Rust** (`winget install Rustlang.Rustup`) and MSVC C++ Build Tools (**not installed**)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download v5.1.3 -R qianyiai/KuroCat --pattern \"KuroCat-5.1.3-x64-setup.exe\"\n  .\\KuroCat-5.1.3-x64-setup.exe"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "Avaneesh-Inamdar/Stream-Tube-Desktop",
+          "owner": "Avaneesh-Inamdar",
+          "name": "Stream-Tube-Desktop",
+          "rank": 13,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/Avaneesh-Inamdar/Stream-Tube-Desktop",
+          "stars": 1618,
+          "forks": 138,
+          "openIssues": 20,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-22",
+          "pushed": "2026-11-27T14:56:56Z",
+          "release": "v0.7.5-alpha",
+          "summary": "Native GPU-rendered YouTube desktop client for Windows and Linux built in Rust with GPUI and `libmpv`, featuring ad-free direct stream playback, SponsorBlock, DeArrow, Return YouTube Dislike, and Windows media controls.",
+          "apply": {
+            "raw": "- **Prebuilt Windows Binary (No Rust/MSVC Needed):** Download the per-user installer or portable ZIP (`StreamTube-0.7.5-alpha-windows-x64.zip`, includes `libmpv-2.dll` and needs no VC++ runtime) from release `v0.7.5-alpha` via **`gh 2.97.0`**:\n  ```powershell\n  gh release download v0.7.5-alpha -R Avaneesh-Inamdar/Stream-Tube-Desktop --pattern \"*windows-x64.zip\"\n  Expand-Archive .\\StreamTube-0.7.5-alpha-windows-x64.zip -DestinationPath .\\StreamTube\n  .\\StreamTube\\streamtube.exe\n  ```\n- Note: Compiling from source requires **Rust** (`winget install Rustlang.Rustup`) and MSVC Build Tools (**not installed**).",
+            "notes": [
+              "**Prebuilt Windows Binary (No Rust/MSVC Needed):** Download the per-user installer or portable ZIP (`StreamTube-0.7.5-alpha-windows-x64.zip`, includes `libmpv-2.dll` and needs no VC++ runtime) from release `v0.7.5-alpha` via **`gh 2.97.0`**:",
+              "Note: Compiling from source requires **Rust** (`winget install Rustlang.Rustup`) and MSVC Build Tools (**not installed**)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download v0.7.5-alpha -R Avaneesh-Inamdar/Stream-Tube-Desktop --pattern \"*windows-x64.zip\"\n  Expand-Archive .\\StreamTube-0.7.5-alpha-windows-x64.zip -DestinationPath .\\StreamTube\n  .\\StreamTube\\streamtube.exe"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "leanprover-community/riemann-hypothesis",
+          "owner": "leanprover-community",
+          "name": "riemann-hypothesis",
+          "rank": 14,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/leanprover-community/riemann-hypothesis",
+          "stars": 1506,
+          "forks": 542,
+          "openIssues": 1184,
+          "language": "Lean",
+          "license": "Apache-2.0",
+          "created": "2026-11-20",
+          "pushed": "2026-11-27T14:07:06Z",
+          "release": "",
+          "summary": "Community Lean 4 formalization effort cleaning up and modularizing the 2026 proofs of the Riemann Hypothesis and Generalized Riemann Hypothesis (GRH) for Dirichlet L-functions to Mathlib standards.",
+          "apply": {
+            "raw": "- **Missing Tool (`elan` / Lean 4):** Checking or building the proof locally requires the Lean toolchain manager (`elan` / `lake`, **not installed**):\n  ```powershell\n  winget install leanprover.elan\n  gh repo clone leanprover-community/riemann-hypothesis\n  Set-Location \"riemann-hypothesis\"\n  lake exe cache get\n  lake build\n  ```\n- Note: Full verification builds are compute- and RAM-intensive; use `lake exe cache get` to fetch precompiled Mathlib `.olean` artifacts first.",
+            "notes": [
+              "**Missing Tool (`elan` / Lean 4):** Checking or building the proof locally requires the Lean toolchain manager (`elan` / `lake`, **not installed**):",
+              "Note: Full verification builds are compute- and RAM-intensive; use `lake exe cache get` to fetch precompiled Mathlib `.olean` artifacts first."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install leanprover.elan\n  gh repo clone leanprover-community/riemann-hypothesis\n  Set-Location \"riemann-hypothesis\"\n  lake exe cache get\n  lake build"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "Reukix/Reloc",
+          "owner": "Reukix",
+          "name": "Reloc",
+          "rank": 15,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/Reukix/Reloc",
+          "stars": 1308,
+          "forks": 253,
+          "openIssues": 10,
+          "language": "Swift",
+          "license": "AGPL-3.0",
+          "created": "2026-11-25",
+          "pushed": "2026-11-27T11:21:20Z",
+          "release": "v1.0.4",
+          "summary": "On-device iOS/iPadOS (17.0+) virtual external GPS accessory simulator written in Swift and Objective-C using `CoreAccessories`, iAP2 link sync, MFi-v3 authentication, and NMEA-0183 (`$GPGGA` / `$GPRMC`) streams without a PC tether or VPN.",
+          "apply": {
+            "raw": "- **Platform Limitation (iOS / macOS Build):** `Reloc` targets iOS/iPadOS 17.0+ and building from source requires **macOS + Xcode + XcodeGen** (plus your own MFi-v3 credentials). It cannot run natively on Windows.\n- To download the unsigned `Reloc.ipa` artifact (for sideloading/signing to a device) or clone the source on Windows via **`gh 2.97.0`**:\n  ```powershell\n  gh release download v1.0.4 -R Reukix/Reloc --pattern \"Reloc.ipa\"\n  gh repo clone Reukix/Reloc\n  ```",
+            "notes": [
+              "**Platform Limitation (iOS / macOS Build):** `Reloc` targets iOS/iPadOS 17.0+ and building from source requires **macOS + Xcode + XcodeGen** (plus your own MFi-v3 credentials). It cannot run natively on Windows.",
+              "To download the unsigned `Reloc.ipa` artifact (for sideloading/signing to a device) or clone the source on Windows via **`gh 2.97.0`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download v1.0.4 -R Reukix/Reloc --pattern \"Reloc.ipa\"\n  gh repo clone Reukix/Reloc"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "deterministic-machines/deslop-please",
+          "owner": "deterministic-machines",
+          "name": "deslop-please",
+          "rank": 16,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/deterministic-machines/deslop-please",
+          "stars": 1178,
+          "forks": 61,
+          "openIssues": 4,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-22",
+          "pushed": "2026-11-27T08:06:39Z",
+          "release": "v0.1.6",
+          "summary": "Opinionated static architecture linter enforcing *A Philosophy of Software Design* (deep modules, narrow interfaces) by flagging `field-leak`, `shallow-module`, `module-cycle`, and `tangle` issues in Rust workspaces via `rust-analyzer`.",
+          "apply": {
+            "raw": "- **Missing Tool (`Rust` + `rust-analyzer`):** Release `v0.1.6` currently publishes macOS and Linux musl tarballs without a Windows `.exe` asset, and `cargo` is **not installed** on this machine. Install Rust first, add `rust-analyzer`, and install from crates.io:\n  ```powershell\n  winget install Rustlang.Rustup\n  rustup component add rust-analyzer\n  cargo install deslop-please\n  ```\n- Or clone the repository via **`gh 2.97.0`** to inspect the architecture rules:\n  ```powershell\n  gh repo clone deterministic-machines/deslop-please\n  ```",
+            "notes": [
+              "**Missing Tool (`Rust` + `rust-analyzer`):** Release `v0.1.6` currently publishes macOS and Linux musl tarballs without a Windows `.exe` asset, and `cargo` is **not installed** on this machine. Install Rust first, add `rust-analyzer`, and install from crates.io:",
+              "Or clone the repository via **`gh 2.97.0`** to inspect the architecture rules:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install Rustlang.Rustup\n  rustup component add rust-analyzer\n  cargo install deslop-please"
+              },
+              {
+                "lang": "powershell",
+                "code": "gh repo clone deterministic-machines/deslop-please"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": [
+              "Rustup (optional/source)"
+            ]
+          }
+        },
+        {
+          "id": "danielwh2/sprite-stacking",
+          "owner": "danielwh2",
+          "name": "sprite-stacking",
+          "rank": 17,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/danielwh2/sprite-stacking",
+          "stars": 1069,
+          "forks": 89,
+          "openIssues": 0,
+          "language": "HTML",
+          "license": "MIT",
+          "created": "2026-11-20",
+          "pushed": "2026-11-24T13:12:08Z",
+          "release": "",
+          "summary": "Coding agent skill and Python slicer (`views_to_slices.py`) that carves four orthographic pixel-art views (top, side, front, back) into stacked 2.5D/fake-3D voxel sprite sheets and an interactive HTML turntable viewer.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install the skill using your installed **Node.js `v24.20.0`** (`npx`), and run the slicer script in an isolated **Python `3.12.10`** environment via **`uv 0.12.5`** (`Pillow` + `NumPy`):\n  ```powershell\n  npx skills add danielwh2/sprite-stacking\n  gh repo clone danielwh2/sprite-stacking\n  Set-Location \"sprite-stacking\"\n  uv run --python 3.12 --with pillow --with numpy python skills\\sprite-stacking\\scripts\\views_to_slices.py --help\n  ```",
+            "notes": [
+              "**Ready on Baseline:** Install the skill using your installed **Node.js `v24.20.0`** (`npx`), and run the slicer script in an isolated **Python `3.12.10`** environment via **`uv 0.12.5`** (`Pillow` + `NumPy`):"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx skills add danielwh2/sprite-stacking\n  gh repo clone danielwh2/sprite-stacking\n  Set-Location \"sprite-stacking\"\n  uv run --python 3.12 --with pillow --with numpy python skills\\sprite-stacking\\scripts\\views_to_slices.py --help"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "ZigZagBoi1/ScarlettPort",
+          "owner": "ZigZagBoi1",
+          "name": "ScarlettPort",
+          "rank": 18,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/ZigZagBoi1/ScarlettPort",
+          "stars": 1042,
+          "forks": 135,
+          "openIssues": 15,
+          "language": "Rust",
+          "license": "Other (GPL)",
+          "created": "2026-11-24",
+          "pushed": "2026-11-27T14:32:40Z",
+          "release": "v0.5.4",
+          "summary": "Bring-your-own-copy Xbox Series X|S compatibility runtime and GUI launcher (`ScarlettPort.exe`) for Windows 10/11 x64 that runs native x64 game code, recompiles RDNA2 shaders to DXIL, and warms pipelines ahead of play.",
+          "apply": {
+            "raw": "- **Prebuilt Windows Binary (No Rust/MSVC Needed):** Download and extract `ScarlettPort-v0.5.4-win64.zip` from release `v0.5.4` via **`gh 2.97.0`** (keep `ScarlettPort.exe` and `runtime/` side by side):\n  ```powershell\n  gh release download v0.5.4 -R ZigZagBoi1/ScarlettPort --pattern \"ScarlettPort-v0.5.4-win64.zip\"\n  Expand-Archive .\\ScarlettPort-v0.5.4-win64.zip -DestinationPath .\\ScarlettPort\n  .\\ScarlettPort\\ScarlettPort.exe\n  ```\n- Note: Requires a DirectX 12 SM 6.6 / mesh-shader GPU (RTX 20-series / RX 6000 or newer), 32 GB RAM recommended, and your own user-supplied game dump.",
+            "notes": [
+              "**Prebuilt Windows Binary (No Rust/MSVC Needed):** Download and extract `ScarlettPort-v0.5.4-win64.zip` from release `v0.5.4` via **`gh 2.97.0`** (keep `ScarlettPort.exe` and `runtime/` side by side):",
+              "Note: Requires a DirectX 12 SM 6.6 / mesh-shader GPU (RTX 20-series / RX 6000 or newer), 32 GB RAM recommended, and your own user-supplied game dump."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh release download v0.5.4 -R ZigZagBoi1/ScarlettPort --pattern \"ScarlettPort-v0.5.4-win64.zip\"\n  Expand-Archive .\\ScarlettPort-v0.5.4-win64.zip -DestinationPath .\\ScarlettPort\n  .\\ScarlettPort\\ScarlettPort.exe"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "prebuilt",
+            "statusLabel": "Prebuilt / Installer",
+            "usesTools": [
+              "Python 3.12",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "lsernau/grh-lean",
+          "owner": "lsernau",
+          "name": "grh-lean",
+          "rank": 19,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/lsernau/grh-lean",
+          "stars": 992,
+          "forks": 112,
+          "openIssues": 4,
+          "language": "Lean",
+          "license": "Apache-2.0",
+          "created": "2026-11-25",
+          "pushed": "2026-11-25T20:45:04Z",
+          "release": "",
+          "summary": "Shorter, machine-checked Lean 4 formalization of the Riemann Hypothesis and GRH for Dirichlet L-functions (based on Alpöge's proof and developed with Anthropic colleagues and Claude), split into a 300k-line readable edition (`grh/`) and 76k-line compact edition (`grh-compact/`).",
+          "apply": {
+            "raw": "- **Missing Tool (`elan` / Lean 4):** Checking the proofs requires Lean `v4.35.0` via `elan` (**not installed**):\n  ```powershell\n  winget install leanprover.elan\n  gh repo clone lsernau/grh-lean\n  Set-Location \"grh-lean\\grh-compact\"\n  lake exe cache get\n  lake build\n  lake env lean scripts\\PrintAxioms.lean\n  ```\n- Note: README notes a full build requires ~24 GB RAM and 1–2 hours on 12 cores (longer if Mathlib cache is absent).",
+            "notes": [
+              "**Missing Tool (`elan` / Lean 4):** Checking the proofs requires Lean `v4.35.0` via `elan` (**not installed**):",
+              "Note: README notes a full build requires ~24 GB RAM and 1–2 hours on 12 cores (longer if Mathlib cache is absent)."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "winget install leanprover.elan\n  gh repo clone lsernau/grh-lean\n  Set-Location \"grh-lean\\grh-compact\"\n  lake exe cache get\n  lake build\n  lake env lean scripts\\PrintAxioms.lean"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "gh CLI",
+              "winget"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "sybil-solutions/skill-distill",
+          "owner": "sybil-solutions",
+          "name": "skill-distill",
+          "rank": 20,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/sybil-solutions/skill-distill",
+          "stars": 973,
+          "forks": 84,
+          "openIssues": 2,
+          "language": "Python",
+          "license": "MIT",
+          "created": "2026-11-21",
+          "pushed": "2026-11-21T03:48:01Z",
+          "release": "",
+          "summary": "Meta-skill for Claude Code or Codex (\"teacher\") that converts a successful coding-agent session into a reproducible skill for an open-weight \"student\" model by running 3-trial verification loops and iteratively patching failure points.",
+          "apply": {
+            "raw": "- **Missing Tool Note (`tmux`):** Requires `tmux` to spawn isolated student sessions (not native to Windows; run inside **WSL2** on Windows), alongside **Git** and **Python 3.12.10**.\n- Clone the skill on Windows with **`gh 2.97.0`**:\n  ```powershell\n  gh repo clone sybil-solutions/skill-distill\n  ```\n  Inside WSL2, link `skill-distill/skills/skill-distill` into `~/.claude/skills/` or `~/.agents/skills/` and install optional Playwright/Pillow dependencies with `uv` (`uv pip install playwright pillow && playwright install chromium`) for web verification tasks.",
+            "notes": [
+              "**Missing Tool Note (`tmux`):** Requires `tmux` to spawn isolated student sessions (not native to Windows; run inside **WSL2** on Windows), alongside **Git** and **Python 3.12.10**.",
+              "Clone the skill on Windows with **`gh 2.97.0`**:"
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "gh repo clone sybil-solutions/skill-distill"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "sous-labs/songe",
+          "owner": "sous-labs",
+          "name": "songe",
+          "rank": 21,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/sous-labs/songe",
+          "stars": 921,
+          "forks": 76,
+          "openIssues": 25,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "created": "2026-11-20",
+          "pushed": "2026-11-27T13:40:09Z",
+          "release": "",
+          "summary": "Idle-compute local model training engine that sits as an OpenAI-compatible proxy between coding agents (`opencode`, `pi`, etc.) and local model servers (Ollama, LM Studio, llama.cpp), logging action outcomes and fine-tuning LoRA adapters when your machine is idle.",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install globally as an isolated CLI tool using your installed **`uv 0.12.5`** and **Python `3.12.10`**, then auto-discover local model servers and agents:\n  ```powershell\n  uv tool install songe\n  songe init\n  ```\n- Note: Local LoRA fine-tuning requires an NVIDIA or AMD GPU (PyTorch) or Apple Silicon (MLX); without a supported GPU, `songe` still runs as a proxy and interaction recorder.",
+            "notes": [
+              "**Ready on Baseline:** Install globally as an isolated CLI tool using your installed **`uv 0.12.5`** and **Python `3.12.10`**, then auto-discover local model servers and agents:",
+              "Note: Local LoRA fine-tuning requires an NVIDIA or AMD GPU (PyTorch) or Apple Silicon (MLX); without a supported GPU, `songe` still runs as a proxy and interaction recorder."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "uv tool install songe\n  songe init"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Python 3.12",
+              "uv"
+            ],
+            "missingDeps": []
+          }
+        },
+        {
+          "id": "xikhar/papercraft",
+          "owner": "xikhar",
+          "name": "papercraft",
+          "rank": 22,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/xikhar/papercraft",
+          "stars": 916,
+          "forks": 100,
+          "openIssues": 2,
+          "language": "JavaScript",
+          "license": "MIT",
+          "created": "2026-11-21",
+          "pushed": "2026-11-21T17:37:19Z",
+          "release": "",
+          "summary": "Agent skill and Three.js / Canvas 2D toolkit (`paperkit-2d.js`, `paperkit-3d.js`, `paper-motion.js`, `paper-sound.js`) for building pop-up papercraft games, interactive dioramas, web pages, and tilt-shift MP4 animations (`capture.py`).",
+          "apply": {
+            "raw": "- **Ready on Baseline:** Install the skill with your installed **Node.js `v24.20.0`** (`npx`), and clone or serve the bundled templates locally:\n  ```powershell\n  npx skills add xikhar/papercraft\n  gh repo clone xikhar/papercraft\n  npx serve papercraft\\skills\\papercraft\\assets\n  ```\n- Note: Headless video/still rendering (`skills/papercraft/scripts/capture.py`) uses **Python `3.12.10`** (`uv`) and your installed **FFmpeg `9.0.2`**.",
+            "notes": [
+              "**Ready on Baseline:** Install the skill with your installed **Node.js `v24.20.0`** (`npx`), and clone or serve the bundled templates locally:",
+              "Note: Headless video/still rendering (`skills/papercraft/scripts/capture.py`) uses **Python `3.12.10`** (`uv`) and your installed **FFmpeg `9.0.2`**."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx skills add xikhar/papercraft\n  gh repo clone xikhar/papercraft\n  npx serve papercraft\\skills\\papercraft\\assets"
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "Python 3.12",
+              "uv",
+              "gh CLI"
+            ],
+            "missingDeps": [
+              "FFmpeg (winget)"
+            ]
+          }
+        },
+        {
+          "id": "erkamyaman/safe-anything",
+          "owner": "erkamyaman",
+          "name": "safe-anything",
+          "rank": 23,
+          "category": "rising",
+          "reportDate": "2026-11-27",
+          "url": "https://github.com/erkamyaman/safe-anything",
+          "stars": 813,
+          "forks": 90,
+          "openIssues": 17,
+          "language": "Rust",
+          "license": "MIT",
+          "created": "2026-11-22",
+          "pushed": "2026-11-27T09:35:29Z",
+          "release": "v1.1.0",
+          "summary": "Fast, zero-config Rust security scanner (107 rules) detecting XSS, SQL/command injection, leaked secrets, risky Docker/K8s/mobile configs, OSV.dev vulnerable dependencies, and unsafe AI agent configs (`.mcp.json`, hooks, skills, invisible Unicode) with line-level fix hints and SARIF/JSON output.",
+          "apply": {
+            "raw": "- **Ready on Baseline (No Rust Needed):** Run immediately via your installed **Node.js `v24.20.0`** (`npx`) or download the prebuilt Windows x64 binary (`safe-anything-v1.1.0-x86_64-pc-windows-msvc.zip`) via **`gh 2.97.0`**:\n  ```powershell\n  npx safe-anything .\n  # Or download the native Windows binary:\n  gh release download v1.1.0 -R erkamyaman/safe-anything --pattern \"*windows-msvc.zip\"\n  ```\n- Useful local flags: `safe-anything . --offline` (skips OSV network lookup) or `safe-anything . --json`.",
+            "notes": [
+              "**Ready on Baseline (No Rust Needed):** Run immediately via your installed **Node.js `v24.20.0`** (`npx`) or download the prebuilt Windows x64 binary (`safe-anything-v1.1.0-x86_64-pc-windows-msvc.zip`) via **`gh 2.97.0`**:",
+              "Useful local flags: `safe-anything . --offline` (skips OSV network lookup) or `safe-anything . --json`."
+            ],
+            "commands": [
+              {
+                "lang": "powershell",
+                "code": "npx safe-anything .\n  # Or download the native Windows binary:\n  gh release download v1.1.0 -R erkamyaman/safe-anything --pattern \"*windows-msvc.zip\""
+              }
+            ]
+          },
+          "compatibility": {
+            "status": "ready",
+            "statusLabel": "Ready on Baseline",
+            "usesTools": [
+              "Node.js / npm",
+              "gh CLI"
+            ],
+            "missingDeps": []
+          }
+        }
+      ],
+      "totalProjects": 33
+    },
     {
       "date": "2026-11-26",
       "filename": "2026-11-26.md",

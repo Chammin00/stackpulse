@@ -99,7 +99,32 @@ function getApplyInstructions(repo) {
   ].join('\n');
 }
 
-async function ghSearch(queryArgs) {
+const POPULAR_BASELINE_EXCLUSIONS = new Set([
+  'freecodecamp/freecodecamp',
+  'ebookfoundation/free-programming-books',
+  'nilbuild/developer-roadmap',
+  'awesome-selfhosted/awesome-selfhosted',
+  'torvalds/linux',
+  'react/react',
+  'tensorflow/tensorflow',
+  'avelino/awesome-go',
+  'microsoft/vscode',
+  '521xueweihan/hellogithub',
+  'ohmyzsh/ohmyzsh',
+  'flutter/flutter',
+  'f/prompts.chat',
+  'twbs/bootstrap',
+  'iptv-org/iptv',
+]);
+
+function isSuspectedBotDropper(repo) {
+  if (repo?.isArchived) return true;
+  const stars = Number(repo?.stargazersCount || 0);
+  const forks = Number(repo?.forksCount || 0);
+  return stars >= 100 && forks <= Math.max(3, Math.floor(stars * 0.01));
+}
+
+async function ghSearch(queryArgs, limit = 40) {
   const args = [
     'search',
     'repos',
@@ -109,9 +134,9 @@ async function ghSearch(queryArgs) {
     '--order',
     'desc',
     '--limit',
-    '10',
+    String(limit),
     '--json',
-    'fullName,url,stargazersCount,forksCount,openIssuesCount,language,license,createdAt,pushedAt,description',
+    'fullName,url,stargazersCount,forksCount,openIssuesCount,language,license,createdAt,pushedAt,description,isArchived',
   ];
   const { stdout } = await execFileAsync('gh', args, { maxBuffer: 10 * 1024 * 1024 });
   return JSON.parse(stdout || '[]');
@@ -164,8 +189,8 @@ function buildReportMarkdown(date, popular, rising) {
 **Report Date:** \`${date}\`  
 **Data Source:** Live GitHub repository metadata via \`gh search repos\`  
 **Scope:**
-1. **Popular & Trending Repositories** — High-star projects with active pushes on \`${date}\`.
-2. **New Rising Repositories** — Repositories created on \`${date}\` (or within \`${risingStart}\`–\`${date}\`) ranked by star traction.
+1. **Popular & Trending Repositories** — High-star active developer tools and platforms with pushes on \`${date}\` (excluding archived repositories and static awesome-lists, curricula, OS kernels, and core framework baselines).
+2. **New Rising Repositories** — Legitimate repositories created on \`${date}\` (or within \`${risingStart}\`–\`${date}\`) ranked by star traction (filtering out archived repos and suspected low-fork bot-star dropper shells).
 
 ---
 
@@ -175,12 +200,15 @@ All **How to Apply in Your Environment** instructions below are tailored to the 
 
 | Tool | Status | Observed Version / Notes |
 | :--- | :--- | :--- |
-| **Git** | Installed | \`git version 2.53.0.windows.3\` |
-| **GitHub CLI (\`gh\`)** | Installed | \`gh version 2.97.0\` (authenticated as \`Chammin00\`) |
-| **Node.js / npm** | Installed | \`v24.20.0\` (\`npm\` available) |
+| **Git** | Installed | \`git version 2.53.0.windows.3\` (\`git-lfs/3.7.1\` also installed) |
+| **GitHub CLI (\`gh\`)** | Installed | \`gh version 2.97.0\` |
+| **Node.js / npm** | Installed | \`v24.20.0\` (\`npm\` and \`npx\` available) |
 | **Python** | Installed | \`Python 3.12.10\` |
 | **uv** | Installed | \`uv 0.12.5\` |
 | **winget** | Installed | \`v1.29.380\` |
+| **FFmpeg** | Installed | \`ffmpeg 9.0.2\` (\`Gyan.FFmpeg\`) |
+| **.NET SDK** | Installed | \`.NET SDK 10.0.300\` |
+| **Vulkan Runtime** | Installed | \`vulkaninfo.exe\` present (\`C:\\Windows\\System32\\vulkaninfo.exe\`) |
 | **Docker** | **Not installed** | Required for container-first workflows unless using a native runtime or Kiri |
 | **pnpm / bun** | **Not installed** | Can be enabled via \`corepack enable\` or \`npm install -g pnpm\` |
 | **Rust (\`cargo\`/\`rustc\`)** | **Not installed** | Required only when building Rust projects from source (\`winget install Rustlang.Rustup\`) |
@@ -210,14 +238,20 @@ async function generateForDate(date, overwrite = false) {
   }
 
   console.log(`Fetching GitHub trending & rising repos for ${date}...`);
-  const popular = await ghSearch([`pushed:${date}..${date}`, 'stars:>5000']);
-  let rising = await ghSearch([`created:${date}..${date}`, 'stars:>5']);
+  const popularRaw = await ghSearch([`pushed:${date}..${date}`, 'stars:>5000'], 40);
+  const popular = popularRaw
+    .filter((r) => !r.isArchived && !POPULAR_BASELINE_EXCLUSIONS.has((r.fullName || '').toLowerCase()))
+    .slice(0, 10);
+
+  const risingRaw = await ghSearch([`created:${date}..${date}`, 'stars:>5'], 50);
+  let rising = risingRaw.filter((r) => !isSuspectedBotDropper(r)).slice(0, 15);
 
   if (rising.length < 5) {
     const startDt = new Date(`${date}T00:00:00Z`);
     startDt.setUTCDate(startDt.getUTCDate() - 3);
     const windowStart = startDt.toISOString().slice(0, 10);
-    rising = await ghSearch([`created:${windowStart}..${date}`, 'stars:>10']);
+    const windowRaw = await ghSearch([`created:${windowStart}..${date}`, 'stars:>10'], 50);
+    rising = windowRaw.filter((r) => !isSuspectedBotDropper(r)).slice(0, 15);
   }
 
   const md = buildReportMarkdown(date, popular, rising);
